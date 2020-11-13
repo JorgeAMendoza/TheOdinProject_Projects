@@ -11,6 +11,8 @@
 
 body {
   font-family: "Roboto", sans-serif;
+  background-color: #181818;
+  color: white;
 }
 
 img {
@@ -19,7 +21,7 @@ img {
 
 .user-icon {
   background-color: brown;
-  border-radius: 100%;
+  border-radius: 50%;
   padding: 0.2em 0.5em;
 }
 
@@ -41,7 +43,6 @@ header {
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  color: white;
   font-size: 1.2rem;
   list-style: none;
 
@@ -83,9 +84,11 @@ header {
   .yt-icons {
     i {
       margin-right: 1rem;
-      &:first-child{
+      &:first-child {
         display: none;
       }
     }
   }
 }
+
+// Youtube Main Section (Video)
