@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Tic-Tac-Toe JS</title>
+  </head>
+  <body>
+    <header>
+      <div class="game-title container">
+        <h1>
+          <span class="o-mark">O</span>Tic-Tac-Toe<span class="x-mark">X</span>
+        </h1>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="game-area">
+        <div class="player-area">
+          <input type="text" name="Player one name" id="playerOneName" />
+          <span class="x-mark">X</span>
+          <div class="win-amount">
+            <h2>Wins</h2>
+            <p>1</p>
+          </div>
+        </div>
+
+        <div class="game-board">
+          <div class="game-tile"></div>
+          <div class="game-tile"></div>
+          <div class="game-tile"></div>
+          <div class="game-tile"></div>
+          <div class="game-tile"></div>
+          <div class="game-tile"></div>
+        </div>
+
+        <div class="player-area">
+          <input type="text" name="Player two name" id="playerTwoName" />
+          <span class="x-mark">O</span>
+          <div class="win-amount">
+            <h2>Wins</h2>
+            <p>1</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="game-options">
+        <button>Reset Board</button>
+        <p class="game-status">Loser</p>
+        <div class="create-game">
+          <button>Start Game</button>
+          <button>New Game</button>
+        </div>
+      </section>
+    </main>
+    <script src="js/game.js"></script>
+  </body>
+</html>
