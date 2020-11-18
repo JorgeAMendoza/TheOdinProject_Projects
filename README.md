@@ -5,4 +5,8 @@ code, and work with various web development tools.
 
 This README will go over the various projects with a short description. 
 
-#JavaScript Library
+# JavaScript Library
+
+# Youtube Clone
+
+# JavaScript Etch-A-Sketch
