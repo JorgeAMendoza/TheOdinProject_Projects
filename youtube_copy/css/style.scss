@@ -76,8 +76,9 @@ header {
     }
 
     span {
-      width: 100px;
-      min-width: 50px;
+      display: inline-block;
+      min-width: 75px;
+      // min-width: 75px;
       text-align: center;
       background-color: #525252;
 
@@ -97,7 +98,6 @@ header {
 
 // Youtube Main Section (Video)
 .video-container {
-  border: 1px solid yellow;
   height: 400px;
   iframe {
     width: 100%;
@@ -306,5 +306,55 @@ header {
     span i {
       margin-right: 0.5rem;
     }
+  }
+}
+
+//Media Queries
+
+@media (min-width: 600px) {
+  .yt-icons {
+    .fas.fa-search {
+      display: none;
+    }
+  }
+
+  .nav-links {
+    .yt-search {
+      display: flex;
+    }
+  }
+
+  .video-container {
+    height: 600px;
+  }
+}
+
+@media (min-width: 1000px) {
+  .container {
+    display: grid;
+    gap: 20px;
+    grid-template-areas:
+      "video video-rec"
+      "comments video-rec";
+  }
+
+  .video {
+    grid-area: video;
+  }
+
+  .more-videos {
+    grid-area: video-rec;
+  }
+
+  .comment-section {
+    grid-area: comments;
+  }
+
+  .more-videos {
+    margin-top: 0;
+  }
+
+  .show-more {
+    display: none;
   }
 }
