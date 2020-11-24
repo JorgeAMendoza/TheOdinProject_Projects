@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ranchers&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+      integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Etch-a-Sketch</title>
+  </head>
+  <body>
+    <header>
+      <h1>Etch-a-Sketch</h1>
+      <p>Click and drag the mouse to create a beautiful drawing!</p>
+    </header>
+
+    <!--Grid options-->
+    <section id="grid-options" class="container">
+      <div id="grid-num">
+        <p>Change Canvas Size:</p>
+        <input
+          id="grid-size"
+          type="number"
+          placeholder="Enter Size..."
+          value=""
+        />
+      </div>
+      <button id="create-grid">Create</button>
+      <button id="clear-grid">Clear Grid</button>
+    </section>
+
+    <!--Etch a Sketch Grid-->
+    <section id="grid-draw" class="container">
+      <div id="brush-stroke">
+        <div>
+          <i id="brush" class="fas fa-paint-brush"></i>
+        </div>
+        <input id="colorInput" type="color" />
+        <input type="button" id="randomBrush" value="Random" />
+        <input id="eraseBrush" type="button" value="Erase" />
+      </div>
+
+      <div class="canvas" draggable="false"></div>
+    </section>
+
+    <script src="js/draw.js"></script>
+  </body>
+</html>
