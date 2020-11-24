@@ -1,0 +1,140 @@
+:root {
+  --primary-color: #da8e18;
+  --secodary-color: #dbd5cd;
+  --background-color: #181817;
+  --max-width: 1400px;
+  --grid-size: 950px;
+}
+
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--background-color);
+  color: white;
+  font-family: "Ranchers", cursive;
+}
+
+/*Utilities*/
+.container {
+  width: var(--max-width);
+  margin: 20px auto;
+}
+
+.btn-selected {
+  background: #5e615f !important;
+  color: white;
+}
+
+/*Page Heading*/
+header {
+  height: 10vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  letter-spacing: 0.2rem;
+}
+
+header p {
+  margin: 5px 0;
+}
+
+/*Grid options*/
+#grid-options {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 150px;
+  text-align: center;
+  width: 50%;
+  margin: 5px auto;
+}
+
+#grid-options #grid-num p {
+  margin-bottom: 0.6rem;
+  font-size: 1.2rem;
+}
+
+#grid-options button {
+  height: 30px;
+  width: 100px;
+  border-radius: 100px;
+  border: none;
+  cursor: pointer;
+}
+
+#grid-options button:hover {
+  opacity: 0.7;
+}
+
+#grid-num input {
+  padding: 0.8em;
+  border-radius: 50px;
+  border: none;
+}
+
+/*Grid Styling*/
+#grid-draw {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.canvas {
+  width: var(--grid-size);
+  height: var(--grid-size);
+  display: grid;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
+  border-radius: 5px;
+}
+
+.cell {
+  display: inline-block;
+  height: 100%;
+  border: 1px solid gray;
+  transition: all 0.2s ease;
+}
+
+/*Stroke Options*/
+#brush-stroke {
+  height: 400px;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: #e6e4e1;
+}
+
+#brush-stroke i {
+  color: red;
+  font-size: 3.5rem;
+  transition: all 0.4s ease;
+}
+
+#brush-stroke input {
+  height: 75px;
+  width: 75px;
+  border: none;
+  border-radius: 50%;
+  padding: 15px;
+  background-color: white;
+  cursor: pointer;
+}
+
+#brush-stroke input:hover {
+  background-color: #5e615f;
+  color: white;
+}
