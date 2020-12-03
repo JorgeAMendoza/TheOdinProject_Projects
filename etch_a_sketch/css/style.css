@@ -101,7 +101,6 @@ header p {
 .cell {
   display: inline-block;
   height: 100%;
-  border:1px solid gray;
   transition: all 0.2s ease;
   background-color: #fff;
 }
