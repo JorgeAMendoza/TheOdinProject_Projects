@@ -25,12 +25,14 @@
     <!--Grid options-->
     <section id="grid-options" class="container">
       <div id="grid-num">
-        <p>Change Canvas Size:</p>
+        <p>Set Canvas Dimensions (Less than 20):</p>
         <input
           id="grid-size"
           type="number"
-          placeholder="Enter Size..."
-          value=""
+          placeholder="Enter Dimension..."
+          value="16"
+          min="0"
+          max="20"
         />
       </div>
       <button id="create-grid">Create</button>
@@ -51,6 +53,6 @@
       <div class="canvas" draggable="false"></div>
     </section>
 
-    <script src="js/draw.js"></script>
+    <script src="js/sketch.js"></script>
   </body>
 </html>
