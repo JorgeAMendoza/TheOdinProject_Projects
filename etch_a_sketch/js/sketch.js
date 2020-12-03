@@ -1,3 +1,69 @@
+//Brush Module
+const gridBrush = ((doc) => {
+  let _randomColorFlag = false;
+  let _brushColor = "#000";
+  const _brushIcon = doc.querySelector("#brush");
+
+  function _setEraser() {
+    _randomColorFlag = false;
+    _brushColor = "#fff";
+    _brushIcon.style.color = _brushColor;
+  }
+
+  function _setRandomColor() {
+    const red = Math.floor(Math.random() * 255);
+    const green = Math.floor(Math.random() * 255);
+    const blue = Math.floor(Math.random() * 255);
+
+    _brushColor = `rgb(${red}, ${green}, ${blue})`;
+    _brushIcon.style.color = _brushColor;
+  }
+
+  function _setColorInput(e) {
+    _randomColorFlag = false;
+    _brushColor = e.target.value;
+    _brushIcon.style.color = _brushColor;
+  }
+
+  function _setListeners() {
+    const eraseButton = doc.querySelector("#eraseBrush");
+    const randomButton = doc.querySelector("#randomBrush");
+    const colorInputButton = doc.querySelector("#colorInput");
+
+    //Set Event Listners
+    eraseButton.addEventListener("click", () => {
+      randomButton.classList.remove("btn-selected");
+      eraseButton.classList.add("btn-selected");
+      _setEraser();
+    });
+    randomButton.addEventListener("click", () => {
+      eraseButton.classList.remove("btn-selected");
+      randomButton.classList.add("btn-selected");
+      _randomColorFlag = true;
+    });
+    colorInputButton.addEventListener("change", (e) => {
+      eraseButton.classList.remove("btn-selected");
+      randomButton.classList.remove("btn-selected");
+      _setColorInput(e);
+    });
+
+    //set Beggining Icon Color
+    _brushIcon.style.color = _brushColor;
+  }
+
+  function getColor() {
+    if (_randomColorFlag) _setRandomColor();
+    return _brushColor;
+  }
+
+  //Call Listner Funciton
+  _setListeners();
+
+  return {
+    getColor: getColor,
+  };
+})(document);
+
 //Grid Module
 const gridCanvas = ((doc) => {
   //Boolean Flag to draw on canvas or not
@@ -23,7 +89,7 @@ const gridCanvas = ((doc) => {
 
   function _drawOnCanvas(e) {
     if (!_draw) return; //Return if module flag is false
-    //get color from brush module and apply to canvas cell.
+    this.style.backgroundColor = gridBrush.getColor();
   }
 
   function _clearCanvas() {
