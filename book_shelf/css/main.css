@@ -1,0 +1,178 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  line-height: 1.4;
+}
+
+body {
+  color: white;
+  height: 100vh;
+  font-family: "Sora", sans-serif;
+  background: url("../imgs/library-bg.jpg") repeat center center/cover;
+}
+
+button {
+  font-family: "Sora", sans-serif;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.selected {
+  background-color: #9e9e9e;
+}
+
+header h1 {
+  font-size: 3.5rem;
+  margin-top: 2rem;
+  text-align: center;
+}
+
+header .change-section {
+  width: 400px;
+  margin: 1rem auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  padding: 0.7rem;
+}
+
+header .change-section button {
+  -ms-flex-preferred-size: 150px;
+      flex-basis: 150px;
+  height: 50px;
+  border: none;
+  border-radius: 10px;
+}
+
+header .change-section button:hover {
+  background-color: #9e9e9e;
+}
+
+header .insert-book {
+  width: 300px;
+  height: 50px;
+  background-color: #86fc86;
+  display: block;
+  margin: 2rem auto;
+  border: none;
+  border-radius: 10px;
+}
+
+header .show-form {
+  max-height: 350px;
+}
+
+header form {
+  max-height: 0;
+  overflow: hidden;
+  background-color: #e3e3e3;
+  color: black;
+  width: 40%;
+  margin: 1rem auto;
+  border: none;
+  border-radius: 10px;
+  -webkit-transition: max-height 0.3s ease-out;
+  transition: max-height 0.3s ease-out;
+}
+
+header form .form-group {
+  margin: 1rem 0;
+  padding: 0.8rem 0.6rem 0 0.6rem;
+}
+
+header form .form-group input[type="text"],
+header form .form-group input[type="number"] {
+  display: block;
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  height: 30px;
+  padding: 0.5rem;
+  -webkit-appearance: textfield;
+     -moz-appearance: textfield;
+          appearance: textfield;
+}
+
+header form .check {
+  text-align: center;
+}
+
+header form #add-book {
+  background-color: #86fc86;
+  border: none;
+  width: 150px;
+  height: 30px;
+  margin: 10px auto;
+  display: block;
+  border-radius: 10px;
+}
+
+.container {
+  width: 70%;
+  margin: 1rem auto;
+}
+
+.container .library-grid {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (175px)[auto-fit];
+      grid-template-columns: repeat(auto-fit, 175px);
+  grid-auto-rows: 300px;
+  gap: 15px;
+}
+
+.container .library-grid .book {
+  background-color: #e3e3e3;
+  color: black;
+  text-align: center;
+  padding: 0.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  border: none;
+  border-radius: 10px;
+}
+
+.container .library-grid .book h2 {
+  height: 50%;
+  width: 100%;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+}
+
+.container .library-grid .book button {
+  width: 90%;
+  border: none;
+  border-radius: 10px;
+  height: 30px;
+  background-color: #ff6161;
+}
+
+@media screen and (max-width: 1200px) {
+  header form {
+    width: 60%;
+  }
+  .library-grid {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+/*# sourceMappingURL=main.css.map */

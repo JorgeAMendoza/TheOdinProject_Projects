@@ -1,0 +1,172 @@
+//Color Variables
+$deleteButtonColor: #ff6161;
+$bookColor: #e3e3e3;
+$addBoook: #86fc86;
+$sectionSelected: #9e9e9e;
+$formBackground: #e3e3e3;
+
+//Basic Styling and Utility Classes
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  line-height: 1.4;
+}
+
+body {
+  color: white;
+  height: 100vh;
+  font-family: "Sora", sans-serif;
+  background: url("../imgs/library-bg.jpg") repeat center center / cover;
+}
+
+button {
+  font-family: "Sora", sans-serif;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.selected {
+  background-color: $sectionSelected;
+}
+
+//Header Styling
+header {
+  h1 {
+    font-size: 3.5rem;
+    margin-top: 2rem;
+    text-align: center;
+  }
+
+  .change-section {
+    width: 400px;
+    margin: 1rem auto;
+    display: flex;
+    justify-content: space-around;
+    padding: 0.7rem;
+    button {
+      flex-basis: 150px;
+      height: 50px;
+      border: none;
+      border-radius: 10px;
+
+      &:hover {
+        background-color: $sectionSelected;
+      }
+    }
+  }
+
+  .insert-book {
+    width: 300px;
+    height: 50px;
+    background-color: $addBoook;
+    display: block;
+    margin: 2rem auto;
+    border: none;
+    border-radius: 10px;
+  }
+
+  //Class to make form visible
+  // .show-form {
+  //   display:block;
+  // }
+
+  .show-form {
+    max-height: 350px;
+  }
+
+  form {
+    max-height: 0;
+    overflow: hidden;
+    background-color: $formBackground;
+    color: black;
+    width: 40%;
+    margin: 1rem auto;
+    border: none;
+    border-radius: 10px;
+    transition: max-height 0.3s ease-out;
+
+    .form-group {
+      margin: 1rem 0;
+      padding: 0.8rem 0.6rem 0 0.6rem;
+      input[type="text"],
+      input[type="number"] {
+        display: block;
+        width: 100%;
+        border: none;
+        border-radius: 5px;
+        height: 30px;
+        padding: 0.5rem;
+        appearance: textfield;
+      }
+    }
+
+    .check {
+      text-align: center;
+    }
+
+    #add-book {
+      background-color: $addBoook;
+      border: none;
+      width: 150px;
+      height: 30px;
+      margin: 10px auto;
+      display: block;
+      border-radius: 10px;
+    }
+  }
+}
+
+//Main grid styling
+.container {
+  width: 70%;
+  margin: 1rem auto;
+
+  .library-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 175px);
+    grid-auto-rows: 300px;
+    gap: 15px;
+
+    .book {
+      background-color: $bookColor;
+      color: black;
+      text-align: center;
+      padding: 0.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      border: none;
+      border-radius: 10px;
+
+      h2 {
+        height: 50%;
+        width: 100%;
+        font-size: clamp(1rem, 2vw, 1.2rem);
+      }
+
+      button {
+        width: 90%;
+        border: none;
+        border-radius: 10px;
+        height: 30px;
+        background-color: $deleteButtonColor;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  header {
+    form {
+      width: 60%;
+    }
+  }
+  .library-grid {
+    justify-content: center;
+  }
+}
