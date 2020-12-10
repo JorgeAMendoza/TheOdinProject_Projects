@@ -1,0 +1,114 @@
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --background-color: #f1faee;
+  --red-color: #e42535;
+  --blue-color: #1d3557;
+  --light-blue-color: #a8dadc;
+}
+
+body {
+  background-color: var(--background-color);
+  font-family: "Open Sans", sans-serif;
+}
+
+.container {
+  width: 80%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.x-mark {
+  color: var(--red-color);
+}
+
+.o-mark {
+  color: var(--blue-color);
+}
+
+header .page-title {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+header .x-mark,
+header .o-mark {
+  text-decoration: underline;
+}
+
+.game-area {
+  display: grid;
+  grid-template-columns: 1fr 300px 1fr;
+  min-height: 300px;
+  padding: 0.8em;
+}
+
+.game-board {
+  background-color: white;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.game-board .game-tile {
+  border: 1px solid black;
+}
+
+.player-area {
+  padding: 0.7em;
+  text-align: center;
+}
+
+.player-area input {
+  padding: 0.3em 0.8em;
+  font-family: inherit;
+  width: 90%;
+  border-radius: 100px;
+  border: 1px solid gray;
+}
+
+.player-area:nth-child(1) input:focus {
+  border-color: var(--red-color);
+}
+
+.player-area > * {
+  margin-bottom: 1rem;
+}
+
+/* Game options */
+.game-options {
+  width: 90%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.game-options > * {
+  margin-bottom: 1rem;
+}
+
+.board-options > button {
+  color: white;
+  background-color: var(--blue-color);
+  border: 1px solid var(--blue-color);
+  padding: 0.5em 1em;
+  width: 150px;
+  border-radius: 100px;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.create-game > button {
+  color: white;
+  background-color: var(--red-color);
+  padding: 0.5em 1em;
+  border: 1px solid var(--red-color);
+  border-radius: 100px;
+  font-family: inherit;
+  cursor: pointer;
+}
