@@ -94,7 +94,7 @@ header .o-mark {
   border-radius: 100px;
   border: 1px solid gray;
   height: 30px;
-  transition: padding, height, 1s ease;
+  transition: padding, height 1s ease;
 }
 
 .player-area input.hidden {
