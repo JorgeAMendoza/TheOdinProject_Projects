@@ -131,6 +131,7 @@ const gameBoardModule = (function (doc) {
     });
     _domElements.clearBoardButton.removeEventListener("click", _clearBoard);
     _domElements.clearBoardButton.classList.add("disabled");
+    _domElements.gameStatus.textContent = "";
   }
 
   return { startGame, endGame };
