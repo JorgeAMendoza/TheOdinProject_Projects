@@ -65,8 +65,8 @@ header .o-mark {
   align-items: center;
 }
 
-.game-board .game-tile .x-mark,
-.game-board .game-tile .o-mark {
+.game-board .game-tile.x-mark,
+.game-board .game-tile.o-mark {
   font-weight: 700;
   font-size: 2rem;
 }
@@ -83,6 +83,10 @@ header .o-mark {
   font-size: 1.2rem;
 }
 
+.player-area .win-amount{
+  margin-top: 1rem;
+}
+
 .player-area input {
   padding: 0.3em 0.8em;
   font-family: inherit;
@@ -90,7 +94,7 @@ header .o-mark {
   border-radius: 100px;
   border: 1px solid gray;
   height: 30px;
-  transition: padding, height 1s ease;
+  transition: padding, height, 1s ease;
 }
 
 .player-area input.hidden {
@@ -106,7 +110,7 @@ header .o-mark {
 }
 
 .player-area .x-mark.underline,
-.player-area .o-mark.unerline {
+.player-area .o-mark.underline {
   text-decoration: underline;
 }
 
