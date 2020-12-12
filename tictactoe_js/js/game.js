@@ -14,13 +14,18 @@ const gameBoardModule = (function (doc) {
     });
     _domElements.gameStatus.textContent = "";
     _domElements.clearBoardButton.disabled = true;
-    _domElements.gameTiles.forEach((tiles) =>
-      tiles.addEventListener("click", _setMark)
-    );
+    _domElements.clearBoardButton.classList.add("disabled");
+    _domElements.gameTiles.forEach((tiles) => {
+      tiles.addEventListener("click", _setMark);
+      tiles.classList.remove("x-mark");
+      tiles.classList.remove("o-mark");
+    });
   }
 
   function _setMark(e) {
     const playerMark = controllerModule.getCurrentPlayerMark();
+    if (playerMark === "X") e.target.classList.add("x-mark");
+    else e.target.classList.add("o-mark");
     e.target.textContent = playerMark;
     e.target.removeEventListener("click", _setMark);
     _turnCount++;
@@ -38,7 +43,6 @@ const gameBoardModule = (function (doc) {
 
   function _checkWinner(mark) {
     const playerMark = mark;
-    console.log(playerMark);
     const boardTiles = [..._domElements.gameTiles];
 
     //Set Rows to check
@@ -99,13 +103,15 @@ const gameBoardModule = (function (doc) {
       tiles.removeEventListener("click", _setMark)
     );
     controllerModule.appendScore();
-    //(maybe) put line through winner row.
+
     _domElements.clearBoardButton.disabled = false;
+    _domElements.clearBoardButton.classList.remove("disabled");
   }
 
   function _tieGame() {
     _domElements.gameStatus.textContent = "Tie Game! Play Again.";
     _domElements.clearBoardButton.disabled = false;
+    _domElements.clearBoardButton.classList.remove("disabled");
   }
 
   function startGame() {
@@ -120,8 +126,11 @@ const gameBoardModule = (function (doc) {
     _domElements.gameTiles.forEach((tile) => {
       tile.removeEventListener("click", _setMark);
       tile.textContent = "";
+      tile.classList.remove("x-mark");
+      tile.classList.remove("o-mark");
     });
     _domElements.clearBoardButton.removeEventListener("click", _clearBoard);
+    _domElements.clearBoardButton.classList.add("disabled");
   }
 
   return { startGame, endGame };
@@ -129,13 +138,17 @@ const gameBoardModule = (function (doc) {
 
 const controllerModule = (function (doc) {
   const _domElements = {
+    playerOneNameInput: doc.querySelector("#playerOneNameInput"),
+    playerTwoNameInput: doc.querySelector("#playerTwoNameInput"),
     playerOneName: doc.querySelector("#playerOneName"),
     playerTwoName: doc.querySelector("#playerTwoName"),
+    playerOneWins: doc.querySelector("#playerOneWins"),
+    playerTwoWins: doc.querySelector("#playerTwoWins"),
+    playerOneSymbol: doc.querySelector("#playerOneSymbol"),
+    playerTwoSymbol: doc.querySelector("#playerTwoSymbol"),
     startGameButton: doc.querySelector("#startGame"),
     newGameButton: doc.querySelector("#newGame"),
     gameMessage: doc.querySelector(".game-message"),
-    playerOneWins: doc.querySelector("#playerOneWins"),
-    playerTwoWins: doc.querySelector("#playerTwoWins"),
   };
 
   let _playerOne;
@@ -167,38 +180,68 @@ const controllerModule = (function (doc) {
   }
 
   function _changeTurn() {
-    console.log(_playerTurn ? "Player one Turn" : "Player Two Turn");
     _playerTurn = !_playerTurn;
+    if (_playerTurn) {
+      playerOneSymbol.classList.add("underline");
+      playerTwoSymbol.classList.remove("underline");
+    } else {
+      playerTwoSymbol.classList.add("underline");
+      playerOneSymbol.classList.remove("underline");
+    }
   }
 
   function _startGame() {
-    let playerOneName = _domElements.playerOneName.value;
-    let playerTwoName = _domElements.playerTwoName.value;
+    let playerOneNameInput = _domElements.playerOneNameInput.value;
+    let playerTwoNameInput = _domElements.playerTwoNameInput.value;
 
-    if (playerOneName === "" || playerTwoName === "") {
-      window.alert("MAKE SURE BOTH ARE NAMED");
+    if (playerOneNameInput === "" || playerTwoNameInput === "") {
+      _domElements.gameMessage.textContent = "Please Enter Two Names";
       return;
     }
 
-    _playerOne = _player("X", playerOneName);
-    _playerTwo = _player("O", playerTwoName);
+    _playerTurn = true;
+    _playerOne = _player("X", playerOneNameInput);
+    _playerTwo = _player("O", playerTwoNameInput);
 
     _domElements.startGameButton.disabled = true;
     _domElements.newGameButton.disabled = false;
+    _domElements.startGameButton.classList.add("disabled");
+    _domElements.newGameButton.classList.remove("disabled");
 
+    _domElements.playerOneSymbol.classList.add("underline");
+    _domElements.gameMessage.textContent = "";
+    _domElements.playerOneNameInput.classList.add("hidden");
+    _domElements.playerTwoNameInput.classList.add("hidden");
+
+    _domElements.playerOneName.textContent = playerOneNameInput;
+    _domElements.playerTwoName.textContent = playerTwoNameInput;
     gameBoardModule.startGame();
   }
 
   function _newGame() {
-    //Set text name to blank and dislay input boxes.
-    window.alert("STARTING NEW GAME");
     gameBoardModule.endGame();
+
     _domElements.playerOneWins.textContent = "0";
     _domElements.playerTwoWins.textContent = "0";
+
     _domElements.startGameButton.disabled = false;
+    _domElements.startGameButton.classList.remove("disabled");
+
+    _domElements.playerOneSymbol.classList.remove("underline");
+    _domElements.playerTwoSymbol.classList.remove("underline");
+
+    _domElements.playerOneNameInput.value = "";
+    _domElements.playerTwoNameInput.value = "";
+    _domElements.playerOneName.textContent = "";
+    _domElements.playerTwoName.textContent = "";
+    _domElements.playerOneNameInput.classList.remove("hidden");
+    _domElements.playerTwoNameInput.classList.remove("hidden");
+
+    _domElements.newGameButton.classList.add("disabled");
+    _domElements.gameMessage.textContent = "Enter two names to play again!";
   }
 
-  function startController() {
+  function _startController() {
     _domElements.startGameButton.addEventListener("click", _startGame);
     _domElements.newGameButton.addEventListener("click", _newGame);
     _domElements.newGameButton.disabled = true;
@@ -229,12 +272,12 @@ const controllerModule = (function (doc) {
     else return _playerTwo.getName();
   }
 
+  //Call intializer
+  _startController();
+
   return {
     getCurrentPlayerMark,
     getCurrentPlayerName,
     appendScore,
-    startController,
   };
 })(document);
-
-controllerModule.startController();
