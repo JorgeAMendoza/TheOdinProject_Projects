@@ -54,15 +54,33 @@ header .o-mark {
   background-color: white;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
 }
 
 .game-board .game-tile {
-  border: 1px solid black;
+  border: 1px solid gray;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+.game-board .game-tile .x-mark,
+.game-board .game-tile .o-mark {
+  font-weight: 700;
+  font-size: 2rem;
+}
+
+/* Player Section */
 .player-area {
   padding: 0.7em;
   text-align: center;
+}
+
+.player-area .player-name {
+  height: 2rem;
+  font-weight: 700;
+  font-size: 1.2rem;
 }
 
 .player-area input {
@@ -71,10 +89,35 @@ header .o-mark {
   width: 90%;
   border-radius: 100px;
   border: 1px solid gray;
+  height: 30px;
+  transition: padding, height 1s ease;
+}
+
+.player-area input.hidden {
+  padding: 0;
+  height: 0;
+  border: none;
+}
+
+.player-area .x-mark,
+.player-area .o-mark {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.player-area .x-mark.underline,
+.player-area .o-mark.unerline {
+  text-decoration: underline;
 }
 
 .player-area:nth-child(1) input:focus {
+  border-width: 2px;
   border-color: var(--red-color);
+}
+
+.player-area:nth-child(3) input:focus {
+  border-width: 3px;
+  border-color: var(--blue-color);
 }
 
 .player-area > * {
@@ -90,6 +133,12 @@ header .o-mark {
 
 .game-options > * {
   margin-bottom: 1rem;
+}
+
+.game-status,
+.game-message {
+  height: 30px;
+  margin: 0.5rem 0;
 }
 
 .board-options > button {
@@ -111,4 +160,10 @@ header .o-mark {
   border-radius: 100px;
   font-family: inherit;
   cursor: pointer;
+}
+
+.board-options > button.disabled,
+.create-game > button.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
