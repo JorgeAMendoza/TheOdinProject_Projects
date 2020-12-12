@@ -22,11 +22,11 @@
       <section class="game-area">
         <div class="player-area">
           <input type="text" name="Player one name" id="playerOneName" />
-          <p class="player-name">John Doe</p>
+          <p class="player-name"></p>
           <span class="x-mark">X</span>
           <div class="win-amount">
             <h2>Wins</h2>
-            <p>1</p>
+            <p id="playerOneWins">0</p>
           </div>
         </div>
 
@@ -44,24 +44,26 @@
 
         <div class="player-area">
           <input type="text" name="Player two name" id="playerTwoName" />
-          <p class="player-name">John Doe</p>
-          <span class="x-mark">O</span>
+          <p class="player-name"></p>
+          <span class="o-mark">O</span>
           <div class="win-amount">
             <h2>Wins</h2>
-            <p>1</p>
+            <p id="playerTwoWins">0</p>
           </div>
         </div>
       </section>
 
       <section class="game-options">
         <div class="board-options">
-          <p class="game-status">Loser</p>
+          <p class="game-status"></p>
           <button id="clearBoard">Clear Board</button>
         </div>
         <div class="create-game">
           <button id="startGame">Start Game</button>
           <button id="newGame">New Game</button>
-          <p class="game-message">John Doe</p>
+          <p class="game-message">
+            Enter names then click start to play a game!
+          </p>
         </div>
       </section>
     </main>
