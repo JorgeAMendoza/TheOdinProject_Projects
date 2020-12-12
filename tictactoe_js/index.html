@@ -20,10 +20,17 @@
 
     <main class="container">
       <section class="game-area">
+
+        <!-- Player One Area -->
         <div class="player-area">
-          <input type="text" name="Player one name" id="playerOneName" />
-          <p class="player-name"></p>
-          <span class="x-mark">X</span>
+          <input
+            type="text"
+            name="Player one name"
+            id="playerOneNameInput"
+            maxlength="12"
+          />
+          <p class="player-name" id="playerOneName"></p>
+          <span id="playerOneSymbol" class="x-mark">X</span>
           <div class="win-amount">
             <h2>Wins</h2>
             <p id="playerOneWins">0</p>
@@ -42,10 +49,16 @@
           <div class="game-tile"></div>
         </div>
 
+        <!-- Player Two Area -->
         <div class="player-area">
-          <input type="text" name="Player two name" id="playerTwoName" />
-          <p class="player-name"></p>
-          <span class="o-mark">O</span>
+          <input
+            type="text"
+            name="Player two name"
+            id="playerTwoNameInput"
+            maxlength="12"
+          />
+          <p class="player-name" id="playerTwoName"></p>
+          <span id="playerTwoSymbol" class="o-mark">O</span>
           <div class="win-amount">
             <h2>Wins</h2>
             <p id="playerTwoWins">0</p>
@@ -56,11 +69,11 @@
       <section class="game-options">
         <div class="board-options">
           <p class="game-status"></p>
-          <button id="clearBoard">Clear Board</button>
+          <button id="clearBoard" class="disabled">Clear Board</button>
         </div>
         <div class="create-game">
           <button id="startGame">Start Game</button>
-          <button id="newGame">New Game</button>
+          <button id="newGame" class="disabled">New Game</button>
           <p class="game-message">
             Enter names then click start to play a game!
           </p>
