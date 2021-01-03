@@ -1,0 +1,11 @@
+// Private Color Variables
+$-darkish-blue: #2D3142;
+$-darkish-light-blue: #4F5D75;
+$-white: #fff;
+$-lightish-orange: #EF8354;
+
+// Public color use variable
+$primary-color:  $-darkish-blue;
+$accent-color: $-lightish-orange;
+$secondary-color: $-darkish-light-blue;
+$text-color: $-white;

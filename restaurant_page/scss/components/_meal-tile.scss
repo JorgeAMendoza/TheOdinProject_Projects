@@ -1,0 +1,7 @@
+@use "../abstracts/colors" as *;
+
+.meal-tile {
+  background-color: $secondary-color;
+  padding: 2em;
+  font-size: 2rem;
+}

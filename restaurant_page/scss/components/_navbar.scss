@@ -1,0 +1,22 @@
+@use "../abstracts/colors" as *;
+@use "../base/typogrpahy" as *;
+.navbar {
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+  padding: 1em;
+
+  li a {
+    color: $text-color;
+    text-decoration: none;
+    font-family: $lato;
+  }
+
+  li a:hover{
+      color:$accent-color;
+  }
+
+  li + li {
+    margin-left: 1em;
+  }
+}

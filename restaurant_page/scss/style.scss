@@ -1,0 +1,11 @@
+@use "abstracts/colors" as *;
+@use "base/resets";
+@use "base/typogrpahy" as *;
+
+// Components (Tiles, Navgiation Bar, Forms);
+@use "components/navbar";
+@use "components/meal-tile";
+
+body {
+  background: $primary-color;
+}
