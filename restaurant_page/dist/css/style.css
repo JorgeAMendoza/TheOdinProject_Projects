@@ -1,0 +1,37 @@
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+  padding: 1em;
+}
+.navbar li a {
+  color: #fff;
+  text-decoration: none;
+  font-family: "Lato", sans-serif;
+}
+.navbar li a:hover {
+  color: #EF8354;
+}
+.navbar li + li {
+  margin-left: 1em;
+}
+
+.meal-tile {
+  background-color: #4F5D75;
+  padding: 2em;
+  font-size: 2rem;
+}
+
+body {
+  background: #2D3142;
+}
+
+/*# sourceMappingURL=style.css.map */
