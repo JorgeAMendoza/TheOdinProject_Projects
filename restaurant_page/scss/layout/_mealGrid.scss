@@ -1,0 +1,15 @@
+@use "../abstracts/mediaBreakpoints" as *;
+
+.meal-grid {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(auto-fit, 350px);
+  justify-content: center;
+}
+
+@media screen and (min-width: $medium){
+  .meal-grid{
+    justify-content: space-between;
+  }
+}
+

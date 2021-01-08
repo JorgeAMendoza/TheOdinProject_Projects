@@ -5,7 +5,36 @@
 // Components (Tiles, Navgiation Bar, Forms);
 @use "components/navbar";
 @use "components/meal-tile";
+@use "components/foodTile";
+
+// Layouts (grids, footers, flexboxes, etc.)
+@use "layout/foodTileGrid";
+@use "layout/mealGrid";
+@use "layout/imageGrid";
+
+// Home page
+@use "pages/home";
+
+//
+
+//General Classes and Styling
+.container {
+  width: 95%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
 
 body {
   background: $primary-color;
+  font-family: $open-sans;
+  color: #fff;
+}
+
+section {
+  padding: 1rem 0;
+}
+
+.section-title{
+  padding-bottom: 1rem;
+  text-decoration: underline 2px;
 }

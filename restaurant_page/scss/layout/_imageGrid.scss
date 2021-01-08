@@ -1,0 +1,18 @@
+@use "../abstracts/mediaBreakpoints" as *;
+
+.image-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  img {
+    height: 350px;
+    width: 350px;
+  }
+}
+
+@media screen and (min-width: $medium) {
+  .image-grid {
+    justify-content: space-between;
+  }
+}
