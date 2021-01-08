@@ -4,6 +4,12 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  line-height: 1.3;
+}
+
+img {
+  max-width: 100%;
+  display: block;
 }
 
 .navbar {
@@ -24,14 +30,182 @@
   margin-left: 1em;
 }
 
-.meal-tile {
+.meal {
+  text-align: center;
   background-color: #4F5D75;
-  padding: 2em;
+}
+.meal > * {
+  margin-bottom: 0.5rem;
+}
+.meal .meal-image {
+  height: 250px;
+  width: 100%;
+}
+.meal .meal-desc {
+  font-size: 0.9rem;
+  font-family: "Lato", sans-serif;
+  padding: 0 0.8em;
+}
+.meal .meal-order-button {
+  color: #fff;
+  font-family: "Lato", sans-serif;
+  background-color: #EF8354;
+  border: none;
+  border-radius: 100px;
+  padding: 0.5em 2em;
+}
+
+.food-tile {
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  position: relative;
+}
+.food-tile::before {
+  content: "";
+  background-color: #EF8354;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.7;
+}
+.food-tile p {
+  z-index: 1;
+}
+.food-tile:first-child {
+  background: url("../imgs/food/tacos/taco.jpg") no-repeat center center/cover;
+}
+.food-tile:nth-child(2) {
+  background: url("../imgs/food/burritos/burrito.jpg") no-repeat center center/cover;
+}
+.food-tile:nth-child(3) {
+  background: url("../imgs/food/quesadillia/queso.jpg") no-repeat center center/cover;
+}
+.food-tile:last-child {
+  background: url("../imgs/food/desserts/horchata.jpg") no-repeat center center/cover;
+}
+
+.food-type {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: 150px;
+}
+
+@media screen and (min-width: 768px) {
+  .food-type {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+.meal-grid {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(auto-fit, 350px);
+  justify-content: center;
+}
+
+@media screen and (min-width: 768px) {
+  .meal-grid {
+    justify-content: space-between;
+  }
+}
+.image-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+.image-grid img {
+  height: 350px;
+  width: 350px;
+}
+
+@media screen and (min-width: 768px) {
+  .image-grid {
+    justify-content: space-between;
+  }
+}
+.home-header {
+  height: 70vh;
+  background: url("../imgs/food/tacos/tacoLarge.jpg") no-repeat center center/cover;
+  display: flex;
+  align-items: flex-end;
+  position: relative;
+}
+.home-header::after {
+  content: "";
+  background: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.header-content {
+  color: white;
+  padding: 1rem 0;
+  z-index: 1;
+}
+.header-content > * {
+  padding: 0.2rem 0;
+}
+.header-content .header-content-title {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+.header-content .header-content-subtitle {
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+}
+.header-content .header-content-order-button {
+  color: inherit;
+  background-color: #EF8354;
+  font-size: 1.2rem;
+  padding: 0.5em 0.9em;
+  margin-top: 0.8em;
+  font-family: "Lato", sans-serif;
+  border: none;
+  border-radius: 100px;
+}
+
+.social-media {
+  text-align: center;
+  padding: 5rem 0;
+}
+.social-media .section-title {
   font-size: 2rem;
+}
+.social-media .social-icons {
+  font-size: 2rem;
+}
+.social-media .social-icons i + i {
+  margin-left: 0.6rem;
+}
+
+.container {
+  width: 95%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 body {
   background: #2D3142;
+  font-family: "Open Sans", sans-serif;
+  color: #fff;
+}
+
+section {
+  padding: 1rem 0;
+}
+
+.section-title {
+  padding-bottom: 1rem;
+  text-decoration: underline 2px;
 }
 
 /*# sourceMappingURL=style.css.map */
