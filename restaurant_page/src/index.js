@@ -19,6 +19,6 @@ import insertHomepage from "./pages/home.js";
     content.innerHTML = "";
   });
 
-  //  Start off page
+  //  Start off page injection
   content.append(...insertHomepage());
 })();
