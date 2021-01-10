@@ -4,16 +4,22 @@
   display: flex;
   justify-content: center;
   list-style-type: none;
-  padding: 1em;
+  padding: 0.8em;
+  position: fixed;
+  z-index: 1;
+  width: 100%;
 
-  li a {
+  li button {
     color: $text-color;
-    text-decoration: none;
     font-family: $lato;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 1.15rem;
   }
 
-  li a:hover{
-      color:$accent-color;
+  li button:hover {
+    color: $accent-color;
   }
 
   li + li {
