@@ -1,4 +1,5 @@
 import insertHomepage from "./pages/home.js";
+import insertMenu from "./pages/menu.js";
 
 (function () {
   const content = document.querySelector("#content");
@@ -13,6 +14,7 @@ import insertHomepage from "./pages/home.js";
 
   menuButton.addEventListener("click", () => {
     content.innerHTML = "";
+    content.append(...insertMenu());
   });
 
   aboutMenu.addEventListener("click", () => {
@@ -20,5 +22,5 @@ import insertHomepage from "./pages/home.js";
   });
 
   //  Start off page injection
-  // content.append(...insertHomepage());
+  content.append(...insertHomepage());
 })();
