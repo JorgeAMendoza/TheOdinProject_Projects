@@ -20,5 +20,5 @@ import insertHomepage from "./pages/home.js";
   });
 
   //  Start off page injection
-  content.append(...insertHomepage());
+  // content.append(...insertHomepage());
 })();
