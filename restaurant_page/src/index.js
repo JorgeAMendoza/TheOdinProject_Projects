@@ -22,5 +22,5 @@ import insertMenu from "./pages/menu.js";
   });
 
   //  Start off page injection
-  content.append(...insertHomepage());
+  // content.append(...insertHomepage());
 })();
