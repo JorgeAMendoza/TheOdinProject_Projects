@@ -6,8 +6,9 @@
   list-style-type: none;
   padding: 0.8em;
   position: fixed;
-  z-index: 1;
+  z-index: 2;
   width: 100%;
+  transition: background-color 0.3s ease;
 
   li button {
     color: $text-color;
@@ -24,5 +25,13 @@
 
   li + li {
     margin-left: 1em;
+  }
+
+  &.scrolled {
+    background-color: $accent-color;
+
+    li button:hover {
+      color: $secondary-color;
+    }
   }
 }
