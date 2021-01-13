@@ -18,16 +18,19 @@ import insertAbout from "./pages/about.js";
 
   homeButton.addEventListener("click", () => {
     content.innerHTML = "";
+    document.documentElement.scrollTop = 0;
     content.append(...insertHomepage());
   });
 
   menuButton.addEventListener("click", () => {
     content.innerHTML = "";
+    document.documentElement.scrollTop = 0;
     content.append(...insertMenu());
   });
 
   aboutMenu.addEventListener("click", () => {
     content.innerHTML = "";
+    document.documentElement.scrollTop = 0;
     content.append(...insertAbout());
   });
 
