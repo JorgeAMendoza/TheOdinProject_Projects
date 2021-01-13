@@ -117,13 +117,33 @@ function createContactInfo() {
 
   //   Contact Info
   const contactInfo = document.createElement("div");
-  contactInfo.setAttribute("class", "icon-info");
-  //   sectionInfo.append(sectionForm);
+  contactInfo.setAttribute("class", "info-icons");
 
-  //   //   Push all into section dom
-  //   sectionDom.append(sectionInfo);
+  // // Email Icon
+  const emailInfo = document.createElement("div");
+  const emailIcon = document.createElement("i");
+  const emailText = document.createElement("span");
+  emailInfo.setAttribute("class", "icon-info");
+  emailIcon.setAttribute("class", "fas fa-envelope");
+  emailText.textContent = "someemail@someprovider.com";
+  emailInfo.append(emailIcon, emailText);
 
-  //   return sectionDom;
+  // // Phone Info
+  const phoneInfo = document.createElement("div");
+  const phoneIcon = document.createElement("i");
+  const phoneText = document.createElement("span");
+  phoneInfo.setAttribute("class", "icon-info");
+  phoneIcon.setAttribute("class", "fas fa-phone");
+  phoneText.textContent = "(XXX) XXX-XXXX";
+  phoneInfo.append(phoneIcon, phoneText);
+
+  contactInfo.append(emailInfo, phoneInfo);
+
+  //   Push all into section Info dom
+  sectionInfo.append(sectionForm, contactInfo);
+
+  sectionDom.append(sectionInfo);
+  return sectionDom;
 }
 
 export default function () {
