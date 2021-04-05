@@ -1,0 +1,24 @@
+$light-saturated-blue: #008ee0;
+$dark-saturated-blue: #003452;
+$light-saturated-orange: #FF9E1F;
+$white: #fff;
+$darkened-white: #ebebeb;
+$black: #000;
+
+$day-background-color: linear-gradient(
+  180deg,
+  $light-saturated-blue,
+  darken($light-saturated-blue, 20%)
+);
+$night-background-color: linear-gradient(
+  180deg,
+  $dark-saturated-blue,
+  darken($dark-saturated-blue, 20%)
+);
+$morning-afternoon-background-color: linear-gradient(
+  180deg,
+  $light-saturated-orange,
+  darken($light-saturated-orange, 20%)
+);
+
+$page-background: $darkened-white;
