@@ -1,0 +1,29 @@
+@use "../abstracts/variables" as *;
+html {
+  box-sizing: border-box;
+}
+
+*,
+::after,
+::before {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Lato", sans-serif;
+  background: $page-background;
+}
+
+img {
+  max-width: 100%;
+}
+
+input {
+  font-family: inherit;
+}
+
+button {
+  font-family: inherit;
+}
