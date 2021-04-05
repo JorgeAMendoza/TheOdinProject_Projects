@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Weather Application</title>
+  </head>
+  <body>
+    <header class="container">
+      <div class="top-bar">
+        <form action="" class="top-bar__search">
+          <label for="citySearch"></label>
+          <input
+            id="citySearch"
+            type="text"
+            class="top-bar__search__input"
+            placeholder="City..."
+          />
+          <button class="btn top-bar__search__btn">Search</button>
+        </form>
+        <div class="top-bar__temp-toggle">
+          <p class="top-bar__temp-toggle__temp-type">F</p>
+          <span class="degree-symbol"></span>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <section id="currentWeather" class="current-weather">
+        <p class="current-weather__city">Dallas, TX</p>
+        <div class="current-weather__icon">
+          <img src="./assets/weather-icons/sun.svg" alt="Sunny Weather" />
+        </div>
+        <p id="currentTemp" class="current-weather__temperature">
+          66 <span class="degree-symbol"></span>
+        </p>
+        <p id="currentStatus" class="current-weather__status">Clear Sky</p>
+        <div class="current-weather__low-high">
+          <p class="current-weather__low-high__temp">
+            Low <span>40</span> <span class="degree-symbol"></span>
+          </p>
+          <p class="current-weather__low-high__temp">
+            High <span>77</span> <span class="degree-symbol"></span>
+          </p>
+        </div>
+        <div class="current-weather__status">
+          <div class="current-weather__status__info">
+            <div class="current-weather__status__info__icon">
+              <img src="./assets/weather-icons/wind.svg" alt="Current Wind" />
+            </div>
+            <p class="current-weather__status__info__type">Wind Speed</p>
+            <p class="current-weather__status__info__text">
+              <span class="current-weather__status__info__text__value">16</span>
+              <span class="current-weather__status__info__text__unit">mph</span>
+            </p>
+          </div>
+          <div class="current-weather__status__info">
+            <div class="current-weather__status__info__icon">
+              <img
+                src="./assets/weather-icons/humidity.svg"
+                alt="Current Humidity"
+              />
+            </div>
+            <p class="current-weather__status__info__type">Wind Speed</p>
+            <p class="current-weather__status__info__text">
+              <span class="current-weather__status__info__text__value">16</span>
+              <span class="current-weather__status__info__text__unit">mph</span>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="fiveDayForecast" class="container">
+        <h2>Five Day Forecast</h2>
+        <div class="forecast-display">
+          <figure class="forecast-display__card">
+            <div class="forecast-display__card__icon">
+              <img src="./assets/weather-icons/rain.svg" alt="Chance of Rain" />
+            </div>
+
+            <div class="forecast-display__card__time">
+              <div class="forecast-display__card__time__day">Monday</div>
+              <div class="forecast-display__card__time__date">March 30th</div>
+            </div>
+
+            <p class="forecast-display__card__outlook">Cloudy</p>
+
+            <div class="forecast-display__card__tempature">
+              <p class="forecast-display__card__temperature__temp">
+                <img src="./assets/imgs/triangle.svg" alt="Low Temperature" />
+                40 <span class="degree-symbol"></span>
+              </p>
+              <p class="forecast-display__card__temperature__temp--high">
+                <img src="./assets/imgs/triangle.svg" alt="High Temperature" />
+                70 <span class="degree-symbol"></span>
+              </p>
+            </div>
+          </figure>
+          <figure class="forecast-display__card">
+            <div class="forecast-display__card__icon">
+              <img src="./assets/weather-icons/rain.svg" alt="Chance of Rain" />
+            </div>
+
+            <div class="forecast-display__card__time">
+              <div class="forecast-display__card__time__day">Monday</div>
+              <div class="forecast-display__card__time__date">March 30th</div>
+            </div>
+
+            <p class="forecast-display__card__outlook">Cloudy</p>
+
+            <div class="forecast-display__card__tempature">
+              <p class="forecast-display__card__temperature__temp">
+                <img src="./assets/imgs/triangle.svg" alt="Low Temperature" />
+                40 <span class="degree-symbol"></span>
+              </p>
+              <p class="forecast-display__card__temperature__temp--high">
+                <img src="./assets/imgs/triangle.svg" alt="High Temperature" />
+                70 <span class="degree-symbol"></span>
+              </p>
+            </div>
+          </figure>
+          <figure class="forecast-display__card">
+            <div class="forecast-display__card__icon">
+              <img src="./assets/weather-icons/rain.svg" alt="Chance of Rain" />
+            </div>
+
+            <div class="forecast-display__card__time">
+              <div class="forecast-display__card__time__day">Monday</div>
+              <div class="forecast-display__card__time__date">March 30th</div>
+            </div>
+
+            <p class="forecast-display__card__outlook">Cloudy</p>
+
+            <div class="forecast-display__card__tempature">
+              <p class="forecast-display__card__temperature__temp">
+                <img src="./assets/imgs/triangle.svg" alt="Low Temperature" />
+                40 <span class="degree-symbol"></span>
+              </p>
+              <p class="forecast-display__card__temperature__temp--high">
+                <img src="./assets/imgs/triangle.svg" alt="High Temperature" />
+                70 <span class="degree-symbol"></span>
+              </p>
+            </div>
+          </figure>
+          <figure class="forecast-display__card">
+            <div class="forecast-display__card__icon">
+              <img src="./assets/weather-icons/rain.svg" alt="Chance of Rain" />
+            </div>
+
+            <div class="forecast-display__card__time">
+              <div class="forecast-display__card__time__day">Monday</div>
+              <div class="forecast-display__card__time__date">March 30th</div>
+            </div>
+
+            <p class="forecast-display__card__outlook">Cloudy</p>
+
+            <div class="forecast-display__card__tempature">
+              <p class="forecast-display__card__temperature__temp">
+                <img src="./assets/imgs/triangle.svg" alt="Low Temperature" />
+                40 <span class="degree-symbol"></span>
+              </p>
+              <p class="forecast-display__card__temperature__temp--high">
+                <img src="./assets/imgs/triangle.svg" alt="High Temperature" />
+                70 <span class="degree-symbol"></span>
+              </p>
+            </div>
+          </figure>
+          <figure class="forecast-display__card">
+            <div class="forecast-display__card__icon">
+              <img src="./assets/weather-icons/rain.svg" alt="Chance of Rain" />
+            </div>
+
+            <div class="forecast-display__card__time">
+              <div class="forecast-display__card__time__day">Monday</div>
+              <div class="forecast-display__card__time__date">March 30th</div>
+            </div>
+
+            <p class="forecast-display__card__outlook">Cloudy</p>
+
+            <div class="forecast-display__card__tempature">
+              <p class="forecast-display__card__temperature__temp">
+                <img src="./assets/imgs/triangle.svg" alt="Low Temperature" />
+                40 <span class="degree-symbol"></span>
+              </p>
+              <p class="forecast-display__card__temperature__temp--high">
+                <img src="./assets/imgs/triangle.svg" alt="High Temperature" />
+                70 <span class="degree-symbol"></span>
+              </p>
+            </div>
+          </figure>
+        </div>
+      </section>
+    </main>
+
+    <div class="error-message container">
+      <p id="errorMessage" class="error-message__text">
+        Could not find City, please try again.
+      </p>
+    </div>
+  </body>
+</html>
