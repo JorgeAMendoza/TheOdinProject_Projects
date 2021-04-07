@@ -32,43 +32,40 @@
     <main class="container">
       <section id="currentWeather" class="current-weather">
         <p class="current-weather__city">Dallas, TX</p>
-        <div class="current-weather__icon">
-          <img src="./assets/weather-icons/sun.svg" alt="Sunny Weather" />
-        </div>
-        <p id="currentTemp" class="current-weather__temperature">
-          66 <span class="degree-symbol"></span>
-        </p>
+        <img
+          class="current-weather__icon"
+          src="./assets/weather-icons/sun.svg"
+          alt="Sunny Weather"
+        />
+        <p id="currentTemp" class="current-weather__temperature">66 °</p>
         <p id="currentStatus" class="current-weather__status">Clear Sky</p>
         <div class="current-weather__low-high">
-          <p class="current-weather__low-high__temp">
-            Low <span>40</span> <span class="degree-symbol"></span>
-          </p>
-          <p class="current-weather__low-high__temp">
-            High <span>77</span> <span class="degree-symbol"></span>
-          </p>
+          <p class="current-weather__low-high__temp">Low <span>40 °</span></p>
+          <p class="current-weather__low-high__temp">High <span>77 °</span></p>
         </div>
-        <div class="current-weather__status">
-          <div class="current-weather__status__info">
-            <div class="current-weather__status__info__icon">
-              <img src="./assets/weather-icons/wind.svg" alt="Current Wind" />
-            </div>
-            <p class="current-weather__status__info__type">Wind Speed</p>
-            <p class="current-weather__status__info__text">
-              <span class="current-weather__status__info__text__value">16</span>
-              <span class="current-weather__status__info__text__unit">mph</span>
+        <div class="current-weather__stats">
+          <div class="current-weather__stats__info">
+            <img
+              class="current-weather__stats__info__icon"
+              src="./assets/weather-icons/wind.svg"
+              alt="Current Wind"
+            />
+            <p class="current-weather__stats__info__type">Wind Speed</p>
+            <p class="current-weather__stats__info__text">
+              <span class="current-weather__stats__info__text__value">16</span>
+              <span class="current-weather__stats__info__text__unit">mph</span>
             </p>
           </div>
-          <div class="current-weather__status__info">
-            <div class="current-weather__status__info__icon">
-              <img
-                src="./assets/weather-icons/humidity.svg"
-                alt="Current Humidity"
-              />
-            </div>
-            <p class="current-weather__status__info__type">Wind Speed</p>
-            <p class="current-weather__status__info__text">
-              <span class="current-weather__status__info__text__value">16</span>
-              <span class="current-weather__status__info__text__unit">mph</span>
+          <div class="current-weather__stats__info">
+            <img
+              class="current-weather__stats__info__icon"
+              src="./assets/weather-icons/humidity.svg"
+              alt="Current Wind"
+            />
+            <p class="current-weather__stats__info__type">Wind Speed</p>
+            <p class="current-weather__stats__info__text">
+              <span class="current-weather__stats__info__text__value">16</span>
+              <span class="current-weather__stats__info__text__unit">mph</span>
             </p>
           </div>
         </div>
