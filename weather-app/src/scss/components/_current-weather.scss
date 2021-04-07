@@ -1,0 +1,62 @@
+@use "../abstracts/variables" as *;
+
+.current-weather {
+  border-radius: 10px;
+  color: white;
+  background: $day-background-color;
+
+  &__city {
+    font-size: 2.4rem;
+    font-weight: bold;
+  }
+
+  &__icon {
+    width: 10rem;
+  }
+
+  &__temperature {
+    font-size: 3.2rem;
+    font-weight: bold;
+  }
+
+  &__status {
+    font-size: 2.4rem;
+    font-weight: lighter;
+  }
+
+  &__low-high {
+    display: flex;
+
+    &__temp {
+      text-align: center;
+      span {
+        font-weight: lighter;
+        display: block;
+      }
+    }
+  }
+
+  &__stats {
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+
+    &__info {
+      display: grid;
+      grid-template-columns: 4.5rem 1fr;
+      grid-template-rows: auto;
+      grid-template-areas:
+        "icon type"
+        "icon text";
+
+      &__icon {
+        width: 4.5rem;
+        grid-area: icon;
+      }
+
+      &:last-child {
+        margin-left: 1.6rem;
+      }
+    }
+  }
+}
