@@ -1,2 +1,8 @@
 // Page Resets
 @use "base/reset";
+
+// Page Components
+@use "components/search-bar";
+
+// Page Layout
+@use "layout/container";
