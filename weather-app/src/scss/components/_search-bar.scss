@@ -1,0 +1,39 @@
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 10ch;
+
+  &__search {
+    display: flex;
+  }
+
+  &__search__label {
+    background-color: white;
+    border-radius: 10px;
+    padding: 0 0.5em;
+    min-height: 4ch;
+    display: inline-flex;
+
+    &__input {
+      margin-left: 0.5em;
+    }
+  }
+
+  &__search__btn {
+    background-color: white;
+    min-height: 4ch;
+    border-radius: 10px;
+    font-weight: bold;
+    padding: 0 0.5em;
+    margin-left: 0.5em;
+    width: 10ch;
+  }
+
+  &__temp-toggle {
+    background-color: #fff;
+    padding: 1.7rem;
+    border-radius: 100%;
+    font-weight: bold;
+  }
+}
