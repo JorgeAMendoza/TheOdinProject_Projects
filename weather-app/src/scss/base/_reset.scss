@@ -1,6 +1,7 @@
 @use "../abstracts/variables" as *;
 html {
   box-sizing: border-box;
+  font-size: 62.5%;
 }
 
 *,
@@ -14,6 +15,7 @@ html {
 body {
   font-family: "Lato", sans-serif;
   background: $page-background;
+  font-size: 1.6rem;
 }
 
 img {
@@ -22,8 +24,22 @@ img {
 
 input {
   font-family: inherit;
+  outline: none;
+  border: none;
+  display: inline-block;
+}
+
+label {
+  display: inline-block;
 }
 
 button {
   font-family: inherit;
+  border: transparent;
+  background-color: transparent;
+  display: inline-block;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
