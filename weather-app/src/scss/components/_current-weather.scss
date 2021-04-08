@@ -4,53 +4,81 @@
   border-radius: 10px;
   color: white;
   background: $day-background-color;
+  padding: 1.5rem 1rem;
+
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto;
+  justify-items: center;
+
+  grid-template-areas:
+    "city city"
+    "icon temperature"
+    "status status"
+    "low-high low-high"
+    "stats stats";
+
+  & > *:not(:last-child) {
+    margin-bottom: 2rem;
+  }
 
   &__city {
     font-size: 2.4rem;
     font-weight: bold;
+    grid-area: city;
   }
 
   &__icon {
-    width: 10rem;
+    width: 8rem;
+    grid-area: icon;
+    justify-self: end;
   }
 
   &__temperature {
     font-size: 3.2rem;
     font-weight: bold;
+    grid-area: temperature;
+    justify-self: start;
+    align-self: center;
+    margin-left: 2rem;
   }
 
   &__status {
     font-size: 2.4rem;
     font-weight: lighter;
+    grid-area: status;
   }
 
   &__low-high {
     display: flex;
+    grid-area: low-high;
+    text-align: center;
 
-    &__temp {
-      text-align: center;
-      span {
-        font-weight: lighter;
-        display: block;
-      }
+    & > * + * {
+      margin-left: 2rem;
+    }
+
+    &__temp > span {
+      font-weight: lighter;
+      display: block;
     }
   }
 
   &__stats {
-    border: 1px solid black;
     display: flex;
     justify-content: center;
+    grid-area: stats;
 
     &__info {
       display: grid;
-      grid-template-columns: 4.5rem 1fr;
+      grid-template-columns: 4rem 1fr;
       grid-template-rows: auto;
       grid-template-areas:
         "icon type"
         "icon text";
 
       &__icon {
-        width: 4.5rem;
+        width: 4rem;
         grid-area: icon;
       }
 
