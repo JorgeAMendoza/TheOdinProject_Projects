@@ -1,0 +1,63 @@
+.forecast-display {
+  display: flex;
+  flex-direction: column;
+
+  & > * + * {
+    margin-top: 1.2rem;
+  }
+}
+
+.forecast-display__card {
+  padding: 0.3em 0.7em;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  display: grid;
+  grid-template-columns: auto 3fr 2fr;
+  grid-template-areas:
+    "icon date temp"
+    "icon outlook temp";
+
+  &__date {
+    font-size: 1.4rem;
+    grid-area: date;
+  }
+
+  &__icon {
+    width: 5rem;
+    grid-area: icon;
+    margin-right: 0.6rem;
+  }
+
+  &__outlook {
+    font-weight: 300;
+    font-size: 1.4rem;
+    grid-area: outlook;
+  }
+
+  &__temperature {
+    display: flex;
+    align-items: center;
+    grid-area: temp;
+    justify-self: end;
+
+    & > * + * {
+      margin-left: 1.2rem;
+    }
+  }
+
+  &__temperature__temp {
+    display: flex;
+
+    &__icon {
+      width: 1.5rem;
+      margin-right: 0.5rem;
+    }
+
+    &:last-child {
+      img {
+        rotate: 180deg;
+      }
+    }
+  }
+}
