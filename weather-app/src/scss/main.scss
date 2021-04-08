@@ -4,6 +4,8 @@
 // Page Components
 @use "components/search-bar";
 @use "components/current-weather";
+@use "components/forecast-display";
 
 // Page Layout
 @use "layout/container";
+@use "layout/five-day-forecast";
