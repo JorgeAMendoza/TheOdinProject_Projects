@@ -5,6 +5,7 @@
 @use "components/search-bar";
 @use "components/current-weather";
 @use "components/forecast-display";
+@use "components/error-message";
 
 // Page Layout
 @use "layout/container";
