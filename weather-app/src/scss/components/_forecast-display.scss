@@ -1,3 +1,5 @@
+@use "../abstracts/variables" as *;
+
 .forecast-display {
   display: flex;
   flex-direction: column;
@@ -11,7 +13,7 @@
   padding: 0.3em 0.7em;
   background-color: white;
   border-radius: 10px;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: $box-shadow;
   display: grid;
   grid-template-columns: auto 3fr 2fr;
   grid-template-areas:
@@ -21,6 +23,7 @@
   &__date {
     font-size: 1.4rem;
     grid-area: date;
+    align-self: end;
   }
 
   &__icon {

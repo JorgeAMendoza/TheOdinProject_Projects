@@ -5,6 +5,7 @@
   color: white;
   background: $day-background-color;
   padding: 1.5rem 1rem;
+  box-shadow: $box-shadow;
 
   display: grid;
   grid-template-columns: auto auto;
@@ -17,6 +18,14 @@
     "status status"
     "low-high low-high"
     "stats stats";
+
+  &--night {
+    background: $night-background-color;
+  }
+
+  &--sunrise-sunset {
+    background: $morning-afternoon-background-color;
+  }
 
   & > *:not(:last-child) {
     margin-bottom: 2rem;
