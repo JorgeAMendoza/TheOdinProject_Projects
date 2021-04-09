@@ -112,4 +112,12 @@
       margin-top: 3rem;
     }
   }
+
+  @media screen and (min-width: $larger-breakpoint) {
+    &__date,
+    &__outlook,
+    &__temperature {
+      font-size: 2rem;
+    }
+  }
 }

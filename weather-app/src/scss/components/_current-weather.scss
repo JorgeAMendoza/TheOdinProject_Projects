@@ -98,7 +98,6 @@
   }
 
   @media screen and (min-width: $medium-device) {
-    // padding: 5rem 1rem;
     min-height: 30rem;
     grid-template-areas:
       "icon city"
@@ -144,6 +143,19 @@
 
     &__stats {
       align-self: end;
+    }
+  }
+
+  @media screen and (min-width: $larger-breakpoint) {
+    min-height: 40rem;
+
+    &__icon {
+      width: 24rem;
+    }
+
+    &__low-high,
+    &__stats {
+      font-size: 2rem;
     }
   }
 }

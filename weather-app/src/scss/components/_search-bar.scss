@@ -6,12 +6,13 @@
 
   &__search {
     display: flex;
+    min-width: 10rem;
   }
 
   &__search__label {
     background-color: white;
     border-radius: 10px;
-    padding: 0 1em;
+    padding: 0 0.5em;
     min-height: 5ch;
     display: inline-flex;
 
@@ -27,12 +28,12 @@
     font-weight: bold;
     padding: 0 0.5em;
     margin-left: 0.5em;
-    width: 10ch;
+    width: 8ch;
   }
 
   &__temp-toggle {
     background-color: #fff;
-    padding: 1.7rem;
+    padding: 1.6rem;
     border-radius: 100%;
     font-weight: bold;
   }
