@@ -96,4 +96,54 @@
       }
     }
   }
+
+  @media screen and (min-width: $medium-device) {
+    // padding: 5rem 1rem;
+    min-height: 30rem;
+    grid-template-areas:
+      "icon city"
+      "icon temperature"
+      "icon status"
+      "icon low-high"
+      "icon stats";
+
+    place-content: center;
+
+    & > *:not(:last-child) {
+      margin: 0;
+    }
+
+    & > * {
+      justify-self: start;
+      align-self: center;
+    }
+
+    & > *:not([class*="icon"]) {
+      margin-left: 1.5rem;
+    }
+
+    &__icon {
+      width: 22rem;
+      align-self: center;
+    }
+
+    &__temperature {
+      align-self: end;
+    }
+
+    &__status {
+      align-self: start;
+    }
+
+    &__low-high {
+      span {
+        display: inline-block;
+        margin-left: 0.5rem;
+      }
+    }
+
+    &__stats {
+      align-self: end;
+    }
+  }
 }
