@@ -30,17 +30,29 @@ export class CurrentWeather {
   // Same as one above, but for USA USA.
   setNewCurrent(
     newCurrentTemp,
-    newStatus,
     newMinTemp,
     newMaxTemp,
+    newStatus,
     newHumidity,
     newWind
   ) {
     // Object destructuring in teh arguemnnts? would make it easier to work with and less code.
-    // simply reset all the values, we won't need to call the methods above since the unit is being handled by the API call.
+    this.currentTemp = newCurrentTemp;
+    this.minTemp = newMinTemp;
+    this.maxTemp = newMaxTemp;
+    this.status = newStatus;
+    this.humidity = newHumidity;
+    this.wind = newWind;
   }
 
-  // Set new values method
-  // This method takes in new values to give our properties, basically another constructor,
-  // So multipile resets here, but only one method that needs to be called by our MOdule.
+  getWeatherProperties() {
+    return {
+      currentTemp: this.currentTemp,
+      minTemp: this.minTemp,
+      maxTemp: this.maxTemp,
+      status: this.status,
+      humidity: this.humidity,
+      wind: this.wind,
+    };
+  }
 }
