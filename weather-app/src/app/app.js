@@ -4,4 +4,3 @@ import { weatherData } from "./weather-data";
 // Call function that starts app (makes first call)
 
 const weatherModule = weatherData();
-weatherModule.getCurrentWeather();
