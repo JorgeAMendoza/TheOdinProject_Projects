@@ -1,13 +1,20 @@
-import { currentWeather } from "./api-calls/current-weather";
+import { currentWeatherCall } from "./api-calls/current-weather";
+import { CurrentWeather } from "./weather-class/current.weather.class";
 
 export const weatherData = () => {
-  const currentWeatherData = {};
+  const currentWeatherData = new CurrentWeather(0, 0, 0, 0, 0, 0);
   const fireDayForecastData = [];
+  const isMetric = false;
+  //save this into locale storage???
 
-  const _setCurrentWeather = () => {};
-  // Call function that makes api call
-  // get bakc object that has the data.
-  // set teh current weather object here to that new data. (make sure to use destructuring)
+  const _setCurrentWeather = async (cityName) => {
+    const currentWeatherData = isMetric
+      ? await currentWeatherCall(cityName, "metric")
+      : await currentWeatherCall(cityName, "imperial");
+
+    // Here, call the method that will reset the values, meaning grab the values from the new weather object,
+    //and pass those into that method.
+  };
 
   const _setForecast = () => {};
   // function to set new fireday forecast
@@ -16,11 +23,22 @@ export const weatherData = () => {
   // erase the array that has the current five day forecast data.
   // insert the objects into the array.
 
-  const getCurrentWeather = () => {
-    currentWeather();
-    console.log("Returning currentWeather");
+  const _setToImperial = () => {
+    // Call class method to change all to imperial
+  };
 
-    // return currentWeather;
+  const _setToMetric = () => {
+    // Call class method to set all to metric.
+  };
+
+  const changeUnit = () => {
+    isMetric = !isMetric;
+  };
+
+  const getCurrentWeather = (city = "Dallas") => {
+    // This is called by the Dom or controller
+    _setCurrentWeather(city);
+    return currentWeatherData;
   };
 
   // (public) funciton that returns five day forecast object/ makes copy and returns it.
@@ -28,8 +46,10 @@ export const weatherData = () => {
     console.log("Returning forecast");
     // return fireDayForecast;
   };
+
   return {
     getCurrentWeather,
     getForecast,
+    changeUnit,
   };
 };
