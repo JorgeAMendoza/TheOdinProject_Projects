@@ -1,3 +1,8 @@
+import { convertTempToMetric } from "../unit-conversion-utils/convert-temp-to-metric";
+import { convertTempToImperial } from "../unit-conversion-utils/convert-temp-to-imperial";
+import { convertWindToMetric } from "../unit-conversion-utils/convert-wind-to-metric";
+import { convertWindToImperial } from "../unit-conversion-utils/convert-wind-to-imperial";
+
 export class CurrentWeather {
   constructor(currentTemp, status, minTemp, maxTemp, humidity, wind) {
     this.currentTemp = currentTemp;
@@ -8,26 +13,20 @@ export class CurrentWeather {
     this.wind = wind;
   }
 
-  // Function that calls all celsius converts
-  // name , setToImperial
-  //example: currentTemp = (converter function that takes in the current temp. )
-  // repeat this step for the other properties.
-  //the whole idea is to let the class contorl all this.
-
   setToMetric() {
-    // Call method that converts temp to celcius, for current, min, and max,
-    // Convert humidty value to metric
-    // Call function to change mph to km/hr
+    this.currentTemp = convertTempToMetric(this.currentTemp);
+    this.minTemp = convertTempToMetric(this.minTemp);
+    this.maxTemp = convertTempToMetric(this.maxTemp);
+    this.wind = convertWindToMetric(this.wind);
   }
 
   setToImperial() {
-    // Call function that converst too temps to fahrenheight.
-    // Convert humity to imperial
-    // Convert km/hr to mph.
+    this.currentTemp = convertTempToImperial(this.currentTemp);
+    this.minTemp = convertTempToImperial(this.minTemp);
+    this.maxTemp = convertTempToImperial(this.maxTemp);
+    this.wind = convertWindToImperial(this.wind);
   }
 
-  //Function to calls all fareheight converts.
-  // Same as one above, but for USA USA.
   setNewCurrent(
     newCurrentTemp,
     newMinTemp,
@@ -43,16 +42,5 @@ export class CurrentWeather {
     this.status = newStatus;
     this.humidity = newHumidity;
     this.wind = newWind;
-  }
-
-  getWeatherProperties() {
-    return {
-      currentTemp: this.currentTemp,
-      minTemp: this.minTemp,
-      maxTemp: this.maxTemp,
-      status: this.status,
-      humidity: this.humidity,
-      wind: this.wind,
-    };
   }
 }
