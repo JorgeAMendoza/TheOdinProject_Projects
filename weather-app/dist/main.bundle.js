@@ -371,6 +371,50 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _wea
 
 /***/ }),
 
+/***/ "./src/app/unit-conversion-utils/convert-temp-to-imperial.js":
+/*!*******************************************************************!*\
+  !*** ./src/app/unit-conversion-utils/convert-temp-to-imperial.js ***!
+  \*******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"convertTempToImperial\": () => (/* binding */ convertTempToImperial)\n/* harmony export */ });\nconst convertTempToImperial = (temperature) => {\r\n  return temperature * (9 / 5) + 32;\r\n};\r\n\n\n//# sourceURL=webpack://weather-app/./src/app/unit-conversion-utils/convert-temp-to-imperial.js?");
+
+/***/ }),
+
+/***/ "./src/app/unit-conversion-utils/convert-temp-to-metric.js":
+/*!*****************************************************************!*\
+  !*** ./src/app/unit-conversion-utils/convert-temp-to-metric.js ***!
+  \*****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"convertTempToMetric\": () => (/* binding */ convertTempToMetric)\n/* harmony export */ });\nconst convertTempToMetric = (temp) => {\r\n  return Math.round((temp - 32) * (5 / 9));\r\n};\r\n\n\n//# sourceURL=webpack://weather-app/./src/app/unit-conversion-utils/convert-temp-to-metric.js?");
+
+/***/ }),
+
+/***/ "./src/app/unit-conversion-utils/convert-wind-to-imperial.js":
+/*!*******************************************************************!*\
+  !*** ./src/app/unit-conversion-utils/convert-wind-to-imperial.js ***!
+  \*******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"convertWindToImperial\": () => (/* binding */ convertWindToImperial)\n/* harmony export */ });\nconst convertWindToImperial = (speed) => {\r\n  return Math.round(speed / 1.609);\r\n};\r\n\n\n//# sourceURL=webpack://weather-app/./src/app/unit-conversion-utils/convert-wind-to-imperial.js?");
+
+/***/ }),
+
+/***/ "./src/app/unit-conversion-utils/convert-wind-to-metric.js":
+/*!*****************************************************************!*\
+  !*** ./src/app/unit-conversion-utils/convert-wind-to-metric.js ***!
+  \*****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"convertWindToMetric\": () => (/* binding */ convertWindToMetric)\n/* harmony export */ });\nconst convertWindToMetric = (speed) => {\r\n  return Math.round(speed * 1.609);\r\n};\r\n\n\n//# sourceURL=webpack://weather-app/./src/app/unit-conversion-utils/convert-wind-to-metric.js?");
+
+/***/ }),
+
 /***/ "./src/app/weather-class/current.weather.class.js":
 /*!********************************************************!*\
   !*** ./src/app/weather-class/current.weather.class.js ***!
@@ -378,7 +422,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _wea
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"CurrentWeather\": () => (/* binding */ CurrentWeather)\n/* harmony export */ });\nclass CurrentWeather {\r\n  constructor(currentTemp, status, minTemp, maxTemp, humidity, wind) {\r\n    this.currentTemp = currentTemp;\r\n    this.minTemp = minTemp;\r\n    this.maxTemp = maxTemp;\r\n    this.status = status;\r\n    this.humidity = humidity;\r\n    this.wind = wind;\r\n  }\r\n\r\n  // Function that calls all celsius converts\r\n  // name , setToImperial\r\n  //example: currentTemp = (converter function that takes in the current temp. )\r\n  // repeat this step for the other properties.\r\n  //the whole idea is to let the class contorl all this.\r\n\r\n  setToMetric() {\r\n    // Call method that converts temp to celcius, for current, min, and max,\r\n    // Convert humidty value to metric\r\n    // Call function to change mph to km/hr\r\n  }\r\n\r\n  setToImperial() {\r\n    // Call function that converst too temps to fahrenheight.\r\n    // Convert humity to imperial\r\n    // Convert km/hr to mph.\r\n  }\r\n\r\n  //Function to calls all fareheight converts.\r\n  // Same as one above, but for USA USA.\r\n  setNewCurrent(\r\n    newCurrentTemp,\r\n    newMinTemp,\r\n    newMaxTemp,\r\n    newStatus,\r\n    newHumidity,\r\n    newWind\r\n  ) {\r\n    // Object destructuring in teh arguemnnts? would make it easier to work with and less code.\r\n    this.currentTemp = newCurrentTemp;\r\n    this.minTemp = newMinTemp;\r\n    this.maxTemp = newMaxTemp;\r\n    this.status = newStatus;\r\n    this.humidity = newHumidity;\r\n    this.wind = newWind;\r\n  }\r\n\r\n  getWeatherProperties() {\r\n    return {\r\n      currentTemp: this.currentTemp,\r\n      minTemp: this.minTemp,\r\n      maxTemp: this.maxTemp,\r\n      status: this.status,\r\n      humidity: this.humidity,\r\n      wind: this.wind,\r\n    };\r\n  }\r\n}\r\n\n\n//# sourceURL=webpack://weather-app/./src/app/weather-class/current.weather.class.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"CurrentWeather\": () => (/* binding */ CurrentWeather)\n/* harmony export */ });\n/* harmony import */ var _unit_conversion_utils_convert_temp_to_metric__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../unit-conversion-utils/convert-temp-to-metric */ \"./src/app/unit-conversion-utils/convert-temp-to-metric.js\");\n/* harmony import */ var _unit_conversion_utils_convert_temp_to_imperial__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../unit-conversion-utils/convert-temp-to-imperial */ \"./src/app/unit-conversion-utils/convert-temp-to-imperial.js\");\n/* harmony import */ var _unit_conversion_utils_convert_wind_to_metric__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../unit-conversion-utils/convert-wind-to-metric */ \"./src/app/unit-conversion-utils/convert-wind-to-metric.js\");\n/* harmony import */ var _unit_conversion_utils_convert_wind_to_imperial__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../unit-conversion-utils/convert-wind-to-imperial */ \"./src/app/unit-conversion-utils/convert-wind-to-imperial.js\");\n\r\n\r\n\r\n\r\n\r\nclass CurrentWeather {\r\n  constructor(currentTemp, status, minTemp, maxTemp, humidity, wind) {\r\n    this.currentTemp = currentTemp;\r\n    this.minTemp = minTemp;\r\n    this.maxTemp = maxTemp;\r\n    this.status = status;\r\n    this.humidity = humidity;\r\n    this.wind = wind;\r\n  }\r\n\r\n  setToMetric() {\r\n    this.currentTemp = (0,_unit_conversion_utils_convert_temp_to_metric__WEBPACK_IMPORTED_MODULE_0__.convertTempToMetric)(this.currentTemp);\r\n    this.minTemp = (0,_unit_conversion_utils_convert_temp_to_metric__WEBPACK_IMPORTED_MODULE_0__.convertTempToMetric)(this.minTemp);\r\n    this.maxTemp = (0,_unit_conversion_utils_convert_temp_to_metric__WEBPACK_IMPORTED_MODULE_0__.convertTempToMetric)(this.maxTemp);\r\n    this.wind = (0,_unit_conversion_utils_convert_wind_to_metric__WEBPACK_IMPORTED_MODULE_2__.convertWindToMetric)(this.wind);\r\n  }\r\n\r\n  setToImperial() {\r\n    this.currentTemp = (0,_unit_conversion_utils_convert_temp_to_imperial__WEBPACK_IMPORTED_MODULE_1__.convertTempToImperial)(this.currentTemp);\r\n    this.minTemp = (0,_unit_conversion_utils_convert_temp_to_imperial__WEBPACK_IMPORTED_MODULE_1__.convertTempToImperial)(this.minTemp);\r\n    this.maxTemp = (0,_unit_conversion_utils_convert_temp_to_imperial__WEBPACK_IMPORTED_MODULE_1__.convertTempToImperial)(this.maxTemp);\r\n    this.wind = (0,_unit_conversion_utils_convert_wind_to_imperial__WEBPACK_IMPORTED_MODULE_3__.convertWindToImperial)(this.wind);\r\n  }\r\n\r\n  setNewCurrent(\r\n    newCurrentTemp,\r\n    newMinTemp,\r\n    newMaxTemp,\r\n    newStatus,\r\n    newHumidity,\r\n    newWind\r\n  ) {\r\n    // Object destructuring in teh arguemnnts? would make it easier to work with and less code.\r\n    this.currentTemp = newCurrentTemp;\r\n    this.minTemp = newMinTemp;\r\n    this.maxTemp = newMaxTemp;\r\n    this.status = newStatus;\r\n    this.humidity = newHumidity;\r\n    this.wind = newWind;\r\n  }\r\n}\r\n\n\n//# sourceURL=webpack://weather-app/./src/app/weather-class/current.weather.class.js?");
 
 /***/ }),
 
