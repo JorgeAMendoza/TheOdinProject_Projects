@@ -16,6 +16,6 @@ export const currentWeatherCall = async (cityName, units) => {
 
     return currentWeatherObject;
   } catch (e) {
-    console.log(e);
+    return e.response.data.message;
   }
 };
