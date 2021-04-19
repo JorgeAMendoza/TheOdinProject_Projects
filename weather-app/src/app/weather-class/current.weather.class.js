@@ -26,21 +26,4 @@ export class CurrentWeather {
     this.maxTemp = convertTempToImperial(this.maxTemp);
     this.wind = convertWindToImperial(this.wind);
   }
-
-  setNewCurrent(
-    newCurrentTemp,
-    newMinTemp,
-    newMaxTemp,
-    newStatus,
-    newHumidity,
-    newWind
-  ) {
-    // Object destructuring in teh arguemnnts? would make it easier to work with and less code.
-    this.currentTemp = newCurrentTemp;
-    this.minTemp = newMinTemp;
-    this.maxTemp = newMaxTemp;
-    this.status = newStatus;
-    this.humidity = newHumidity;
-    this.wind = newWind;
-  }
 }
