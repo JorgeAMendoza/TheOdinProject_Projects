@@ -1,7 +1,7 @@
-import { convertTempToMetric } from "../unit-conversion-utils/convert-temp-to-metric";
-import { convertTempToImperial } from "../unit-conversion-utils/convert-temp-to-imperial";
-import { convertWindToMetric } from "../unit-conversion-utils/convert-wind-to-metric";
-import { convertWindToImperial } from "../unit-conversion-utils/convert-wind-to-imperial";
+import { convertTempToMetric } from "../utils/unit-conversion/convert-temp-to-metric";
+import { convertTempToImperial } from "../utils/unit-conversion/convert-temp-to-imperial";
+import { convertWindToMetric } from "../utils/unit-conversion/convert-wind-to-metric";
+import { convertWindToImperial } from "../utils/unit-conversion/convert-wind-to-imperial";
 
 export class CurrentWeather {
   constructor(currentTemp, status, minTemp, maxTemp, humidity, wind) {
