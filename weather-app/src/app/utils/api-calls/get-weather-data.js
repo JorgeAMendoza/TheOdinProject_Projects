@@ -3,19 +3,16 @@ import { CurrentWeather } from "../../weather-class/current.weather.class";
 import { ForecastWeather } from "../../weather-class/forecast.weather.class";
 import { grabGeoData } from "../grab-geo-data";
 
-export const currentWeatherCall = async (cityName, units, state) => {
+export const getWeatherData = async (cityName, units, state) => {
   try {
-    const geoLocationResponse = state
-      ? await axios.get(
-          `http://api.openweathermap.org/geo/1.0/direct?q=${cityName},${state},US&limit=10&appid=a4fd7e05b40980c0b9a29ba9590c0fe8`
-        )
-      : await axios.get(
-          `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=10&appid=a4fd7e05b40980c0b9a29ba9590c0fe8`
-        );
+    const geoLocationResponse = await axios.get(
+      `http://api.openweathermap.org/geo/1.0/direct?q=${cityName},${state},${
+        state ? "US" : ""
+      }&limit=10&appid=a4fd7e05b40980c0b9a29ba9590c0fe8`
+    );
 
     const targetGeoData = grabGeoData(geoLocationResponse.data, cityName, state);
 
-    // console.log(targetGeoData);
     const { lon: targetLongitude, lat: targetLatitude, name: targetName } = targetGeoData;
     const targetLocation = state ? targetGeoData.state : targetGeoData.country;
 
@@ -46,6 +43,6 @@ export const currentWeatherCall = async (cityName, units, state) => {
       currentWeather,
     };
   } catch (e) {
-    console.log(e.message);
+    return e.message;
   }
 };
