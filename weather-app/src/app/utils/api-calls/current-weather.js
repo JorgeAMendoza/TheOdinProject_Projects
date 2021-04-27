@@ -1,6 +1,8 @@
 import axios from "axios";
 import { CurrentWeather } from "../../weather-class/current.weather.class";
+import { ForecastWeather } from "../../weather-class/forecast.weather.class";
 import { grabGeoData } from "../grab-geo-data";
+
 export const currentWeatherCall = async (cityName, units, state) => {
   try {
     const geoLocationResponse = state
@@ -14,7 +16,7 @@ export const currentWeatherCall = async (cityName, units, state) => {
     const targetGeoData = grabGeoData(geoLocationResponse.data, cityName, state);
 
     // console.log(targetGeoData);
-    const { lon: targetLongitude, lat: targetLatitude } = targetGeoData;
+    const { lon: targetLongitude, lat: targetLatitude, name: targetName } = targetGeoData;
     const targetLocation = state ? targetGeoData.state : targetGeoData.country;
 
     const weatherDataResponse = await axios.get(
@@ -30,15 +32,20 @@ export const currentWeatherCall = async (cityName, units, state) => {
       currentWeatherData.wind_speed
     );
 
-    // Extract the 7 day forecast
     const { daily: forecastData } = weatherDataResponse.data;
     forecastData.shift();
-    // iterate over the array, creating a new array that contains instances of the forecast class
-    // return an object containing the city name, location (state or country), instance of current weather class, an array which contains an instance of forecast.
+
+    const forecastArray = forecastData.map((item) => {
+      return new ForecastWeather(item.temp.min, item.temp.max, item.weather[0].main);
+    });
+
+    return {
+      cityName: targetName,
+      cityLocation: targetLocation,
+      forecastArray,
+      currentWeather,
+    };
   } catch (e) {
     console.log(e.message);
   }
-  // Iterate over that array, whatever object matches the exact name, return it and matches either location or state passed in, then return it.
-  // destructure the city name, state or country, longitude and latitude
-  // So if state, does not exist, save the county as the "location" property.
 };
