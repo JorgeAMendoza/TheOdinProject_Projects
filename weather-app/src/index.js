@@ -1,2 +1,5 @@
 import "./scss/main.scss";
-import "./app/app";
+import { weatherDOM } from "./app/weather-dom";
+
+const start = weatherDOM();
+start.startWeatherApp();
