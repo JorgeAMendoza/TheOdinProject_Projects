@@ -3,6 +3,11 @@ import { getWeatherData } from "./utils/api-calls/get-weather-data";
 export const weatherDOM = () => {
   let _weatherDataObject;
   let _currentUnit;
+  const staticDOM = {
+    searchForm: document.querySelector("#searchForm"),
+    unitChangeButton: document.querySelector("#unitChangeButton"),
+    errorMessage: document.querySelector("#errorMessage"),
+  };
   //   Save current unit to localte storage, if nothing in local storage set default to imperial.
   //   object to hold all the DOM data needed (Possibly)
 
@@ -16,8 +21,8 @@ export const weatherDOM = () => {
 
   // function to start the program
   const startWeatherApp = async () => {
-    const weatherData = await getWeatherData("dalas", "metric", "TX");
-    console.log(weatherData);
+    // const weatherData = await getWeatherData("dallas", "metric", "TX");
+    // console.log(weatherData);
     // Remove all html from the main page.
     // get back weather data and pass it into fucntion to create currnet weather card.
     // pass weather object into the forecat component to create arrays of componet HTML markup
@@ -26,6 +31,7 @@ export const weatherDOM = () => {
 
   // function to get and write new weather data
   const getNewWeather = async () => {
+    // ISSUE, if call is made too fast, the "request aborted error can occur"
     // Fired through the form submiation event
     // Get data from the search bar input
     // Check to see there is no numbers, can either be just city, or city, (stateName)
@@ -58,6 +64,8 @@ export const weatherDOM = () => {
 
   //   Possibly here set all event listners, can also be in start weather app as well.
   // Logic for start weather can also be here as well.
+
+  // Set Event listeners
 
   // Return only start, newWeather, changeUnit which to be called by api.
   return {
