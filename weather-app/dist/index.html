@@ -15,18 +15,17 @@
   <body>
     <header class="container">
       <div class="top-bar">
-        <form action="" class="top-bar__search">
+        <form id="searchForm" action="" class="top-bar__search">
           <label for="citySearch" class="top-bar__search__label">
             <object data="imgs/6c95e853cf5a1eedd6e2..svg" type=""></object
             ><input
-              id="citySearch"
               class="top-bar__search__label__input"
               type="text"
               placeholder="City..."
           /></label>
           <button class="top-bar__search__btn">Search</button>
         </form>
-        <button class="top-bar__temp-toggle">F °</button>
+        <button id="unitChangeButton" class="top-bar__temp-toggle">F °</button>
       </div>
     </header>
 
@@ -264,8 +263,8 @@
       </section>
     </main>
 
-    <div class="error-message container">
-      <p id="errorMessage" class="error-message__text">
+    <div id="errorMessage" class="error-message container">
+      <p id="errorText" class="error-message__text">
         Could not find City, please try again.
       </p>
     </div>
