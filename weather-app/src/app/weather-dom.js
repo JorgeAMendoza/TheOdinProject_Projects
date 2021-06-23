@@ -3,7 +3,7 @@ import { getWeatherData } from "./utils/api-calls/get-weather-data";
 export const weatherDOM = () => {
   let _weatherDataObject;
   let _currentUnit;
-  const staticDOM = {
+  const _staticDOM = {
     searchForm: document.querySelector("#searchForm"),
     unitChangeButton: document.querySelector("#unitChangeButton"),
     errorMessage: document.querySelector("#errorMessage"),
@@ -12,7 +12,7 @@ export const weatherDOM = () => {
   //   object to hold all the DOM data needed (Possibly)
 
   const _displayErrorMessage = (errorMessage) => {
-    // Grab the span in teh error componetn.
+    // Grab the span in the error componetn.
     // Sets its text to the error message passed in.
     // Give the error text component the class to display.
     // other file will handle what to do after 5 seconds
@@ -30,12 +30,19 @@ export const weatherDOM = () => {
   };
 
   // function to get and write new weather data
-  const getNewWeather = async () => {
+  const _getNewWeather = async (e) => {
     // ISSUE, if call is made too fast, the "request aborted error can occur"
+    // NEED TO ADD SOME KIND OF DELAY FOR THE CALL, maybe a set interval of 5 seconds of each search,
+    // OR let the search begin once the "loading" gif starts.
     // Fired through the form submiation event
-    // Get data from the search bar input
-    // Check to see there is no numbers, can either be just city, or city, (stateName)
-    // If state name is over 2, any numbers, special characters, etc, fire off the dipslay error function and return/end function.
+    e.preventDefault();
+    const userSearch = e.target.elements.search.value;
+    const testRegex = /([A-Za-z]+(?: [A-Za-z]+)*),? ([A-Za-z]{2})/;
+
+    // Checking to see if there are any numbers.
+    if (testRegex.test(userSearch)) {
+      console.log("Valid Search");
+    }
     // have everything "disspear from the screen" meaing set opacity to 0 and have the loading gif appear in the center of the main html. (NEED TO GO CSS AND DO THIS)
     // Remove the
     // pass into arguments into the weather api call, remember to pass in the metric or imperial unit
@@ -66,11 +73,11 @@ export const weatherDOM = () => {
   // Logic for start weather can also be here as well.
 
   // Set Event listeners
+  _staticDOM.searchForm.addEventListener("submit", _getNewWeather);
 
   // Return only start, newWeather, changeUnit which to be called by api.
   return {
     startWeatherApp,
-    getNewWeather,
     changeWeatherUnits,
   };
 };
