@@ -35,11 +35,13 @@ export const weatherDOM = () => {
     // NEED TO ADD SOME KIND OF DELAY FOR THE CALL, maybe a set interval of 5 seconds of each search,
     // OR let the search begin once the "loading" gif starts.
     // Fired through the form submiation event
+    // Set a boolean variable set to false when search begins, another search cannot begin until that variable is back to true
     e.preventDefault();
     const userSearch = e.target.elements.search.value;
-    const testRegex = /([A-Za-z]+(?: [A-Za-z]+)*),? ([A-Za-z]{2})/;
 
-    // Checking to see if there are any numbers.
+    const testRegex = /^[A-Za-z]+, [A-Za-z][A-Za-z]$|^[A-Za-z]+$/;
+
+    // // Checking to see if there are any numbers.
     if (testRegex.test(userSearch)) {
       console.log("Valid Search");
     }
