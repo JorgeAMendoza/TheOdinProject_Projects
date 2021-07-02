@@ -1,7 +1,7 @@
 import axios from "axios";
 import { CurrentWeather } from "../../weather-class/current.weather.class";
 import { ForecastWeather } from "../../weather-class/forecast.weather.class";
-import { grabGeoData } from "../grab-geo-data";
+import { grabGeoData } from "./grab-geo-data";
 
 export const getWeatherData = async (cityName, units, state) => {
   try {
@@ -11,9 +11,17 @@ export const getWeatherData = async (cityName, units, state) => {
       }&limit=10&appid=a4fd7e05b40980c0b9a29ba9590c0fe8`
     );
 
-    const targetGeoData = grabGeoData(geoLocationResponse.data, cityName, state);
+    const targetGeoData = grabGeoData(
+      geoLocationResponse.data,
+      cityName,
+      state
+    );
 
-    const { lon: targetLongitude, lat: targetLatitude, name: targetName } = targetGeoData;
+    const {
+      lon: targetLongitude,
+      lat: targetLatitude,
+      name: targetName,
+    } = targetGeoData;
     const targetLocation = state ? targetGeoData.state : targetGeoData.country;
 
     const weatherDataResponse = await axios.get(
@@ -33,7 +41,11 @@ export const getWeatherData = async (cityName, units, state) => {
     forecastData.shift();
 
     const forecastArray = forecastData.map((item) => {
-      return new ForecastWeather(item.temp.min, item.temp.max, item.weather[0].main);
+      return new ForecastWeather(
+        item.temp.min,
+        item.temp.max,
+        item.weather[0].main
+      );
     });
 
     return {
