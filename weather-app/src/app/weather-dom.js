@@ -7,17 +7,20 @@ export const weatherDOM = () => {
     searchForm: document.querySelector("#searchForm"),
     unitChangeButton: document.querySelector("#unitChangeButton"),
     errorMessage: document.querySelector("#errorMessage"),
+    errorText: document.querySelector("#errorText"),
   };
   //   Save current unit to localte storage, if nothing in local storage set default to imperial.
   //   object to hold all the DOM data needed (Possibly)
 
   const _displayErrorMessage = (errorMessage) => {
-    // Grab the span in the error componetn.
-    // Sets its text to the error message passed in.
-    // Give the error text component the class to display.
-    // other file will handle what to do after 5 seconds
-    // OR, set interval to have it disseapear in 5 seconds.
+    _staticDOM.errorText.textContent = errorMessage;
+    _staticDOM.errorMessage.classList.add("show-error")
   };
+
+  const _removeErrorMessage = () =>{
+    _staticDOM.errorMessage.classList.remove("show-error")
+    _staticDOM.errorText.textContent = ""
+  }
 
   // function to start the program
   const startWeatherApp = async () => {
@@ -31,6 +34,8 @@ export const weatherDOM = () => {
 
   // function to get and write new weather data
   const _getNewWeather = async (e) => {
+    
+    _removeErrorMessage();
     // ISSUE, if call is made too fast, the "request aborted error can occur"
     // NEED TO ADD SOME KIND OF DELAY FOR THE CALL, maybe a set interval of 5 seconds of each search,
     // OR let the search begin once the "loading" gif starts.
@@ -42,8 +47,10 @@ export const weatherDOM = () => {
     const testRegex = /^[A-Za-z]+, [A-Za-z][A-Za-z]$|^[A-Za-z]+$/;
 
     // // Checking to see if there are any numbers.
-    if (testRegex.test(userSearch)) {
-      console.log("Valid Search");
+    if (!testRegex.test(userSearch)) {
+      console.log("Invalid Search");
+      _displayErrorMessage("Invalid City Name, Please Try Again");
+      // return
     }
     // have everything "disspear from the screen" meaing set opacity to 0 and have the loading gif appear in the center of the main html. (NEED TO GO CSS AND DO THIS)
     // Remove the
