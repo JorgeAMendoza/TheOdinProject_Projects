@@ -2,7 +2,7 @@ import { getWeatherData } from "./utils/api-calls/get-weather-data";
 
 export const weatherDOM = () => {
   let _weatherDataObject;
-  let _currentUnit;
+  let _requestActive = false;
   const _staticDOM = {
     searchForm: document.querySelector("#searchForm"),
     unitChangeButton: document.querySelector("#unitChangeButton"),
@@ -10,17 +10,16 @@ export const weatherDOM = () => {
     errorText: document.querySelector("#errorText"),
   };
   //   Save current unit to localte storage, if nothing in local storage set default to imperial.
-  //   object to hold all the DOM data needed (Possibly)
 
   const _displayErrorMessage = (errorMessage) => {
     _staticDOM.errorText.textContent = errorMessage;
-    _staticDOM.errorMessage.classList.add("show-error")
+    _staticDOM.errorMessage.classList.add("show-error");
   };
 
-  const _removeErrorMessage = () =>{
-    _staticDOM.errorMessage.classList.remove("show-error")
-    _staticDOM.errorText.textContent = ""
-  }
+  const _removeErrorMessage = () => {
+    _staticDOM.errorMessage.classList.remove("show-error");
+    _staticDOM.errorText.textContent = "";
+  };
 
   // function to start the program
   const startWeatherApp = async () => {
@@ -32,26 +31,32 @@ export const weatherDOM = () => {
     // write the content into the page, letting CSS handle animations.
   };
 
-  // function to get and write new weather data
   const _getNewWeather = async (e) => {
-    
+    if (_requestActive) return;
     _removeErrorMessage();
-    // ISSUE, if call is made too fast, the "request aborted error can occur"
-    // NEED TO ADD SOME KIND OF DELAY FOR THE CALL, maybe a set interval of 5 seconds of each search,
-    // OR let the search begin once the "loading" gif starts.
-    // Fired through the form submiation event
-    // Set a boolean variable set to false when search begins, another search cannot begin until that variable is back to true
+
     e.preventDefault();
     const userSearch = e.target.elements.search.value;
-
     const testRegex = /^[A-Za-z]+, [A-Za-z][A-Za-z]$|^[A-Za-z]+$/;
 
-    // // Checking to see if there are any numbers.
+    // Check for valid search
     if (!testRegex.test(userSearch)) {
       console.log("Invalid Search");
       _displayErrorMessage("Invalid City Name, Please Try Again");
-      // return
+      return;
     }
+
+    await _grabWeatherData(userSearch);
+    // Call set weather DOM
+  };
+
+  const _grabWeatherData = async (userSearch) => {
+    const [userCity, userState = ""] = userSearch.replace(/\W/, "").split(" ");
+    const userUnit = _staticDOM.unitChangeButton.dataset.unit;
+    _weatherDataObject = await getWeatherData(userCity, userUnit, userState);
+  };
+
+  const _setWeatherDOM = () => {
     // have everything "disspear from the screen" meaing set opacity to 0 and have the loading gif appear in the center of the main html. (NEED TO GO CSS AND DO THIS)
     // Remove the
     // pass into arguments into the weather api call, remember to pass in the metric or imperial unit
