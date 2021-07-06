@@ -349,6 +349,17 @@ eval("\n\nvar isOldIE = function isOldIE() {\n  var memo;\n  return function mem
 
 /***/ }),
 
+/***/ "./src/app/components/main-weather.js":
+/*!********************************************!*\
+  !*** ./src/app/components/main-weather.js ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"mainWeatherComponent\": () => (/* binding */ mainWeatherComponent)\n/* harmony export */ });\n/* harmony import */ var _assets_weather_icons_cloudy_night_svg__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../assets/weather-icons/cloudy-night.svg */ \"./src/assets/weather-icons/cloudy-night.svg\");\n/* harmony import */ var _assets_weather_icons_wind_svg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../assets/weather-icons/wind.svg */ \"./src/assets/weather-icons/wind.svg\");\n/* harmony import */ var _assets_weather_icons_humidity_svg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../assets/weather-icons/humidity.svg */ \"./src/assets/weather-icons/humidity.svg\");\n\r\n\r\n\r\n\r\nconst mainWeatherComponent = (city, location, weatherData) => {\r\n  return `<section id=\"currentWeather\" class=\"current-weather\">\r\n    <p class=\"current-weather__city\">${city}, ${location}</p>\r\n    <img\r\n      class=\"current-weather__icon\"\r\n      src=${_assets_weather_icons_cloudy_night_svg__WEBPACK_IMPORTED_MODULE_0__}\r\n      alt=\"Sunny Weather\"\r\n    />\r\n    <p id=\"currentTemp\" class=\"current-weather__temperature\">${weatherData.currentTemp} °</p>\r\n    <p id=\"currentStatus\" class=\"current-weather__status\">${weatherData.statusDescription}</p>\r\n    <div class=\"current-weather__stats\">\r\n      <div class=\"current-weather__stats__info\">\r\n        <img\r\n          class=\"current-weather__stats__info__icon\"\r\n          src=\"${_assets_weather_icons_wind_svg__WEBPACK_IMPORTED_MODULE_1__}\"\r\n          alt=\"Current Wind\"\r\n        />\r\n        <p class=\"current-weather__stats__info__type\">Wind Speed</p>\r\n        <p class=\"current-weather__stats__info__text\">\r\n          <span class=\"current-weather__stats__info__text__value\">${weatherData.wind}</span>\r\n          <span class=\"current-weather__stats__info__text__unit\">mph</span>\r\n        </p>\r\n      </div>\r\n      <div class=\"current-weather__stats__info\">\r\n        <img\r\n          class=\"current-weather__stats__info__icon\"\r\n          src=${_assets_weather_icons_humidity_svg__WEBPACK_IMPORTED_MODULE_2__}\r\n          alt=\"Current Humidity\"\r\n        />\r\n        <p class=\"current-weather__stats__info__type\">Wind Speed</p>\r\n        <p class=\"current-weather__stats__info__text\">\r\n          <span class=\"current-weather__stats__info__text__value\">${weatherData.humidity}</span>\r\n          <span class=\"current-weather__stats__info__text__unit\">mph</span>\r\n        </p>\r\n      </div>\r\n    </div>\r\n  </section>`;\r\n};\r\n\n\n//# sourceURL=webpack://weather-app/./src/app/components/main-weather.js?");
+
+/***/ }),
+
 /***/ "./src/app/utils/api-calls/get-weather-data.js":
 /*!*****************************************************!*\
   !*** ./src/app/utils/api-calls/get-weather-data.js ***!
@@ -444,7 +455,40 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"weatherDOM\": () => (/* binding */ weatherDOM)\n/* harmony export */ });\n/* harmony import */ var _utils_api_calls_get_weather_data__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./utils/api-calls/get-weather-data */ \"./src/app/utils/api-calls/get-weather-data.js\");\n\r\n\r\nconst weatherDOM = () => {\r\n  let _weatherDataObject;\r\n  let _requestActive = false;\r\n  const _staticDOM = {\r\n    searchForm: document.querySelector(\"#searchForm\"),\r\n    unitChangeButton: document.querySelector(\"#unitChangeButton\"),\r\n    errorMessage: document.querySelector(\"#errorMessage\"),\r\n    errorText: document.querySelector(\"#errorText\"),\r\n  };\r\n  //   Save current unit to localte storage, if nothing in local storage set default to imperial.\r\n\r\n  const _displayErrorMessage = (errorMessage) => {\r\n    _staticDOM.errorText.textContent = errorMessage;\r\n    _staticDOM.errorMessage.classList.add(\"show-error\");\r\n  };\r\n\r\n  const _removeErrorMessage = () => {\r\n    _staticDOM.errorMessage.classList.remove(\"show-error\");\r\n    _staticDOM.errorText.textContent = \"\";\r\n  };\r\n\r\n  // function to start the program\r\n  const startWeatherApp = async () => {\r\n    // const weatherData = await getWeatherData(\"dallas\", \"metric\", \"TX\");\r\n    // console.log(weatherData);\r\n    // Remove all html from the main page.\r\n    // get back weather data and pass it into fucntion to create currnet weather card.\r\n    // pass weather object into the forecat component to create arrays of componet HTML markup\r\n    // write the content into the page, letting CSS handle animations.\r\n  };\r\n\r\n  const _getNewWeather = async (e) => {\r\n    if (_requestActive) return;\r\n    _removeErrorMessage();\r\n\r\n    e.preventDefault();\r\n    const userSearch = e.target.elements.search.value;\r\n    const testRegex = /^[A-Za-z]+, [A-Za-z][A-Za-z]$|^[A-Za-z]+$/;\r\n\r\n    // Check for valid search\r\n    if (!testRegex.test(userSearch)) {\r\n      console.log(\"Invalid Search\");\r\n      _displayErrorMessage(\"Invalid City Name, Please Try Again\");\r\n      return;\r\n    }\r\n\r\n    await _grabWeatherData(userSearch);\r\n    // Call set weather DOM\r\n  };\r\n\r\n  const _grabWeatherData = async (userSearch) => {\r\n    const [userCity, userState = \"\"] = userSearch.replace(/\\W/, \"\").split(\" \");\r\n    const userUnit = _staticDOM.unitChangeButton.dataset.unit;\r\n    _weatherDataObject = await (0,_utils_api_calls_get_weather_data__WEBPACK_IMPORTED_MODULE_0__.getWeatherData)(userCity, userUnit, userState);\r\n  };\r\n\r\n  const _setWeatherDOM = () => {\r\n    // have everything \"disspear from the screen\" meaing set opacity to 0 and have the loading gif appear in the center of the main html. (NEED TO GO CSS AND DO THIS)\r\n    // Remove the\r\n    // pass into arguments into the weather api call, remember to pass in the metric or imperial unit\r\n    // If there is an error/ we get a string, remove the gif, set the opacity back to 1, and call teh error fucntion with the error message passed in.\r\n    // Call function to create current weather component\r\n    // Call function to create the forecast components.\r\n    // delete the previous html.\r\n    // Remove the loading gif.\r\n    // Write the new weather data html onto the page, let CSS handle the rest (KEY FRAMES NECESSARY?)\r\n  };\r\n\r\n  const changeWeatherUnits = () => {\r\n    //  If the current unit value is imperial\r\n    // then call the imperial method on teh current weather object and the forecast data (forecast will require iteration over the array)\r\n    // If the current unit value is metric, then do the same process as above.\r\n    // the dom here is dynamic so we have to keep grabbing it here.\r\n    // Grab the main temp dom, set it to the new value in the object.\r\n    // Grab the humidiy and wind and change those as well.\r\n    // For wind, make sure to change the \"mph\" and \"kmh\" depending on the situation.\r\n    // Grab all the forecast components.\r\n    // iterate over the the DOM array.\r\n    // In each iteration set its new values according to its values in the weather object.\r\n    // regular for loop may be required.\r\n    // End exeuction\r\n  };\r\n\r\n  //   Possibly here set all event listners, can also be in start weather app as well.\r\n  // Logic for start weather can also be here as well.\r\n\r\n  // Set Event listeners\r\n  _staticDOM.searchForm.addEventListener(\"submit\", _getNewWeather);\r\n\r\n  // Return only start, newWeather, changeUnit which to be called by api.\r\n  return {\r\n    startWeatherApp,\r\n    changeWeatherUnits,\r\n  };\r\n};\r\n\n\n//# sourceURL=webpack://weather-app/./src/app/weather-dom.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"weatherDOM\": () => (/* binding */ weatherDOM)\n/* harmony export */ });\n/* harmony import */ var _utils_api_calls_get_weather_data__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./utils/api-calls/get-weather-data */ \"./src/app/utils/api-calls/get-weather-data.js\");\n/* harmony import */ var _components_main_weather__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/main-weather */ \"./src/app/components/main-weather.js\");\n\r\n\r\n\r\nconst weatherDOM = () => {\r\n  let _weatherDataObject;\r\n  let _requestActive = false;\r\n  const _staticDOM = {\r\n    searchForm: document.querySelector(\"#searchForm\"),\r\n    unitChangeButton: document.querySelector(\"#unitChangeButton\"),\r\n    mainContainer: document.querySelector(\"main\"), \r\n    errorMessage: document.querySelector(\"#errorMessage\"),\r\n    errorText: document.querySelector(\"#errorText\"),\r\n  };\r\n  //   Save current unit to localte storage, if nothing in local storage set default to imperial.\r\n\r\n  const _displayErrorMessage = (errorMessage) => {\r\n    _staticDOM.errorText.textContent = errorMessage;\r\n    _staticDOM.errorMessage.classList.add(\"show-error\");\r\n  };\r\n\r\n  const _removeErrorMessage = () => {\r\n    _staticDOM.errorMessage.classList.remove(\"show-error\");\r\n    _staticDOM.errorText.textContent = \"\";\r\n  };\r\n\r\n  // function to start the program\r\n  const startWeatherApp = async () => {\r\n    // const weatherData = await getWeatherData(\"dallas\", \"metric\", \"TX\");\r\n    // console.log(weatherData);\r\n    // Remove all html from the main page.\r\n    // get back weather data and pass it into fucntion to create currnet weather card.\r\n    // pass weather object into the forecat component to create arrays of componet HTML markup\r\n    // write the content into the page, letting CSS handle animations.\r\n  };\r\n\r\n  const _getNewWeather = async (e) => {\r\n    if (_requestActive) return;\r\n    _removeErrorMessage();\r\n\r\n    e.preventDefault();\r\n    const userSearch = e.target.elements.search.value;\r\n    const testRegex = /^[A-Za-z]+, [A-Za-z][A-Za-z]$|^[A-Za-z]+$/;\r\n\r\n    // Check for valid search\r\n    if (!testRegex.test(userSearch)) {\r\n      console.log(\"Invalid Search\");\r\n      _displayErrorMessage(\"Invalid City Name, Please Try Again\");\r\n      return;\r\n    }\r\n\r\n    await _grabWeatherData(userSearch);\r\n    _setWeatherDOM();\r\n  };\r\n\r\n  const _grabWeatherData = async (userSearch) => {\r\n    const [userCity, userState = \"\"] = userSearch.replace(/\\W/, \"\").split(\" \");\r\n    const userUnit = _staticDOM.unitChangeButton.dataset.unit;\r\n    _weatherDataObject = await (0,_utils_api_calls_get_weather_data__WEBPACK_IMPORTED_MODULE_0__.getWeatherData)(userCity, userUnit, userState);\r\n    console.log(_weatherDataObject);\r\n  };\r\n\r\n  const _setWeatherDOM = () => {\r\n    // have everything \"disspear from the screen\" meaing set opacity to 0 and have the loading gif appear in the center of the main html. (NEED TO GO CSS AND DO THIS)\r\n    // Remove the\r\n    const newMainWeather = (0,_components_main_weather__WEBPACK_IMPORTED_MODULE_1__.mainWeatherComponent)(\r\n      _weatherDataObject.cityName,\r\n      _weatherDataObject.cityLocation,\r\n      _weatherDataObject.currentWeather\r\n    );\r\n    \r\n    _staticDOM.mainContainer.innerHTML = \"\";\r\n    _staticDOM.mainContainer.innerHTML += newMainWeather;\r\n\r\n\r\n\r\n    // If there is an error/ we get a string, remove the gif, set the opacity back to 1, and call teh error fucntion with the error message passed in.\r\n    // Call function to create current weather component\r\n    // Call function to create the forecast components.\r\n    // delete the previous html.\r\n    // Remove the loading gif.\r\n    // Write the new weather data html onto the page, let CSS handle the rest (KEY FRAMES NECESSARY?)\r\n  };\r\n\r\n  const changeWeatherUnits = () => {\r\n    //  If the current unit value is imperial\r\n    // then call the imperial method on teh current weather object and the forecast data (forecast will require iteration over the array)\r\n    // If the current unit value is metric, then do the same process as above.\r\n    // the dom here is dynamic so we have to keep grabbing it here.\r\n    // Grab the main temp dom, set it to the new value in the object.\r\n    // Grab the humidiy and wind and change those as well.\r\n    // For wind, make sure to change the \"mph\" and \"kmh\" depending on the situation.\r\n    // Grab all the forecast components.\r\n    // iterate over the the DOM array.\r\n    // In each iteration set its new values according to its values in the weather object.\r\n    // regular for loop may be required.\r\n    // End exeuction\r\n  };\r\n\r\n  // Set Event listeners\r\n  _staticDOM.searchForm.addEventListener(\"submit\", _getNewWeather);\r\n\r\n  // Return only start, newWeather, changeUnit which to be called by api.\r\n  return {\r\n    startWeatherApp,\r\n    changeWeatherUnits,\r\n  };\r\n};\r\n\n\n//# sourceURL=webpack://weather-app/./src/app/weather-dom.js?");
+
+/***/ }),
+
+/***/ "./src/assets/weather-icons/cloudy-night.svg":
+/*!***************************************************!*\
+  !*** ./src/assets/weather-icons/cloudy-night.svg ***!
+  \***************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+eval("module.exports = __webpack_require__.p + \"imgs/05e2a078d177c55f5a15..svg\";\n\n//# sourceURL=webpack://weather-app/./src/assets/weather-icons/cloudy-night.svg?");
+
+/***/ }),
+
+/***/ "./src/assets/weather-icons/humidity.svg":
+/*!***********************************************!*\
+  !*** ./src/assets/weather-icons/humidity.svg ***!
+  \***********************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+eval("module.exports = __webpack_require__.p + \"imgs/f21e7e9e1127738133ee..svg\";\n\n//# sourceURL=webpack://weather-app/./src/assets/weather-icons/humidity.svg?");
+
+/***/ }),
+
+/***/ "./src/assets/weather-icons/wind.svg":
+/*!*******************************************!*\
+  !*** ./src/assets/weather-icons/wind.svg ***!
+  \*******************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+eval("module.exports = __webpack_require__.p + \"imgs/1579ebf56d1a513bf049..svg\";\n\n//# sourceURL=webpack://weather-app/./src/assets/weather-icons/wind.svg?");
 
 /***/ }),
 
@@ -510,6 +554,18 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _scs
 /******/ 		};
 /******/ 	})();
 /******/ 	
+/******/ 	/* webpack/runtime/global */
+/******/ 	(() => {
+/******/ 		__webpack_require__.g = (function() {
+/******/ 			if (typeof globalThis === 'object') return globalThis;
+/******/ 			try {
+/******/ 				return this || new Function('return this')();
+/******/ 			} catch (e) {
+/******/ 				if (typeof window === 'object') return window;
+/******/ 			}
+/******/ 		})();
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
@@ -524,6 +580,26 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _scs
 /******/ 			}
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/publicPath */
+/******/ 	(() => {
+/******/ 		var scriptUrl;
+/******/ 		if (__webpack_require__.g.importScripts) scriptUrl = __webpack_require__.g.location + "";
+/******/ 		var document = __webpack_require__.g.document;
+/******/ 		if (!scriptUrl && document) {
+/******/ 			if (document.currentScript)
+/******/ 				scriptUrl = document.currentScript.src
+/******/ 			if (!scriptUrl) {
+/******/ 				var scripts = document.getElementsByTagName("script");
+/******/ 				if(scripts.length) scriptUrl = scripts[scripts.length - 1].src
+/******/ 			}
+/******/ 		}
+/******/ 		// When supporting browsers where an automatic publicPath is not supported you must specify an output.publicPath manually via configuration
+/******/ 		// or pass an empty string ("") and set the __webpack_public_path__ variable from your code to use your own logic.
+/******/ 		if (!scriptUrl) throw new Error("Automatic publicPath is not supported in this browser");
+/******/ 		scriptUrl = scriptUrl.replace(/#.*$/, "").replace(/\?.*$/, "").replace(/\/[^\/]+$/, "/");
+/******/ 		__webpack_require__.p = scriptUrl;
 /******/ 	})();
 /******/ 	
 /************************************************************************/
