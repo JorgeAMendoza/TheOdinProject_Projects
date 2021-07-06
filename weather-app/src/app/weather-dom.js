@@ -7,7 +7,7 @@ export const weatherDOM = () => {
   const _staticDOM = {
     searchForm: document.querySelector("#searchForm"),
     unitChangeButton: document.querySelector("#unitChangeButton"),
-    mainContainer: document.querySelector("main"), 
+    currentWeatherSection: document.querySelector("#currentWeather"),
     errorMessage: document.querySelector("#errorMessage"),
     errorText: document.querySelector("#errorText"),
   };
@@ -62,16 +62,10 @@ export const weatherDOM = () => {
   const _setWeatherDOM = () => {
     // have everything "disspear from the screen" meaing set opacity to 0 and have the loading gif appear in the center of the main html. (NEED TO GO CSS AND DO THIS)
     // Remove the
-    const newMainWeather = mainWeatherComponent(
-      _weatherDataObject.cityName,
-      _weatherDataObject.cityLocation,
-      _weatherDataObject.currentWeather
-    );
-    
-    _staticDOM.mainContainer.innerHTML = "";
-    _staticDOM.mainContainer.innerHTML += newMainWeather;
+    const newMainWeather = mainWeatherComponent(_weatherDataObject);
 
-
+    _staticDOM.currentWeatherSection.innerHTML = "";
+    _staticDOM.currentWeatherSection.innerHTML += newMainWeather;
 
     // If there is an error/ we get a string, remove the gif, set the opacity back to 1, and call teh error fucntion with the error message passed in.
     // Call function to create current weather component
