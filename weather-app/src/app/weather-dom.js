@@ -1,4 +1,5 @@
 import { getWeatherData } from "./utils/api-calls/get-weather-data";
+import { mainWeatherComponent } from "./components/main-weather";
 
 export const weatherDOM = () => {
   let _weatherDataObject;
@@ -6,6 +7,7 @@ export const weatherDOM = () => {
   const _staticDOM = {
     searchForm: document.querySelector("#searchForm"),
     unitChangeButton: document.querySelector("#unitChangeButton"),
+    mainContainer: document.querySelector("main"), 
     errorMessage: document.querySelector("#errorMessage"),
     errorText: document.querySelector("#errorText"),
   };
@@ -47,19 +49,30 @@ export const weatherDOM = () => {
     }
 
     await _grabWeatherData(userSearch);
-    // Call set weather DOM
+    _setWeatherDOM();
   };
 
   const _grabWeatherData = async (userSearch) => {
     const [userCity, userState = ""] = userSearch.replace(/\W/, "").split(" ");
     const userUnit = _staticDOM.unitChangeButton.dataset.unit;
     _weatherDataObject = await getWeatherData(userCity, userUnit, userState);
+    console.log(_weatherDataObject);
   };
 
   const _setWeatherDOM = () => {
     // have everything "disspear from the screen" meaing set opacity to 0 and have the loading gif appear in the center of the main html. (NEED TO GO CSS AND DO THIS)
     // Remove the
-    // pass into arguments into the weather api call, remember to pass in the metric or imperial unit
+    const newMainWeather = mainWeatherComponent(
+      _weatherDataObject.cityName,
+      _weatherDataObject.cityLocation,
+      _weatherDataObject.currentWeather
+    );
+    
+    _staticDOM.mainContainer.innerHTML = "";
+    _staticDOM.mainContainer.innerHTML += newMainWeather;
+
+
+
     // If there is an error/ we get a string, remove the gif, set the opacity back to 1, and call teh error fucntion with the error message passed in.
     // Call function to create current weather component
     // Call function to create the forecast components.
@@ -82,9 +95,6 @@ export const weatherDOM = () => {
     // regular for loop may be required.
     // End exeuction
   };
-
-  //   Possibly here set all event listners, can also be in start weather app as well.
-  // Logic for start weather can also be here as well.
 
   // Set Event listeners
   _staticDOM.searchForm.addEventListener("submit", _getNewWeather);
