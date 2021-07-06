@@ -29,16 +29,18 @@ export const getWeatherData = async (cityName, units, state) => {
     );
 
     const { current: currentWeatherData } = weatherDataResponse.data;
+    const { daily: forecastData } = weatherDataResponse.data;
+    const firstForecast = forecastData.shift();
+
     const currentWeather = new CurrentWeather(
       currentWeatherData.temp,
+      firstForecast.temp.min,
+      firstForecast.temp.max,
       currentWeatherData.weather[0].main,
       currentWeatherData.weather[0].description,
       currentWeatherData.humidity,
       currentWeatherData.wind_speed
     );
-
-    const { daily: forecastData } = weatherDataResponse.data;
-    forecastData.shift();
 
     const forecastArray = forecastData.map((item) => {
       return new ForecastWeather(

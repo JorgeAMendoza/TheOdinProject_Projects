@@ -4,8 +4,18 @@ import { convertWindToMetric } from "../utils/unit-conversion/convert-wind-to-me
 import { convertWindToImperial } from "../utils/unit-conversion/convert-wind-to-imperial";
 
 export class CurrentWeather {
-  constructor(currentTemp, status, statusDescription, humidity, wind) {
+  constructor(
+    currentTemp,
+    lowTemp,
+    highTemp,
+    status,
+    statusDescription,
+    humidity,
+    wind
+  ) {
     this.currentTemp = currentTemp;
+    this.lowTemp = lowTemp;
+    this.highTemp = highTemp;
     this.status = status;
     this.statusDescription = statusDescription;
     this.humidity = humidity;
