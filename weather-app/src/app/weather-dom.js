@@ -1,5 +1,6 @@
 import { getWeatherData } from "./utils/api-calls/get-weather-data";
 import { mainWeatherComponent } from "./components/main-weather";
+import { queryDestructure } from "./utils/query/query-destructure";
 
 export const weatherDOM = () => {
   let _weatherDataObject;
@@ -39,24 +40,22 @@ export const weatherDOM = () => {
 
     e.preventDefault();
     const userSearch = e.target.elements.search.value;
-    const testRegex = /^[A-Za-z]+, [A-Za-z][A-Za-z]$|^[A-Za-z]+$/;
+    const userUnit = _staticDOM.unitChangeButton.dataset.unit;
+    const cityRegex = /^[A-Za-z.' ]+$/;
+    const cityStateRegex = /^[A-Za-z.' ]+$|^[A-Za-z.' ]+, [A-Za-z][A-Za-z]$/;
 
-    // Check for valid search
-    if (!testRegex.test(userSearch)) {
-      console.log("Invalid Search");
+    if (cityRegex.test(userSearch)) {
+      const userCity = userSearch;
+      _weatherDataObject = await getWeatherData(userCity, userUnit, "");
+    } else if (cityStateRegex.test(userSearch)) {
+      const [userCity, userState] = queryDestructure(userSearch);
+      _weatherDataObject = await getWeatherData(userCity, userUnit, userState);
+    } else {
       _displayErrorMessage("Invalid City Name, Please Try Again");
       return;
     }
 
-    await _grabWeatherData(userSearch);
     _setWeatherDOM();
-  };
-
-  const _grabWeatherData = async (userSearch) => {
-    const [userCity, userState = ""] = userSearch.replace(/\W/, "").split(" ");
-    const userUnit = _staticDOM.unitChangeButton.dataset.unit;
-    _weatherDataObject = await getWeatherData(userCity, userUnit, userState);
-    console.log(_weatherDataObject);
   };
 
   const _setWeatherDOM = () => {
