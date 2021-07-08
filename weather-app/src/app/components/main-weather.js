@@ -53,7 +53,7 @@ export const mainWeatherComponent = ({
           <span class="current-weather__stats__info__text__value">${Math.round(
             currentWeather.humidity
           )}</span>
-          <span class="current-weather__stats__info__text__unit">mph</span>
+          <span class="current-weather__stats__info__text__unit">%</span>
         </p>
       </div>
     </div>`;
