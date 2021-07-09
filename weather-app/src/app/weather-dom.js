@@ -1,5 +1,6 @@
 import { getWeatherData } from "./utils/api-calls/get-weather-data";
 import { mainWeatherComponent } from "./components/main-weather";
+import { forecastWeatherComponent } from "./components/forecast-weather";
 import { queryDestructure } from "./utils/query/query-destructure";
 
 export const weatherDOM = () => {
@@ -9,6 +10,7 @@ export const weatherDOM = () => {
     searchForm: document.querySelector("#searchForm"),
     unitChangeButton: document.querySelector("#unitChangeButton"),
     currentWeatherSection: document.querySelector("#currentWeather"),
+    forecastDisplay: document.querySelector("#forecastDisplay"),
     errorMessage: document.querySelector("#errorMessage"),
     errorText: document.querySelector("#errorText"),
   };
@@ -54,17 +56,19 @@ export const weatherDOM = () => {
       _displayErrorMessage("Invalid City Name, Please Try Again");
       return;
     }
-
     _setWeatherDOM();
   };
 
   const _setWeatherDOM = () => {
     // have everything "disspear from the screen" meaing set opacity to 0 and have the loading gif appear in the center of the main html. (NEED TO GO CSS AND DO THIS)
-    // Remove the
-    const newMainWeather = mainWeatherComponent(_weatherDataObject);
 
+    const newMainWeather = mainWeatherComponent(_weatherDataObject);
     _staticDOM.currentWeatherSection.innerHTML = "";
     _staticDOM.currentWeatherSection.innerHTML += newMainWeather;
+
+    const forecastWeather = forecastWeatherComponent(_weatherDataObject);
+    _staticDOM.forecastDisplay.innerHTML = "";
+    _staticDOM.forecastDisplay.innerHTML += forecastWeather;
 
     // If there is an error/ we get a string, remove the gif, set the opacity back to 1, and call teh error fucntion with the error message passed in.
     // Call function to create current weather component
