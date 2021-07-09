@@ -24,11 +24,15 @@ export class CurrentWeather {
 
   setToMetric() {
     this.currentTemp = convertTempToMetric(this.currentTemp);
+    this.lowTemp = convertTempToMetric(this.lowTemp);
+    this.highTemp = convertTempToMetric(this.highTemp);
     this.wind = convertWindToMetric(this.wind);
   }
 
   setToImperial() {
     this.currentTemp = convertTempToImperial(this.currentTemp);
+    this.lowTemp = convertTempToImperial(this.lowTemp);
+    this.highTemp = convertTempToImperial(this.highTemp);
     this.wind = convertWindToImperial(this.wind);
   }
 }
