@@ -30,6 +30,7 @@ export const getWeatherData = async (cityName, units, state) => {
 
     const { current: currentWeatherData } = weatherDataResponse.data;
     const { daily: forecastData } = weatherDataResponse.data;
+    forecastData.splice(6);
     const firstForecast = forecastData.shift();
 
     const currentWeather = new CurrentWeather(
