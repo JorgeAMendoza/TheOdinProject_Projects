@@ -36,10 +36,10 @@ export const mainWeatherComponent = ({
         />
         <p class="current-weather__stats__info__type">Wind Speed</p>
         <p class="current-weather__stats__info__text">
-          <span class="current-weather__stats__info__text__value">${Math.round(
+          <span id="windText" class="current-weather__stats__info__text__value">${Math.round(
             currentWeather.wind
           )}</span>
-          <span class="current-weather__stats__info__text__unit">mph</span>
+          <span id="windUnit" class="current-weather__stats__info__text__unit">mph</span>
         </p>
       </div>
       <div class="current-weather__stats__info">

@@ -24,7 +24,7 @@ export const forecastWeatherComponent = ({ forecastArray }) => {
           <p class="forecast-display__card__date">
             <span class="forecast-display__card__date__date-one">${dayName(
               dateObject.getDay()
-            )},</span
+            )}</span
             ><span
               class="forecast-display__card__date__comma"
               aria-hidden="true"
@@ -46,7 +46,9 @@ export const forecastWeatherComponent = ({ forecastArray }) => {
                 src=${trianagleSVG}
                 alt="Low Temperature"
               />
-              ${Math.round(data.lowTemp)}° <span class="degree-symbol"></span>
+              <span class="forecast-display__card__temperature__num--low">${Math.round(
+                data.lowTemp
+              )}</span><span class="degree-symbol">°</span>
             </p>
             <p class="forecast-display__card__temperature__temp">
               <img
@@ -54,8 +56,9 @@ export const forecastWeatherComponent = ({ forecastArray }) => {
                 src=${trianagleSVG}
                 alt="High Temperature"
               />
-              ${Math.round(data.highTemp)}°
-              <span class="degree-symbol"></span>
+              <span class="forecast-display__card__temperature__num--high">${Math.round(
+                data.highTemp
+              )}</span><span class="degree-symbol">°</span>
             </p>
           </div>
         </figure>
