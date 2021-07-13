@@ -14,7 +14,7 @@ export const weatherDOM = () => {
     errorMessage: document.querySelector("#errorMessage"),
     errorText: document.querySelector("#errorText"),
   };
-  //   Save current unit to localte storage, if nothing in local storage set default to imperial.
+  let _unit = JSON.parse(localStorage.getItem("unit")) || "imperial";
 
   const _displayErrorMessage = (errorMessage) => {
     _staticDOM.errorText.textContent = errorMessage;
@@ -34,6 +34,7 @@ export const weatherDOM = () => {
     // get back weather data and pass it into fucntion to create currnet weather card.
     // pass weather object into the forecat component to create arrays of componet HTML markup
     // write the content into the page, letting CSS handle animations.
+    // set the text content of the button based on saved or inital unit value.
   };
 
   const _getNewWeather = async (e) => {
@@ -42,16 +43,15 @@ export const weatherDOM = () => {
 
     e.preventDefault();
     const userSearch = e.target.elements.search.value;
-    const userUnit = _staticDOM.unitChangeButton.dataset.unit;
     const cityRegex = /^[A-Za-z.' ]+$/;
     const cityStateRegex = /^[A-Za-z.' ]+$|^[A-Za-z.' ]+, [A-Za-z][A-Za-z]$/;
 
     if (cityRegex.test(userSearch)) {
       const userCity = userSearch;
-      _weatherDataObject = await getWeatherData(userCity, userUnit, "");
+      _weatherDataObject = await getWeatherData(userCity, _unit, "");
     } else if (cityStateRegex.test(userSearch)) {
       const [userCity, userState] = queryDestructure(userSearch);
-      _weatherDataObject = await getWeatherData(userCity, userUnit, userState);
+      _weatherDataObject = await getWeatherData(userCity, _unit, userState);
     } else {
       _displayErrorMessage("Invalid City Name, Please Try Again");
       return;
@@ -71,34 +71,78 @@ export const weatherDOM = () => {
     _staticDOM.forecastDisplay.innerHTML += forecastWeather;
 
     // If there is an error/ we get a string, remove the gif, set the opacity back to 1, and call teh error fucntion with the error message passed in.
-    // Call function to create current weather component
-    // Call function to create the forecast components.
-    // delete the previous html.
     // Remove the loading gif.
     // Write the new weather data html onto the page, let CSS handle the rest (KEY FRAMES NECESSARY?)
   };
 
-  const changeWeatherUnits = () => {
-    //  If the current unit value is imperial
-    // then call the imperial method on teh current weather object and the forecast data (forecast will require iteration over the array)
-    // If the current unit value is metric, then do the same process as above.
-    // the dom here is dynamic so we have to keep grabbing it here.
-    // Grab the main temp dom, set it to the new value in the object.
-    // Grab the humidiy and wind and change those as well.
-    // For wind, make sure to change the "mph" and "kmh" depending on the situation.
-    // Grab all the forecast components.
-    // iterate over the the DOM array.
-    // In each iteration set its new values according to its values in the weather object.
-    // regular for loop may be required.
-    // End exeuction
+  const _changeWeatherUnits = (e) => {
+    const unitButton = e.target;
+
+    if (_unit === "imperial") {
+      _unit = "metric";
+      unitButton.textContent = "C°";
+      localStorage.setItem("unit", JSON.stringify("metric"));
+      _weatherDataObject.currentWeather.setToMetric();
+      _weatherDataObject.forecastArray.forEach((forecast) =>
+        forecast.setToMetric()
+      );
+    } else {
+      _unit = "imperial";
+      unitButton.textContent = "F°";
+      localStorage.setItem("unit", JSON.stringify("imperial"));
+      _weatherDataObject.currentWeather.setToImperial();
+      _weatherDataObject.forecastArray.forEach((forecast) =>
+        forecast.setToImperial()
+      );
+    }
+
+    _changeWeatherUnitsDOM();
   };
 
+  const _changeWeatherUnitsDOM = () => {
+    const forecastCards = document.querySelectorAll(".forecast-display__card");
+    const currentWeatherCard = document.querySelector("#currentWeather");
+
+    const { forecastArray } = _weatherDataObject;
+    const { currentWeather } = _weatherDataObject;
+
+    for (let i = 0; i < forecastArray.length; i++) {
+      forecastCards[i].querySelector(
+        ".forecast-display__card__temperature__num--low"
+      ).textContent = `${forecastArray[i].lowTemp}`;
+
+      forecastCards[i].querySelector(
+        ".forecast-display__card__temperature__num--high"
+      ).textContent = `${forecastArray[i].highTemp}`;
+    }
+
+    // current WeatherCard
+    currentWeatherCard.querySelector(
+      ".current-weather__temperature"
+    ).textContent = `${currentWeather.currentTemp} °`;
+
+    currentWeatherCard.querySelector(
+      ".current-weather__low-high__temp:first-child span"
+    ).textContent = `${currentWeather.lowTemp} °`;
+
+    currentWeatherCard.querySelector(
+      ".current-weather__low-high__temp:last-child span"
+    ).textContent = `${currentWeather.highTemp} °`;
+
+    currentWeatherCard.querySelector(
+      "#windText"
+    ).textContent = `${currentWeather.wind}`;
+
+    currentWeatherCard.querySelector("#windUnit").textContent =
+      _unit === "imperial" ? "mph" : "kmh";
+  };
   // Set Event listeners
   _staticDOM.searchForm.addEventListener("submit", _getNewWeather);
+  _staticDOM.unitChangeButton.addEventListener("click", _changeWeatherUnits);
 
-  // Return only start, newWeather, changeUnit which to be called by api.
+  _staticDOM.unitChangeButton.textContent = _unit === "imperial" ? "F°" : "C°";
+
   return {
     startWeatherApp,
-    changeWeatherUnits,
   };
 };
