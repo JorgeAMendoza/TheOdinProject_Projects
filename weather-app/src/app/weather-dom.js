@@ -26,17 +26,6 @@ export const weatherDOM = () => {
     _staticDOM.errorText.textContent = "";
   };
 
-  // function to start the program
-  const startWeatherApp = async () => {
-    // const weatherData = await getWeatherData("dallas", "metric", "TX");
-    // console.log(weatherData);
-    // Remove all html from the main page.
-    // get back weather data and pass it into fucntion to create currnet weather card.
-    // pass weather object into the forecat component to create arrays of componet HTML markup
-    // write the content into the page, letting CSS handle animations.
-    // set the text content of the button based on saved or inital unit value.
-  };
-
   const _getNewWeather = async (e) => {
     if (_requestActive) return;
     _removeErrorMessage();
@@ -136,6 +125,13 @@ export const weatherDOM = () => {
     currentWeatherCard.querySelector("#windUnit").textContent =
       _unit === "imperial" ? "mph" : "kmh";
   };
+
+  // function to start the program
+  const startWeatherApp = async () => {
+    _weatherDataObject = await getWeatherData("dallas", _unit, "TX");
+    _setWeatherDOM();
+  };
+
   // Set Event listeners
   _staticDOM.searchForm.addEventListener("submit", _getNewWeather);
   _staticDOM.unitChangeButton.addEventListener("click", _changeWeatherUnits);
