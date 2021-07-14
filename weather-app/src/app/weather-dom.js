@@ -37,10 +37,20 @@ export const weatherDOM = () => {
 
     if (cityRegex.test(userSearch)) {
       const userCity = userSearch;
-      _weatherDataObject = await getWeatherData(userCity, _unit, "");
+      try {
+        _weatherDataObject = await getWeatherData(userCity, _unit, "");
+      } catch (e) {
+        _displayErrorMessage(e.message);
+        return;
+      }
     } else if (cityStateRegex.test(userSearch)) {
       const [userCity, userState] = queryDestructure(userSearch);
-      _weatherDataObject = await getWeatherData(userCity, _unit, userState);
+      try {
+        _weatherDataObject = await getWeatherData(userCity, _unit, userState);
+      } catch (e) {
+        _displayErrorMessage(e.message);
+        return;
+      }
     } else {
       _displayErrorMessage("Invalid City Name, Please Try Again");
       return;
