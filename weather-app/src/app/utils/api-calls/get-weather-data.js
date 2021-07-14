@@ -6,7 +6,7 @@ import { grabGeoData } from "./grab-geo-data";
 export const getWeatherData = async (cityName, units, state) => {
   try {
     const geoLocationResponse = await axios.get(
-      `http://api.openweathermap.org/geo/1.0/direct?q=${cityName},${state},${
+      `https://api.openweathermap.org/geo/1.0/direct?q=${cityName},${state},${
         state ? "US" : ""
       }&limit=10&appid=a4fd7e05b40980c0b9a29ba9590c0fe8`
     );
