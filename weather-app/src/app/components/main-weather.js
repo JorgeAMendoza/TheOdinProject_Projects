@@ -2,11 +2,10 @@ import cloudyNight from "../../assets/weather-icons/cloudy-night.svg";
 import windIcon from "../../assets/weather-icons/wind.svg";
 import humidityIcon from "../../assets/weather-icons/humidity.svg";
 
-export const mainWeatherComponent = ({
-  cityName,
-  cityLocation,
-  currentWeather,
-}) => {
+export const mainWeatherComponent = (
+  { cityName, cityLocation, currentWeather },
+  unit
+) => {
   return `<p class="current-weather__city">${cityName}, ${cityLocation}</p>
     <img
       class="current-weather__icon"
@@ -39,7 +38,9 @@ export const mainWeatherComponent = ({
           <span id="windText" class="current-weather__stats__info__text__value">${Math.round(
             currentWeather.wind
           )}</span>
-          <span id="windUnit" class="current-weather__stats__info__text__unit">mph</span>
+          <span id="windUnit" class="current-weather__stats__info__text__unit">${
+            unit === "metric" ? "kmh" : "mph"
+          }</span>
         </p>
       </div>
       <div class="current-weather__stats__info">

@@ -61,7 +61,7 @@ export const weatherDOM = () => {
   const _setWeatherDOM = () => {
     // have everything "disspear from the screen" meaing set opacity to 0 and have the loading gif appear in the center of the main html. (NEED TO GO CSS AND DO THIS)
 
-    const newMainWeather = mainWeatherComponent(_weatherDataObject);
+    const newMainWeather = mainWeatherComponent(_weatherDataObject, _unit);
     _staticDOM.currentWeatherSection.innerHTML = "";
     _staticDOM.currentWeatherSection.innerHTML += newMainWeather;
 
