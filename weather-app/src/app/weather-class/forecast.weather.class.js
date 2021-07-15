@@ -2,10 +2,11 @@ import { convertTempToMetric } from "../utils/unit-conversion/convert-temp-to-me
 import { convertTempToImperial } from "../utils/unit-conversion/convert-temp-to-imperial";
 
 export class ForecastWeather {
-  constructor(lowTemp, highTemp, outlook) {
+  constructor(lowTemp, highTemp, outlook, id) {
     this.lowTemp = lowTemp;
     this.highTemp = highTemp;
     this.outlook = outlook;
+    this.id = id;
   }
 
   setToMetric() {
