@@ -10,9 +10,6 @@ export const forecastWeatherComponent = ({ forecastArray }) => {
   return forecastArray
     .map((data) => {
       dateObject.setDate(dateObject.getDate() + 1);
-      // When it reaches the month, pass the value to teh month name function.
-      // when it reaches the date, pass teh value to the month name function.
-
       return `
       <figure class="forecast-display__card">
           <img
