@@ -1,7 +1,7 @@
 import { dayName } from "../utils/date/day-name";
 import { dateName } from "../utils/date/date-name";
 import { monthName } from "../utils/date/month-name";
-import rainIcon from "../../assets/weather-icons/rain.svg";
+import { insertIcon } from "../utils/dom/insert-icon";
 import trianagleSVG from "../../assets/imgs/triangle.svg";
 
 export const forecastWeatherComponent = ({ forecastArray }) => {
@@ -14,8 +14,8 @@ export const forecastWeatherComponent = ({ forecastArray }) => {
       <figure class="forecast-display__card">
           <img
             class="forecast-display__card__icon"
-            src=${rainIcon}
-            alt="Chance of Rain"
+            src=${insertIcon(data.id)}
+            alt="${data.outlook}"
           />
 
           <p class="forecast-display__card__date">
@@ -28,7 +28,7 @@ export const forecastWeatherComponent = ({ forecastArray }) => {
               >,
             </span>
             <span class="forecast-display__card__date__date-two"
-              >${monthName(dateObject.getMonth())}, ${dateName(
+              >${monthName(dateObject.getMonth())} ${dateName(
         dateObject.getDate()
       )}</span
             >

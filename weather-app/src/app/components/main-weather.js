@@ -1,4 +1,4 @@
-import cloudyNight from "../../assets/weather-icons/cloudy-night.svg";
+import { insertIcon } from "../utils/dom/insert-icon";
 import windIcon from "../../assets/weather-icons/wind.svg";
 import humidityIcon from "../../assets/weather-icons/humidity.svg";
 
@@ -9,7 +9,7 @@ export const mainWeatherComponent = (
   return `<p class="current-weather__city">${cityName}, ${cityLocation}</p>
     <img
       class="current-weather__icon"
-      src=${cloudyNight}
+      src=${insertIcon(currentWeather.id)}
       alt="Sunny Weather"
     />
     <p id="currentTemp" class="current-weather__temperature">${Math.round(
