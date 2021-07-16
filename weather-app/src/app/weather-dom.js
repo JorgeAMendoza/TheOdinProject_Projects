@@ -5,7 +5,6 @@ import { queryDestructure } from "./utils/query/query-destructure";
 
 export const weatherDOM = () => {
   let _weatherDataObject;
-  let _requestActive = false;
   const _staticDOM = {
     searchForm: document.querySelector("#searchForm"),
     unitChangeButton: document.querySelector("#unitChangeButton"),
@@ -27,10 +26,9 @@ export const weatherDOM = () => {
   };
 
   const _getNewWeather = async (e) => {
-    if (_requestActive) return;
+    e.preventDefault();
     _removeErrorMessage();
 
-    e.preventDefault();
     const userSearch = e.target.elements.search.value;
     const cityRegex = /^[A-Za-z.' ]+$/;
     const cityStateRegex = /^[A-Za-z.' ]+$|^[A-Za-z.' ]+, [A-Za-z][A-Za-z]$/;
@@ -68,10 +66,6 @@ export const weatherDOM = () => {
     const forecastWeather = forecastWeatherComponent(_weatherDataObject);
     _staticDOM.forecastDisplay.innerHTML = "";
     _staticDOM.forecastDisplay.innerHTML += forecastWeather;
-
-    // If there is an error/ we get a string, remove the gif, set the opacity back to 1, and call teh error fucntion with the error message passed in.
-    // Remove the loading gif.
-    // Write the new weather data html onto the page, let CSS handle the rest (KEY FRAMES NECESSARY?)
   };
 
   const _changeWeatherUnits = (e) => {
