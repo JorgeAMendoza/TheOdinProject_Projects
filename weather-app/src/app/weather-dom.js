@@ -4,7 +4,6 @@ import { forecastWeatherComponent } from "./components/forecast-weather";
 import { queryDestructure } from "./utils/query/query-destructure";
 
 export const weatherDOM = () => {
-  let _weatherDataObject;
   const _staticDOM = {
     searchForm: document.querySelector("#searchForm"),
     unitChangeButton: document.querySelector("#unitChangeButton"),
@@ -14,6 +13,8 @@ export const weatherDOM = () => {
     errorText: document.querySelector("#errorText"),
   };
   let _unit = JSON.parse(localStorage.getItem("unit")) || "imperial";
+  let _weatherDataObject;
+  let _requestActive = false;
 
   const _displayErrorMessage = (errorMessage) => {
     _staticDOM.errorText.textContent = errorMessage;
@@ -27,6 +28,10 @@ export const weatherDOM = () => {
 
   const _getNewWeather = async (e) => {
     e.preventDefault();
+
+    if (_requestActive) return;
+    _requestActive = true;
+    console.log("Getting new weather");
     _removeErrorMessage();
 
     const userSearch = e.target.elements.search.value;
@@ -57,8 +62,6 @@ export const weatherDOM = () => {
   };
 
   const _setWeatherDOM = () => {
-    // have everything "disspear from the screen" meaing set opacity to 0 and have the loading gif appear in the center of the main html. (NEED TO GO CSS AND DO THIS)
-
     const newMainWeather = mainWeatherComponent(_weatherDataObject, _unit);
     _staticDOM.currentWeatherSection.innerHTML = "";
     _staticDOM.currentWeatherSection.innerHTML += newMainWeather;
@@ -66,6 +69,8 @@ export const weatherDOM = () => {
     const forecastWeather = forecastWeatherComponent(_weatherDataObject);
     _staticDOM.forecastDisplay.innerHTML = "";
     _staticDOM.forecastDisplay.innerHTML += forecastWeather;
+
+    _requestActive = false;
   };
 
   const _changeWeatherUnits = (e) => {
