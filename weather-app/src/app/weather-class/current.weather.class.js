@@ -12,7 +12,8 @@ export class CurrentWeather {
     statusDescription,
     humidity,
     wind,
-    id
+    weatherID,
+    iconID
   ) {
     this.currentTemp = currentTemp;
     this.lowTemp = lowTemp;
@@ -21,7 +22,8 @@ export class CurrentWeather {
     this.statusDescription = statusDescription;
     this.humidity = humidity;
     this.wind = wind;
-    this.id = id;
+    this.weatherID = weatherID;
+    this.iconID = iconID;
   }
 
   setToMetric() {
