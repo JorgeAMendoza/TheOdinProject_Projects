@@ -36,7 +36,8 @@ export const getWeatherData = async (cityName, units, state) => {
     currentWeatherData.weather[0].description,
     currentWeatherData.humidity,
     currentWeatherData.wind_speed,
-    currentWeatherData.weather[0].id
+    currentWeatherData.weather[0].id,
+    currentWeatherData.weather[0].icon
   );
 
   const forecastArray = forecastData.map((item) => {
@@ -44,7 +45,8 @@ export const getWeatherData = async (cityName, units, state) => {
       item.temp.min,
       item.temp.max,
       item.weather[0].main,
-      item.weather[0].id
+      item.weather[0].id,
+      item.weather[0].icon
     );
   });
 
