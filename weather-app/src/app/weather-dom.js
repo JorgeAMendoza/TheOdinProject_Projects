@@ -31,7 +31,6 @@ export const weatherDOM = () => {
 
     if (_requestActive) return;
     _requestActive = true;
-    console.log("Getting new weather");
     _removeErrorMessage();
 
     const userSearch = e.target.elements.search.value;
