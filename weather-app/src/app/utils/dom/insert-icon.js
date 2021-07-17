@@ -1,33 +1,30 @@
-import partlyCloudyIcon from "../../../assets/weather-icons/cloudy-day.svg";
-import cloudyIcon from "../../../assets/weather-icons/cloud.svg";
+import dayPartlyCloudyIcon from "../../../assets/weather-icons/day-partly-cloudy.svg";
+import nightPartlyCloudyIcon from "../../../assets/weather-icons/night-partly-cloudy.svg";
+import cloudyIcon from "../../../assets/weather-icons/cloudy.svg";
 import rainIcon from "../../../assets/weather-icons/rain.svg";
 import lightRainIcon from "../../../assets/weather-icons/light-rain.svg";
 import snowIcon from "../../../assets/weather-icons/snow.svg";
-import stormIcon from "../../../assets/weather-icons/storm-day.svg";
-import sunIcon from "../../../assets/weather-icons/sun.svg";
-import hazeIcon from "../../../assets/weather-icons/haze.svg";
+import stormIcon from "../../../assets/weather-icons/storm.svg";
+import clearDayIcon from "../../../assets/weather-icons/day-clear.svg";
+import clearNightIcon from "../../../assets/weather-icons/night-clear.svg";
+import dayHazeIcon from "../../../assets/weather-icons/day-haze.svg";
+import nightHazeIcon from "../../../assets/weather-icons/night-haze.svg";
 
-export const insertIcon = (iconID) => {
-  if (iconID >= 200 && iconID < 300) {
-    return stormIcon;
-  } else if (iconID >= 300 && iconID < 500) {
-    return lightRainIcon;
-  } else if (iconID >= 500 && iconID < 600) {
-    return rainIcon;
-  } else if (iconID >= 600 && iconID < 700) {
-    return snowIcon;
-  } else if (iconID >= 700 && iconID < 800) {
-    return hazeIcon;
-  } else if (iconID >= 800) {
-    switch (iconID) {
-      case 800:
-        return sunIcon;
-      case 801:
-      case 802:
-      case 803:
-        return partlyCloudyIcon;
-      case 804:
-        return cloudyIcon;
-    }
-  }
+export const insertIcon = (iconID, weatherID) => {
+  
+  if (weatherID >= 800) {
+    if (iconID === "01d") return clearDayIcon;
+    else if (iconID === "01n") return clearNightIcon;
+    else if (iconID === "02d") return dayPartlyCloudyIcon;
+    else if (iconID === "02n") return nightPartlyCloudyIcon;
+    else return cloudyIcon;
+  } else if (weatherID >= 700) {
+    if (iconID === "50d") return dayHazeIcon;
+    else return nightHazeIcon;
+  } else if (weatherID >= 600) return snowIcon;
+  else if (weatherID >= 500) {
+    if (iconID === "13d" || iconID === "13n") return snowIcon;
+    else return rainIcon;
+  } else if (weatherID >= 300) return lightRainIcon;
+  else return stormIcon;
 };
