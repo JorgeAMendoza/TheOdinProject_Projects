@@ -14,7 +14,7 @@ export const forecastWeatherComponent = ({ forecastArray }) => {
       <figure class="forecast-display__card">
           <img
             class="forecast-display__card__icon"
-            src=${insertIcon(data.id)}
+            src=${insertIcon(data.iconID, data.weatherID)}
             alt="${data.outlook}"
           />
 

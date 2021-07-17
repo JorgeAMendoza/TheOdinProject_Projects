@@ -9,7 +9,7 @@ export const mainWeatherComponent = (
   return `<p class="current-weather__city">${cityName}, ${cityLocation}</p>
     <img
       class="current-weather__icon"
-      src=${insertIcon(currentWeather.id)}
+      src=${insertIcon(currentWeather.iconID, currentWeather.weatherID)}
       alt="Sunny Weather"
     />
     <p id="currentTemp" class="current-weather__temperature">${Math.round(
