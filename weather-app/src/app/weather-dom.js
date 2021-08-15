@@ -19,6 +19,7 @@ export const weatherDOM = () => {
   const _displayErrorMessage = (errorMessage) => {
     _staticDOM.errorText.textContent = errorMessage;
     _staticDOM.errorMessage.classList.add("show-error");
+    _requestActive = false;
   };
 
   const _removeErrorMessage = () => {
