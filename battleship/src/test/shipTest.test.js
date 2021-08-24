@@ -23,4 +23,8 @@ describe('Testing Ship Module', () => {
     testShip.hit(4);
     expect(testShip.isSunk()).toBe(true);
   });
+
+  test('Test 5: Return the correct ship length', () => {
+    expect(testShip.getLength()).toBe(5);
+  });
 });
