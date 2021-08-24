@@ -20,9 +20,11 @@ export default function ship(shipName, shipLength) {
     if (shipData.points.every((point) => point === true)) return true;
     return false;
   };
+  const getLength = () => shipData.length;
 
   return {
     hit,
     isSunk,
+    getLength,
   };
 }
