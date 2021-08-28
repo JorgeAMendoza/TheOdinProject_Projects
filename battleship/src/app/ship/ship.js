@@ -22,9 +22,12 @@ export default function ship(shipName, shipLength) {
   };
   const getLength = () => shipData.length;
 
+  const getShipStatus = () => [...shipData.points];
+
   return {
     hit,
     isSunk,
     getLength,
+    getShipStatus,
   };
 }
