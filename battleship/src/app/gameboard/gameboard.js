@@ -44,34 +44,23 @@ export default function gameboard() {
   };
 
   const receiveAttack = (x, y) => {
-    if (shipBoard[x][y] === 0) {
-      shipBoard[x][y] = -1;
-      return false;
-    }
+    if (shipBoard[x][y] === 0) return false;
 
-    const shipSpot = shipBoard[x][y].index;
-    if (!shipBoard[x][y].ship.hit(shipSpot)) return false;
-
-    shipBoard[x][y] = 1;
+    const { ship, index } = shipBoard[x][y];
+    if (!ship.hit(index)) return false;
     return true;
   };
-  // If coordinates are something, then check if its hit,
-  // if not hit, then hit,
-  // Check if current ship is fully sunk.
 
-  // private function that checks if its possible to place down the ship.
-  // Function that takes in a ship module, and places it down on the board.
-  const allSunk = () => {};
-
-  // private method to check if placing down is out of bounds.
-  const checkSpace = () => {};
-  // reciedveAttack takes in corodinates,
-
-  //   Private method to call if attack was unncessful, changes value to -1,
-  const markSpot = (status) => {};
+  const allSunk = () => {
+    for (let i = 0; i < ships.length; i += 1) {
+      if (!ships[i].isSunk()) return false;
+    }
+    return true;
+  };
 
   return {
     placeShip,
     receiveAttack,
+    allSunk,
   };
 }
