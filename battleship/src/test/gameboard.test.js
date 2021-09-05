@@ -31,31 +31,23 @@ describe('Testing game board module', () => {
     expect(testGameBoard.placeShip(testShipOne, 0, 2)).toBe(false);
   });
 
-  it('Test 5: Sending a unsucessful attack should return false', () => {
-    expect(testGameBoard.receiveAttack(1, 1)).toBe(false);
+  it('Test 5: Sending a unsucessful attack should return missed', () => {
+    expect(testGameBoard.receiveAttack(1, 1)).toBe('missed');
   });
 
-  it('Test 6: Sending a succesfull attack should return true', () => {
-    expect(testGameBoard.receiveAttack(0, 0)).toBe(true);
+  it('Test 6: Sending a succesfull attack should return hit', () => {
+    expect(testGameBoard.receiveAttack(0, 0)).toBe('hit');
   });
 
-  it('Test 7: Hitting an already hit spot returns false', () => {
-    expect(testGameBoard.receiveAttack(0, 0)).toBe(false);
-  });
-
-  it('Test 6: If any ships are not sunk, then return false', () => {
-    expect(testGameBoard.allSunk()).toBe(false);
-  });
-
-  it('Test 7: If all ships are sunk, allSunk Returns true', () => {
+  it('Test 7: If all ships are sunk, recieve attack Returns win', () => {
     const testShipThree = ship('Merry', 4);
     const testBoardTwo = gameboard();
     testBoardTwo.placeShip(testShipThree, 0, 0);
     testBoardTwo.receiveAttack(0, 0);
     testBoardTwo.receiveAttack(0, 1);
     testBoardTwo.receiveAttack(0, 2);
-    testBoardTwo.receiveAttack(0, 3);
+    const finalAttack = testBoardTwo.receiveAttack(0, 3);
 
-    expect(testBoardTwo.allSunk()).toBe(true);
+    expect(finalAttack).toBe('win');
   });
 });
