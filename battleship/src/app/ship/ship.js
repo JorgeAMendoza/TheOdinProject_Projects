@@ -5,16 +5,10 @@ export default function ship(shipName, shipLength) {
     points: new Array(shipLength).fill(false),
   };
 
-  const isHit = (index) => {
-    if (shipData.points[index] === false) return false;
-    return true;
-  };
   const hit = (index) => {
-    if (!isHit(index)) {
-      shipData.points[index] = true;
-      return true;
-    }
-    return false;
+    if (shipData.points[index]) return false;
+    shipData.points[index] = true;
+    return true;
   };
   const isSunk = () => {
     if (shipData.points.every((point) => point === true)) return true;
