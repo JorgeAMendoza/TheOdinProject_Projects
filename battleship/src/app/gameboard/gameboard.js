@@ -8,6 +8,8 @@ export default function gameboard() {
     return false;
   };
 
+  const ships = [];
+
   const canBePlaced = (shipLength, xStart, yStart, direction) => {
     let xCord = xStart;
     let yCord = yStart;
@@ -23,6 +25,13 @@ export default function gameboard() {
       }
     }
 
+    return true;
+  };
+
+  const allSunk = () => {
+    for (let i = 0; i < ships.length; i += 1) {
+      if (!ships[i].isSunk()) return false;
+    }
     return true;
   };
 
@@ -42,23 +51,19 @@ export default function gameboard() {
   };
 
   const receiveAttack = (x, y) => {
-    if (shipBoard[x][y] === 0) return false;
+    if (shipBoard[x][y] === 0) return 'missed';
 
-    const { shipPoint, index } = shipBoard[x][y];
-    if (!ship.hit(index)) return false;
-    return true;
-  };
-
-  const allSunk = (ships) => {
-    for (let i = 0; i < ships.length; i += 1) {
-      if (!ships[i].isSunk()) return false;
+    const { ship, index } = shipBoard[x][y];
+    ship.hit(index);
+    if (ship.isSunk()) {
+      if (allSunk()) return 'win';
+      return 'sunk';
     }
-    return true;
+    return 'hit';
   };
 
   return {
     placeShip,
     receiveAttack,
-    allSunk,
   };
 }
