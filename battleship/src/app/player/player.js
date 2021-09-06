@@ -1,16 +1,13 @@
-export default function player(name, oppBoard, playBoard) {
+export default function player(name, playerBoard, opponentBoard) {
   const playerName = name;
-  const enemyBoard = oppBoard;
-  const playerBoard = playBoard;
 
   // placeship, places ship on the gameboard, returns false if not possible.
-  const placeShip = (ship, x, y, direction) => {
-    if (playerBoard.placeShip(ship, x, y, direction)) return true;
-    return false;
-  };
+  const placeShip = (ship, x, y, direction) =>
+    playerBoard.placeShip(ship, x, y, direction);
 
   // attackOponent
   // calls the oponenet board recieve attack with coordinates
+  const sendAttack = (x, y) => opponentBoard.receiveAttack(x, y);
 
   // didLastShipSink, should check if the last ship coordinate ship sunk. *
 
@@ -18,5 +15,6 @@ export default function player(name, oppBoard, playBoard) {
 
   return {
     placeShip,
+    sendAttack,
   };
 }

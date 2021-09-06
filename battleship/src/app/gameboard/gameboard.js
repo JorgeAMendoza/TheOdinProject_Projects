@@ -47,6 +47,7 @@ export default function gameboard() {
       else yCord += 1;
     }
 
+    ships.push(ship);
     return true;
   };
 
