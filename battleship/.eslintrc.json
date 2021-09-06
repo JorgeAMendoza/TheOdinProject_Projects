@@ -4,6 +4,7 @@
         "no-console":"warn",
         "no-unused-vars": "warn",
         "linebreak-style":"off",
-        "prefer-const":"warn"
+        "prefer-const":"warn",
+        "implicit-arrow-linebreak":"off"
     }
 }
