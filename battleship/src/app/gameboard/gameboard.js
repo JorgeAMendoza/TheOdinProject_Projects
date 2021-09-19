@@ -1,14 +1,14 @@
 export default function gameboard() {
-  const shipBoard = Array(8)
+  const shipBoard = Array(10)
     .fill()
-    .map(() => Array(8).fill(0));
+    .map(() => Array(10).fill(0));
+
+  const ships = [];
 
   const isTaken = (x, y) => {
     if (shipBoard[x][y] !== 0) return true;
     return false;
   };
-
-  const ships = [];
 
   const canBePlaced = (shipLength, xStart, yStart, direction) => {
     let xCord = xStart;
