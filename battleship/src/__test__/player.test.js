@@ -48,9 +48,9 @@ describe('Test Suite for Player Module', () => {
 
   it('Test 7: Sunken ship and all ship sunk for other player', () => {
     playerTwo.sendAttack(0, 0);
-    playerTwo.sendAttack(1, 0);
+    expect(playerTwo.sendAttack(1, 0)).toBe('hit');
     playerTwo.sendAttack(2, 0);
     playerTwo.sendAttack(3, 0);
-    playerTwo.sendAttack(4, 0);
+    expect(playerTwo.sendAttack(4, 0)).toBe('win');
   });
 });
