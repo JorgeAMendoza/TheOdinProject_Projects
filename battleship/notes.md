@@ -22,3 +22,8 @@ The player module will have the following functions.
 - A function that checks if it has won, this one should be PRIVATE and ONLY be called if a ship has been sunk, potentially after each hit, call the 'isSunk' function on the ship, and if that is true then call the "allsunk" function from the gamebaord. However this means that now Player Module will keep track of the ships, which gameboard is already doing. This function is called on the enemboard, and if allSunk returns true, then end the game.
 - It's best to create two gameboards, so its easier to set up the two player functionality down the line.
 - My main concern is that we are calling function within function too much, I believe that the gameboard should only be worried about the ship, while player simply initlizes the names, and calls methods.
+
+UI Use Case. 
+- Once user enters their name, then move the logo to the top of the screen. Remove the battleship icon
+- Set the main content to zero opacity. then rewrite the content for the next board. 
+- Give the container a top padding or margin so that it does cover up the absolute item, so use a class such as "game-name" or "game-active" to add that spacing to the top of the main content. 
