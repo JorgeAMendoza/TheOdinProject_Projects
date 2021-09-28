@@ -1,0 +1,31 @@
+header {
+  position: absolute;
+  top: calc(50% - 6.5em);
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: position 2s ease 0s;
+
+  &.game-start {
+    top: 7%;
+    animation: slideToTop 1.5s ease;
+  }
+
+  .header-icon {
+    img {
+      margin: 0 auto;
+    }
+
+    &--hide {
+      display: none;
+    }
+  }
+}
+
+@keyframes slideToTop {
+  from {
+    top: calc(50% - 6.5em);
+  }
+  to {
+    top: 7%;
+  }
+}

@@ -17,9 +17,9 @@
     />
     <title>Battleship</title>
   </head>
-  <body>
-    <header>
-      <h1 class="game-title">Battleship</h1>
+  <body class="body body--game-start">
+    <header class="">
+      <h1 class="game-title header-one">Battleship</h1>
       <div class="header-icon">
         <img
           src="./assets/icons/ship-icons/battleship.svg"
@@ -29,12 +29,387 @@
     </header>
 
     <main class="container">
-      <h2 class="game-message">Please Enter Your Name</h2>
-
+      <!-- Home/Splash Screen -->
+      <h2 class="game-message header-two">Please Enter Your Name</h2>
       <form class="name-input">
-        <input type="text" name="playerName" id="playerName" />
+        <input type="text" name="playerName" id="playerName" class="input" />
         <button class="btn">Start</button>
       </form>
+
+      <!-- <h2 class="game-message header-two">Place Your Fleet</h2>
+      <section id="gameSetup" class="game-setup">
+        <div class="place-ships">
+          <img
+            src="./assets/icons/ship-icons/carrier.svg"
+            alt="Carrier Ships"
+            class="place-ships__ship-icon"
+          />
+          <img
+            src="./assets/icons/ship-icons/battleship.svg"
+            alt="Carrier Ships"
+            class="place-ships__ship-icon"
+          />
+          <img
+            src="./assets/icons/ship-icons/destroyer.svg"
+            alt="Carrier Ships"
+            class="place-ships__ship-icon"
+          />
+          <img
+            src="./assets/icons/ship-icons/submarine.svg"
+            alt="Carrier Ships"
+            class="place-ships__ship-icon"
+          />
+          <img
+            src="./assets/icons/ship-icons/patrol-boat.svg"
+            alt="Carrier Ships"
+            class="place-ships__ship-icon"
+          />
+          <img
+            src="./assets/icons/other/arrow.svg"
+            alt="Pointing to current ship"
+            class="place-ships__ship-indicator"
+          />
+        </div>
+
+        <div class="placement-board">
+          <h3 class="placement-board__text"></h3>
+          <div class="placement-board__board">
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+          </div>
+        </div>
+      </section> -->
+
+      <!-- <h2 id="gameMessage" class="game-message header-two">Jorge's Turn</h2>
+      <section class="game-active">
+        <div id="playerBoard" class="placement-board">
+          <h3 class="placement-board__text">Jorge's Fleet</h3>
+          <div class="placement-board__board">
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+          </div>
+        </div>
+
+        <div id="enemyBoard" class="placement-board">
+          <h3 class="placement-board__text header-three">Enemy Fleet</h3>
+          <div class="placement-board__board">
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-b`oard__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+            <div class="placement-board__board-piece"></div>
+          </div>
+        </div>
+      </section> -->
+
+      <!-- <section class="game-over">
+        <h2 class="game-over__result">You Win</h2>
+        <img
+          src="./assets/icons/other/white-flag.svg"
+          alt="Winner Icon"
+          class="game-over__icon"
+        />
+        <p class="game-over__message">Your Opponent Has Waved the White Flag</p>
+        <button class="btn">Play Again</button>
+
+        <p class="game-over__link">
+          <a
+            href="https://github.com/JorgeAMendoza/frontEndMentor_challenges/tree/main/blogr-landing-page"
+            >See Code on GitHub</a
+          >
+        </p>
+      </section> -->
     </main>
   </body>
 </html>

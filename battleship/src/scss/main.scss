@@ -1,0 +1,17 @@
+// UI Base
+@use './base/reset';
+@use './base/font-size';
+
+// Components
+@use './components/buttons';
+@use './components/inputs';
+@use './components/name-input';
+@use './components/game-message';
+@use './components/place-ships';
+@use './components//placement-board';
+@use './components/game-over';
+
+// Layout
+@use './layout/header';
+@use './layout/body';
+@use './layout/container';

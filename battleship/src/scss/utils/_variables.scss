@@ -1,0 +1,24 @@
+$-dark-saturated-red: #ca2b3b;
+$-light-blue: #7bbbff;
+$-very-dark-grey: #292929;
+$-white: #fff;
+$-grey: #aaa;
+$-very-light-red: #ffb8b8;
+
+// Text Color
+$white-text-color: $-white;
+$error-text-color: $-very-light-red ;
+
+// Buttons
+$button-background: $-very-dark-grey;
+
+// Game Colors
+$missed-shot: $-grey;
+$player-ship-point: $-light-blue;
+$enemy-ship-point: $-dark-saturated-red;
+$board-piece-border: $-grey;
+
+// Breakpoints
+$tablet-size: 768px;
+$desktop-size: 1024px;
+$large-desktop-size: 1400px;

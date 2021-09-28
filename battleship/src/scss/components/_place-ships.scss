@@ -1,0 +1,17 @@
+.place-ships {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  gap: 2rem;
+  margin-top: 4rem;
+
+  &__ship-icon {
+    width: 50px;
+  }
+
+  &__ship-indicator {
+    position: absolute;
+    display: none;
+  }
+}

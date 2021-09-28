@@ -1,0 +1,56 @@
+@use '../utils/variables' as *;
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+  line-height: 1.5;
+}
+
+body {
+  background: url('/src/assets/imgs/ocean-background.png') center center fixed
+    no-repeat;
+  background-size: cover;
+  font-family: 'Chakra Petch', sans-serif;
+  color: $white-text-color;
+  min-height: 100vh;
+  font-size: 1.6rem;
+}
+
+button,
+a {
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
+  font-family: inherit;
+}
+
+input {
+  font-family: inherit;
+  outline: none;
+  border: none;
+  width: 100%;
+  padding: 0.2em 0.5em;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+p,
+li,
+h1,
+h2,
+h3,
+h4 {
+  overflow-wrap: break-word;
+  hyphens: auto;
+}

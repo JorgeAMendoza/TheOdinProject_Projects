@@ -1,0 +1,45 @@
+@use '../utils/variables' as *;
+
+.placement-board {
+  text-align: center;
+  margin: 3rem auto;
+
+  &__text {
+    color: $white-text-color;
+    min-height: 1.5em;
+
+    &--error {
+      color: $error-text-color;
+    }
+  }
+
+  &__board {
+    width: min(85vw, 45rem);
+    min-height: min(85vw, 45rem);
+    height: 20rem;
+    border-radius: 20px;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    margin: 1.5rem auto;
+  }
+
+  &__board-piece {
+    background-color: #fff;
+    border: 1px solid $board-piece-border;
+
+    &:nth-child(1) {
+      border-top-left-radius: 10px;
+    }
+    &:nth-child(10) {
+      border-top-right-radius: 10px;
+    }
+    &:nth-child(91) {
+      border-bottom-left-radius: 10px;
+    }
+    &:nth-child(100) {
+      border-bottom-right-radius: 10px;
+    }
+  }
+}

@@ -1,0 +1,15 @@
+.container {
+  width: 90%;
+  max-width: 1200px;
+  transition: opacity 1s ease;
+  margin: 0 auto;
+
+    &--set-content {
+      opacity: 0;
+    }
+
+  // Applied after the name has been entered
+  &--game-active {
+    padding-top: 8rem;
+  }
+}

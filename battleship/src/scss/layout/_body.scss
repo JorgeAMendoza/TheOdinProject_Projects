@@ -1,0 +1,20 @@
+.body {
+  &--game-start {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  // Switch layout back to block
+  &--game-active {
+    display: block;
+  }
+
+  &--game-over {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
