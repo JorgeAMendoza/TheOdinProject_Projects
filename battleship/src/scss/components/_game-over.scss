@@ -1,0 +1,18 @@
+@use '../utils/variables' as *;
+
+.game-over {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  &__icon {
+    margin: 1rem auto;
+  }
+
+  &__link a {
+    color: $white-text-color;
+    font-weight: bold;
+  }
+}

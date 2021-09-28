@@ -10,4 +10,11 @@
   &--game-active {
     display: block;
   }
+
+  &--game-over {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }

@@ -10,8 +10,14 @@ header {
     animation: slideToTop 1.5s ease;
   }
 
-  .header-icon img {
-    margin: 0 auto;
+  .header-icon {
+    img {
+      margin: 0 auto;
+    }
+
+    &--hide {
+      display: none;
+    }
   }
 }
 

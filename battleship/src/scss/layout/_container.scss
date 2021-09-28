@@ -4,9 +4,9 @@
   transition: opacity 1s ease;
   margin: 0 auto;
 
-  //   &--set-content {
-  //     opacity: 0;
-  //   }
+    &--set-content {
+      opacity: 0;
+    }
 
   // Applied after the name has been entered
   &--game-active {

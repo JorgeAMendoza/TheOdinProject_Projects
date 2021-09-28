@@ -9,6 +9,7 @@
 @use './components/game-message';
 @use './components/place-ships';
 @use './components//placement-board';
+@use './components/game-over';
 
 // Layout
 @use './layout/header';
