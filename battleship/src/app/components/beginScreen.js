@@ -1,10 +1,5 @@
 import battleShipIcon from '../../assets/icons/ship-icons/battleship.svg';
 
-// File that will handle the namee input
-// More specifially, contain the html to write into the page.
-
-// Can it take in the body, and add the event listeners here?
-
 const beginScreen = (body) => {
   const pageBody = body;
   pageBody.innerHTML = `<header>

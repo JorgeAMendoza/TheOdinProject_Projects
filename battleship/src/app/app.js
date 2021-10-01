@@ -1,4 +1,5 @@
 import beginScreen from './components/beginScreen';
+import setupScreen from './components/setupScreen';
 
 export default function app() {
   const staticDOM = {
@@ -12,6 +13,18 @@ export default function app() {
     playerName = event.target.elements[0].value;
     container.classList.add('container--set-content');
     header.classList.add('game-start');
+  };
+
+  const renderPlayerSetup = () => {
+    // Call function to write playersetup on the page
+    console.log('Rendering playersetup');
+    const gameContainer = document.querySelector('.container');
+    setupScreen(gameContainer);
+    gameContainer.classList.add('container--game-active');
+    staticDOM.gameBody.classList.add('body--game-active');
+    gameContainer.classList.remove('container--set-content');
+    
+    
   };
 
   const renderGameStart = () => {
@@ -28,7 +41,7 @@ export default function app() {
         .querySelector('.header-icon')
         .classList.add('header-icon--hide');
     });
-    gameHeader.addEventListener('animationend', () => {});
+    gameHeader.addEventListener('animationend', renderPlayerSetup);
   };
 
   const start = () => {
