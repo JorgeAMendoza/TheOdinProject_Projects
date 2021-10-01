@@ -63,8 +63,11 @@ export default function gameboard() {
     return 'hit';
   };
 
+  const returnBoard = () => shipBoard;
+
   return {
     placeShip,
     receiveAttack,
+    returnBoard,
   };
 }
