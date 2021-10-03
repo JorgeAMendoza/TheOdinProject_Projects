@@ -2,16 +2,23 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
   gap: 2rem;
   margin-top: 4rem;
 
   &__ship-icon {
     width: 50px;
+    transform-origin: center;
   }
 
   &__ship-indicator {
     position: absolute;
+    top: 0;
+    left: 0;
     display: none;
+    transform: rotate(180deg);
+  }
+
+  &__ship-indicator--show {
+    display: block;
   }
 }

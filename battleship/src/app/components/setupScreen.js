@@ -45,6 +45,7 @@ const setupScreen = (container) => {
 
     <div class="placement-board">
       <h3 class="placement-board__text"></h3>
+      <button id="axisChange" class="btn">Change Direction</button>
       <div class="placement-board__board">
         <div class="placement-board__board-piece"></div>
         <div class="placement-board__board-piece"></div>
