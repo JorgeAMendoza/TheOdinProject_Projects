@@ -1,4 +1,6 @@
 import ship from './game-logic/ship';
+import gameboard from './game-logic/gameboard';
+import player from './game-logic/player';
 import beginScreen from './components/beginScreen';
 import setupScreen from './components/setupScreen';
 
@@ -6,22 +8,22 @@ export default function app() {
   const staticDOM = {
     gameBody: document.querySelector('body'),
   };
-  let playerName;
+  let playerInfo;
+  let opponentInfo;
+
 
   const shiftArrowIcon = (arrow, shipIcon) => {
     const shipPosition = shipIcon.getBoundingClientRect();
     arrow.style.setProperty(
       'transform',
-      `translate(${shipPosition.left + 12}px, ${
-        shipPosition.top
-      }px) rotate(180deg)`
+      `translate(${shipPosition.left + 12}px, 220px) rotate(180deg)`
     );
   };
 
   const setPlayerName = (event, header, container) => {
     event.preventDefault();
     if (event.target.elements[0].value === '') return;
-    playerName = event.target.elements[0].value;
+    // player = player(event.target.elements[0].value, );
     container.classList.add('container--set-content');
     header.classList.add('game-start');
   };
@@ -48,14 +50,9 @@ export default function app() {
       ship('Patrol Boat', 2),
     ];
     let shipIndex = 0;
-    console.log(shipArray);
 
-    // Start off by giving the arrow the appear class.
     arrowPointer.classList.add('place-ships__ship-indicator--show');
-    shiftArrowIcon(arrowPointer, shipIcons[3]);
-    // Set property on the arrow class, set transform in notes.
-
-    // So we are going to need to grab each game piece, and the arrow that is going to move from ship to ship.
+    shiftArrowIcon(arrowPointer, shipIcons[shipIndex]);
 
     // fOR spaces
     boardPieces.forEach((piece) =>
@@ -67,6 +64,17 @@ export default function app() {
     boardPieces.forEach((piece) =>
       piece.addEventListener('mouseleave', (e) => {
         e.target.style.setProperty('background', 'white');
+      })
+    );
+
+    boardPieces.forEach((piece) =>
+      piece.addEventListener('click', () => {
+        // Code to place ship into the player gameboard.
+
+        if (shipIndex < shipArray.length) {
+          shipIndex += 1;
+          shiftArrowIcon(arrowPointer, shipIcons[shipIndex]);
+        }
       })
     );
     // Iterate over the node list to set event listner.
