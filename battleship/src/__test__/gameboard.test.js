@@ -1,6 +1,6 @@
 import { expect, describe, it } from '@jest/globals';
-import gameboard from '../app/gameboard/gameboard';
-import ship from '../app/ship/ship';
+import gameboard from '../app/game-logic/gameboard';
+import ship from '../app/game-logic/ship';
 
 describe('Testing game board module', () => {
   const testGameBoard = gameboard();

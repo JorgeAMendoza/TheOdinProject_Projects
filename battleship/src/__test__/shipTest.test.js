@@ -1,5 +1,5 @@
 import { describe, expect, it } from '@jest/globals';
-import ship from '../app/ship/ship';
+import ship from '../app/game-logic/ship';
 
 describe('Testing Ship Module', () => {
   const testShip = ship('Carrier', 5);
