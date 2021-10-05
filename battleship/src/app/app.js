@@ -10,7 +10,7 @@ export default function app() {
   };
   let playerInfo;
   let opponentInfo;
-
+  let canPlace = true;
 
   const shiftArrowIcon = (arrow, shipIcon) => {
     const shipPosition = shipIcon.getBoundingClientRect();
@@ -20,12 +20,17 @@ export default function app() {
     );
   };
 
+  const initializePlayers = (playerName) => {
+    playerInfo = player(playerName, gameboard());
+    opponentInfo = player('Enemy', gameboard());
+  };
+
   const setPlayerName = (event, header, container) => {
     event.preventDefault();
     if (event.target.elements[0].value === '') return;
-    // player = player(event.target.elements[0].value, );
     container.classList.add('container--set-content');
     header.classList.add('game-start');
+    initializePlayers(event.target.elements[0].value);
   };
 
   const renderPlayerSetup = () => {
