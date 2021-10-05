@@ -6,6 +6,8 @@
         "linebreak-style":"off",
         "prefer-const":"warn",
         "implicit-arrow-linebreak":"off",
-        "no-undef": "warn"
+        "no-undef": "warn",
+        "comma-dangle":"off",
+        "function-paren-newline":"off"
     }
 }
