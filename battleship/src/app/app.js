@@ -63,6 +63,11 @@ export default function app() {
     boardPieces.forEach((piece) =>
       piece.addEventListener('mouseenter', (e) => {
         e.target.style.setProperty('background', 'black');
+        // Call function to see if space is valid.
+        // Question, how do we get the cooridnate of the current spot,
+        // Set data attribute.
+
+        // How do we insert grey circles if the spot is valid?
       })
     );
 

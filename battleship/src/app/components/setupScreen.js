@@ -4,6 +4,7 @@ import destroyerShip from '../../assets/icons/ship-icons/destroyer.svg';
 import patrolBoat from '../../assets/icons/ship-icons/patrol-boat.svg';
 import submarine from '../../assets/icons/ship-icons/submarine.svg';
 import arrowIcon from '../../assets/icons/other/arrow.svg';
+import writeBoardPieces from './helpers/writeBoardPieces';
 
 const setupScreen = (container) => {
   const containerHTML = container;
@@ -47,106 +48,7 @@ const setupScreen = (container) => {
       <h3 class="placement-board__text"></h3>
       <button id="axisChange" class="btn">Change Direction</button>
       <div class="placement-board__board">
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
-        <div class="placement-board__board-piece"></div>
+        ${writeBoardPieces()}
       </div>
     </div>
   </section>`;
