@@ -8,27 +8,29 @@ describe('Testing game board module', () => {
   const testShipTwo = ship('Battleship', 4);
 
   it('Test 1: Out of bounds placement returns false on x direction', () => {
-    expect(testGameBoard.placeShip(testShipOne, 7, 0, 'x')).toBe(false);
+    expect(testGameBoard.canBePlaced(testShipOne, 7, 0, 'x')).toBe(false);
   });
 
   it('Test 2: Out of bounds placement returns false on y axis', () => {
-    expect(testGameBoard.placeShip(testShipOne, 0, 7, 'y')).toBe(false);
+    expect(testGameBoard.canBePlaced(testShipOne, 0, 7, 'y')).toBe(false);
   });
 
-  it('Test 3: in bounds placement returns true on x axis', () => {
-    expect(testGameBoard.placeShip(testShipOne, 2, 4, 'x')).toBe(true);
+  it('Test 3: in bounds placement returns true on x axis and places ship', () => {
+    expect(testGameBoard.canBePlaced(testShipOne, 2, 4, 'x')).toBe(true);
+    expect(testGameBoard.placeShip(testShipOne, 2, 4, 'x'));
   });
 
   it('Test 4: in bounds placement returns true on y axis', () => {
+    expect(testGameBoard.canBePlaced(testShipTwo, 0, 0, 'y')).toBe(true);
     expect(testGameBoard.placeShip(testShipTwo, 0, 0, 'y')).toBe(true);
   });
 
   it('Test 5: Placing a ship in a taken spot should return false on x axis', () => {
-    expect(testGameBoard.placeShip(testShipTwo, 2, 3)).toBe(false);
+    expect(testGameBoard.canBePlaced(testShipTwo, 2, 3)).toBe(false);
   });
 
   it('Test 6: Placing a ship in a taken spot should return false on the y axis', () => {
-    expect(testGameBoard.placeShip(testShipOne, 0, 2)).toBe(false);
+    expect(testGameBoard.canBePlaced(testShipOne, 0, 2)).toBe(false);
   });
 
   it('Test 5: Sending a unsucessful attack should return missed', () => {
