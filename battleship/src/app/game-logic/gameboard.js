@@ -10,7 +10,8 @@ export default function gameboard() {
     return false;
   };
 
-  const canBePlaced = (shipLength, xStart, yStart, direction) => {
+  const canBePlaced = (ship, xStart, yStart, direction) => {
+    const shipLength = ship.getLength();
     let xCord = xStart;
     let yCord = yStart;
     if (direction === 'x') {
@@ -39,7 +40,6 @@ export default function gameboard() {
     const shipLength = ship.getLength();
     let xCord = x;
     let yCord = y;
-    if (!canBePlaced(shipLength, x, y, direction)) return false;
 
     for (let i = 0; i < shipLength; i += 1) {
       shipBoard[xCord][yCord] = { index: i, ship };
@@ -69,5 +69,6 @@ export default function gameboard() {
     placeShip,
     receiveAttack,
     returnBoard,
+    canBePlaced,
   };
 }
