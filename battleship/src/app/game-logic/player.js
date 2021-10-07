@@ -5,6 +5,9 @@ export default function player(name, board) {
   const placeShip = (ship, x, y, direction) =>
     playerBoard.placeShip(ship, x, y, direction);
 
+  const canPlace = (ship, x, y, direction) =>
+    playerBoard.canBePlaced(ship, x, y, direction);
+
   const getAttack = (x, y) => playerBoard.receiveAttack(x, y);
 
   const getPlayerName = () => playerName;
@@ -13,5 +16,6 @@ export default function player(name, board) {
     placeShip,
     getPlayerName,
     getAttack,
+    canPlace,
   };
 }

@@ -11,12 +11,13 @@ describe('Test Suite for Player Module', () => {
 
   it('Test 1: Create Carrier ship and place it down on the board.', () => {
     const testShip = ship('Carrier', 5);
+    expect(playerOne.canPlace(testShip, 0, 0, 'x')).toBe(true);
     expect(playerOne.placeShip(testShip, 0, 0, 'x')).toBe(true);
   });
 
   it('Test 2: Place down Battleship in taken spot and error checking succceeds', () => {
     const testShip = ship('Battleship', 4);
-    expect(playerOne.placeShip(testShip, 0, 0, 'y')).toBe(false);
+    expect(playerOne.canPlace(testShip, 0, 0, 'y')).toBe(false);
   });
 
   it('Test 3: Send attack to the opponent board and return true if hit', () => {
