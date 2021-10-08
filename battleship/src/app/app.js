@@ -11,6 +11,7 @@ export default function app() {
   let playerInfo;
   let opponentInfo;
   let canPlace = true;
+  let shipDirection = 'x';
 
   const shiftArrowIcon = (arrow, shipIcon) => {
     const shipPosition = shipIcon.getBoundingClientRect();
@@ -63,6 +64,17 @@ export default function app() {
     boardPieces.forEach((piece) =>
       piece.addEventListener('mouseenter', (e) => {
         e.target.style.setProperty('background', 'black');
+        const [xCord, yCord] = e.target.dataset.coordinate
+          .split(',')
+          .map((cord) => Number(cord));
+
+        console.log(
+          playerInfo.canPlace(ship('Carrier', 5), xCord, yCord, shipDirection)
+        );
+        // Question, how do we get the cooridnate of the current spot,
+        // Set data attribute.
+
+        // How do we insert grey circles if the spot is valid?
       })
     );
 
