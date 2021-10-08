@@ -16,13 +16,13 @@ export default function gameboard() {
     let yCord = yStart;
     if (direction === 'x') {
       for (let i = 0; i < shipLength; i += 1) {
-        if (xCord > 7 || isTaken(xCord, yCord)) return false;
-        xCord += 1;
+        if (yCord > 9 || isTaken(xCord, yCord)) return false;
+        yCord += 1;
       }
     } else {
       for (let i = 0; i < shipLength; i += 1) {
-        if (yCord > 7 || isTaken(xCord, yCord)) return false;
-        yCord += 1;
+        if (xCord > 9 || isTaken(xCord, yCord)) return false;
+        xCord += 1;
       }
     }
 
@@ -43,8 +43,8 @@ export default function gameboard() {
 
     for (let i = 0; i < shipLength; i += 1) {
       shipBoard[xCord][yCord] = { index: i, ship };
-      if (direction === 'x') xCord += 1;
-      else yCord += 1;
+      if (direction === 'x') yCord += 1;
+      else xCord += 1;
     }
 
     ships.push(ship);

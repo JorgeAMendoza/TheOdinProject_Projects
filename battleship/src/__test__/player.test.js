@@ -24,7 +24,7 @@ describe('Test Suite for Player Module', () => {
     const testShipOne = ship('Carrier', 5);
     const TestShipTwo = ship('Patrol Boat', 3);
     playerTwo.placeShip(testShipOne, 0, 0, 'x');
-    playerTwo.placeShip(TestShipTwo, 0, 1, 'y');
+    playerTwo.placeShip(TestShipTwo, 1, 0, 'y');
     expect(playerTwo.getAttack(0, 0)).toBe('hit');
   });
 
@@ -33,25 +33,25 @@ describe('Test Suite for Player Module', () => {
   });
 
   it('Test 5: Sunken ship but not game won', () => {
-    playerTwo.getAttack(1, 0);
-    playerTwo.getAttack(2, 0);
-    playerTwo.getAttack(3, 0);
+    playerTwo.getAttack(0, 1);
+    playerTwo.getAttack(0, 2);
+    playerTwo.getAttack(0, 3);
 
-    expect(playerTwo.getAttack(4, 0)).toBe('sunk');
+    expect(playerTwo.getAttack(0, 4)).toBe('sunk');
   });
 
   it('Test 6: Sunken ship and all ships sunk', () => {
-    playerTwo.getAttack(0, 1);
-    playerTwo.getAttack(0, 2);
+    playerTwo.getAttack(1, 0);
+    playerTwo.getAttack(2, 0);
 
-    expect(playerTwo.getAttack(0, 3)).toBe('win');
+    expect(playerTwo.getAttack(3, 0)).toBe('win');
   });
 
   it('Test 7: Sunken ship and all ship sunk for other player', () => {
     playerOne.getAttack(0, 0);
-    expect(playerOne.getAttack(1, 0)).toBe('hit');
-    playerOne.getAttack(2, 0);
-    playerOne.getAttack(3, 0);
-    expect(playerOne.getAttack(4, 0)).toBe('win');
+    expect(playerOne.getAttack(0, 1)).toBe('hit');
+    playerOne.getAttack(0, 2);
+    playerOne.getAttack(0, 3);
+    expect(playerOne.getAttack(0, 4)).toBe('win');
   });
 });
