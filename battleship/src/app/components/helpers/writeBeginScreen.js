@@ -1,8 +1,8 @@
-import battleShipIcon from '../../assets/icons/ship-icons/battleship.svg';
+import battleShipIcon from '../../../assets/icons/ship-icons/battleship.svg';
 
-const beginScreen = (body) => {
-  const pageBody = body;
-  pageBody.innerHTML = `<header>
+const writeBeginScreen = (body) => {
+  const gameBody = body;
+  gameBody.innerHTML = `<header>
     <h1 class="game-title header-one">Battleship</h1>
     <div class="header-icon">
       <img
@@ -21,4 +21,4 @@ const beginScreen = (body) => {
     </main>`;
 };
 
-export default beginScreen;
+export default writeBeginScreen;

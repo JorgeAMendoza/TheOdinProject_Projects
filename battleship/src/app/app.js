@@ -1,7 +1,7 @@
 import ship from './game-logic/ship';
 import gameboard from './game-logic/gameboard';
 import player from './game-logic/player';
-import beginScreen from './components/beginScreen';
+import renderGameStart from './components/render-game-start';
 import setupScreen from './components/setupScreen';
 
 import greyGamePiece from '../assets/icons/other/grey-game-piece.svg';
@@ -26,14 +26,6 @@ export default function app() {
   const initializePlayers = (playerName) => {
     playerInfo = player(playerName, gameboard());
     opponentInfo = player('Enemy', gameboard());
-  };
-
-  const setPlayerName = (event, header, container) => {
-    event.preventDefault();
-    if (event.target.elements[0].value === '') return;
-    container.classList.add('container--set-content');
-    header.classList.add('game-start');
-    initializePlayers(event.target.elements[0].value);
   };
 
   const renderPlayerSetup = () => {
@@ -111,25 +103,8 @@ export default function app() {
     gameContainer.classList.remove('container--set-content');
   };
 
-  const renderGameStart = () => {
-    beginScreen(staticDOM.gameBody);
-    const nameInputForm = document.querySelector('#nameInput');
-    const gameHeader = document.querySelector('header');
-    const gameContainer = document.querySelector('.container');
-    nameInputForm.addEventListener('submit', (e) => {
-      setPlayerName(e, gameHeader, gameContainer);
-    });
-
-    gameHeader.addEventListener('animationstart', () => {
-      gameHeader
-        .querySelector('.header-icon')
-        .classList.add('header-icon--hide');
-    });
-    gameHeader.addEventListener('animationend', renderPlayerSetup);
-  };
-
   const start = () => {
-    renderGameStart();
+    renderGameStart(staticDOM.gameBody, initializePlayers);
   };
 
   return { start };
