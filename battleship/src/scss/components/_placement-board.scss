@@ -28,6 +28,9 @@
   &__board-piece {
     background-color: #fff;
     border: 1px solid $board-piece-border;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     &:nth-child(1) {
       border-top-left-radius: 10px;
@@ -41,5 +44,9 @@
     &:nth-child(100) {
       border-bottom-right-radius: 10px;
     }
+  }
+
+  &__game-piece {
+    width: 60%;
   }
 }
