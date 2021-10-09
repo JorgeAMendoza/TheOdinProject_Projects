@@ -4,6 +4,8 @@ import player from './game-logic/player';
 import beginScreen from './components/beginScreen';
 import setupScreen from './components/setupScreen';
 
+import greyGamePiece from '../assets/icons/other/grey-game-piece.svg';
+
 export default function app() {
   const staticDOM = {
     gameBody: document.querySelector('body'),
@@ -60,20 +62,28 @@ export default function app() {
     arrowPointer.classList.add('place-ships__ship-indicator--show');
     shiftArrowIcon(arrowPointer, shipIcons[shipIndex]);
 
-    // fOR spaces
     boardPieces.forEach((piece) =>
       piece.addEventListener('mouseenter', (e) => {
-        e.target.style.setProperty('background', 'black');
         const [xCord, yCord] = e.target.dataset.coordinate
           .split(',')
           .map((cord) => Number(cord));
 
-        console.log(
-          playerInfo.canPlace(ship('Carrier', 5), xCord, yCord, shipDirection)
-        );
-        // Question, how do we get the cooridnate of the current spot,
-        // Set data attribute.
-
+        if (
+          !playerInfo.canPlace(
+            shipArray[shipIndex],
+            xCord,
+            yCord,
+            shipDirection
+          )
+          // Write a red piece into the board piece
+        ) {
+          canPlace = false;
+          return;
+        }
+        canPlace = true;
+        // e.target.innerHTML = `<img src=${greyGamePiece} class="placement-board__game-piece">`;
+        // Lets grab the current cord (we have) and if the direction is x, then iterate over the relative pieces and add a grey square.
+        // if true, lets start with placing a grey circle within the item/place the background.
         // How do we insert grey circles if the spot is valid?
       })
     );
@@ -86,21 +96,14 @@ export default function app() {
 
     boardPieces.forEach((piece) =>
       piece.addEventListener('click', () => {
-        // Code to place ship into the player gameboard.
+        if (!canPlace) return;
 
-        if (shipIndex < shipArray.length) {
-          shipIndex += 1;
-          shiftArrowIcon(arrowPointer, shipIcons[shipIndex]);
-        }
+        // Grab the coordinates again, and over these pieces, depending on the direction, iterate over the relative pieces and write a blue square, then at the same time REMOVE the event listener so that we dont overwrite over these blue square if we hover them again.
+        // Then move the arrow to the next ship, and repeat the process until we have exhouasted the ship icon array.
+        shipIndex += 1;
+        shiftArrowIcon(arrowPointer, shipIcons[shipIndex]);
       })
     );
-    // Iterate over the node list to set event listner.
-    // For a hover event, set a grey square, "hover in and hover out"
-    // For hover in, set text content to grey circle.
-    // on click, check to see if space is valid, if not then place a red dot and write the error message.
-    // On hover out, wipe markup and repeat process.
-    // if spot is valid, then remove error message, grab spaces that belong in that row, (x or y) and write blue circles within then.
-    // Then move the arrow to the next ship, and repeat the process until we have exhouasted the ship icon array.
 
     // Display Content once everything has been prepared.
     gameContainer.classList.add('container--game-active');
