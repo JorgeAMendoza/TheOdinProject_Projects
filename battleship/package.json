@@ -4,7 +4,7 @@
   "description": "Battleship game that is part of the Odin Project Curriculum",
   "main": "index.js",
   "scripts": {
-    "test": "jest player.test.js", 
+    "test": "jest", 
     "start": "webpack serve --config ./webpack/webpack.dev.js --open chrome",
     "build": "webpack --config ./webpack/webpack.prod.js",
     "watch": "webpack --config ./webpack/webpack.dev.js --watch"

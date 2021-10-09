@@ -1,12 +1,12 @@
-import carrierShip from '../../assets/icons/ship-icons/carrier.svg';
-import battleShip from '../../assets/icons/ship-icons/battleship.svg';
-import destroyerShip from '../../assets/icons/ship-icons/destroyer.svg';
-import patrolBoat from '../../assets/icons/ship-icons/patrol-boat.svg';
-import submarine from '../../assets/icons/ship-icons/submarine.svg';
-import arrowIcon from '../../assets/icons/other/arrow.svg';
-import writeBoardPieces from './helpers/writeBoardPieces';
+import carrierShip from '../../../assets/icons/ship-icons/carrier.svg';
+import battleShip from '../../../assets/icons/ship-icons/battleship.svg';
+import destroyerShip from '../../../assets/icons/ship-icons/destroyer.svg';
+import patrolBoat from '../../../assets/icons/ship-icons/patrol-boat.svg';
+import submarine from '../../../assets/icons/ship-icons/submarine.svg';
+import arrowIcon from '../../../assets/icons/other/arrow.svg';
+import writeBoardPieces from './write-board-pieces';
 
-const setupScreen = (container) => {
+const writeSetupScreen = (container) => {
   const containerHTML = container;
   containerHTML.innerHTML = `<h2 class="game-message header-two">Place Your Fleet</h2>
   <section id="gameSetup" class="game-setup">
@@ -54,4 +54,4 @@ const setupScreen = (container) => {
   </section>`;
 };
 
-export default setupScreen;
+export default writeSetupScreen;

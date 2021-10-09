@@ -1,13 +1,21 @@
+import writeBeginScreen from './helpers/write-begin-screen';
+import renderGameSetup from './render-game-setup';
 import player from '../game-logic/player';
-import writeBeginScreen from './helpers/writeBeginScreen';
+import gameboard from '../game-logic/gameboard';
 
-const renderGameStart = (domTarget, createPlayers, renderNextStep) => {
+const initializePlayers = (playerName) => ({
+  player: player(playerName, gameboard()),
+  opponent: player('Opponent', gameboard()),
+});
+
+const renderGameStart = (domTarget) => {
   const gameBody = domTarget;
   writeBeginScreen(gameBody);
 
   const nameInputForm = gameBody.querySelector('#nameInput');
   const gameHeader = gameBody.querySelector('header');
   const gameContainer = gameBody.querySelector('.container');
+  let playerData;
 
   nameInputForm.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -17,16 +25,15 @@ const renderGameStart = (domTarget, createPlayers, renderNextStep) => {
 
     gameContainer.classList.add('container--set-content');
     gameHeader.classList.add('game-start');
-    createPlayers(textInput);
+    playerData = initializePlayers(textInput);
   });
 
   gameHeader.addEventListener('animationstart', () => {
     gameHeader.querySelector('.header-icon').classList.add('header-icon--hide');
   });
 
-  //   What if we take in the next step in the game as a setup, and it is called within here.
   gameHeader.addEventListener('animationend', () =>
-    console.log('rendering game start')
+    renderGameSetup(gameBody, playerData)
   );
 };
 
