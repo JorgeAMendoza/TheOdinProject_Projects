@@ -44,6 +44,24 @@
     &:nth-child(100) {
       border-bottom-right-radius: 10px;
     }
+
+    &.placement-board__board-piece--grey {
+      background: url('/src/assets/icons/other/grey-game-piece.svg') no-repeat
+          center center/60%,
+        #fff;
+    }
+
+    &.placement-board__board-piece--blue {
+      background: url('/src/assets/icons/other/blue-game-piece.svg') no-repeat
+          center center/60%,
+        #fff;
+    }
+
+    &.placement-board__board-piece--red {
+      background: url('/src/assets/icons/other/red-game-piece.svg') no-repeat
+          center center/60%,
+        #fff;
+    }
   }
 
   &__game-piece {

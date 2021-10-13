@@ -1,6 +1,7 @@
 import writeSetupScreen from './helpers/write-setup-screen';
 import ship from '../game-logic/ship';
 import greyGamePiece from '../../assets/icons/other/grey-game-piece.svg';
+import redGamepiece from '../../assets/icons/other/red-game-piece.svg';
 
 const shiftArrowIcon = (arrow, shipIcon) => {
   const shipPosition = shipIcon.getBoundingClientRect();
@@ -50,29 +51,139 @@ const renderGameSetup = (domTarget, playerData, OpponentData) => {
         !playerInfo.canPlace(shipArray[shipIndex], xCord, yCord, shipDirection)
       ) {
         canPlace = false;
+        e.target.classList.add('placement-board__board-piece--red');
         return;
       }
       canPlace = true;
-      e.target.innerHTML = `<img src=${greyGamePiece} class="placement-board__game-piece">`;
+
+      if (shipDirection === 'x') {
+        for (
+          let i = yCord;
+          i < yCord + shipArray[shipIndex].getLength();
+          i += 1
+        ) {
+          // Get the current Ycord and xcord, in this case i is y.
+          const writePieceY = i;
+          const boardPiece = xCord * 10 + writePieceY;
+          boardPieces[boardPiece].classList.add(
+            'placement-board__board-piece--grey'
+          );
+        }
+      } else {
+        for (
+          let i = xCord;
+          i < xCord + shipArray[shipIndex].getLength();
+          i += 1
+        ) {
+          // Get the current xCord and xcord, in this case i is y.
+          const writePieceX = i;
+          const boardPiece = writePieceX * 10 + yCord;
+          boardPieces[boardPiece].classList.add(
+            'placement-board__board-piece--grey'
+          );
+        }
+      }
     })
   );
 
   boardPieces.forEach((piece) =>
     piece.addEventListener('mouseleave', (e) => {
-      e.target.style.setProperty('background', 'white');
+      if (!canPlace) {
+        e.target.classList.remove('placement-board__board-piece--red');
+        return;
+      }
+      const [xCord, yCord] = e.target.dataset.coordinate
+        .split(',')
+        .map((cord) => Number(cord));
+
+      if (shipDirection === 'x') {
+        for (
+          let i = yCord;
+          i < yCord + shipArray[shipIndex].getLength();
+          i += 1
+        ) {
+          // Get the current Ycord and xcord, in this case i is y.
+          const writePieceY = i;
+          const boardPiece = xCord * 10 + writePieceY;
+          boardPieces[boardPiece].classList.remove(
+            'placement-board__board-piece--grey'
+          );
+        }
+      } else {
+        for (
+          let i = xCord;
+          i < xCord + shipArray[shipIndex].getLength();
+          i += 1
+        ) {
+          // Get the current Ycord and xcord, in this case i is y.
+          const writePieceX = i;
+          const boardPiece = writePieceX * 10 + yCord;
+          boardPieces[boardPiece].classList.remove(
+            'placement-board__board-piece--grey'
+          );
+        }
+      }
     })
   );
 
   boardPieces.forEach((piece) =>
-    piece.addEventListener('click', () => {
+    piece.addEventListener('click', (e) => {
       if (!canPlace) return;
+      const [xCord, yCord] = e.target.dataset.coordinate
+        .split(',')
+        .map((cord) => Number(cord));
 
-      // Grab the coordinates again, and over these pieces, depending on the direction, iterate over the relative pieces and write a blue square, then at the same time REMOVE the event listener so that we dont overwrite over these blue square if we hover them again.
-      // Then move the arrow to the next ship, and repeat the process until we have exhouasted the ship icon array.
-      shipIndex += 1;
-      shiftArrowIcon(arrowPointer, shipIcons[shipIndex]);
+      if (shipDirection === 'x') {
+        for (
+          let i = yCord;
+          i < yCord + shipArray[shipIndex].getLength();
+          i += 1
+        ) {
+          // Get the current Ycord and xcord, in this case i is y.
+          const writePieceY = i;
+          const boardPiece = xCord * 10 + writePieceY;
+          boardPieces[boardPiece].classList.add(
+            'placement-board__board-piece--blue'
+          );
+          playerInfo.placeShip(
+            shipArray[shipIndex],
+            xCord,
+            yCord,
+            shipDirection
+          );
+        }
+      } else {
+        for (
+          let i = xCord;
+          i < xCord + shipArray[shipIndex].getLength();
+          i += 1
+        ) {
+          // Get the current Ycord and xcord, in this case i is y.
+          const writePieceX = i;
+          const boardPiece = writePieceX * 10 + yCord;
+          boardPieces[boardPiece].classList.remove(
+            'placement-board__board-piece--grey'
+          );
+        }
+      }
+
+      // So now we need to write the blue squares onto the spaces.
+      // After we write the blue squares, we remove the mouseenter, mouseleave, and click events.
+      // Use same logic as above.
+
+      // // Then move the arrow to the next ship, and repeat the process until we have exhouasted the ship icon array.
+      // shipIndex += 1;
+      // shiftArrowIcon(arrowPointer, shipIcons[shipIndex]);
     })
   );
+
+  changeAxisButton.addEventListener('click', () => {
+    if (shipDirection === 'x') {
+      shipDirection = 'y';
+    } else {
+      shipDirection = 'x';
+    }
+  });
 
   arrowPointer.classList.add('place-ships__ship-indicator--show');
   gameContainer.classList.add('container--game-active');
