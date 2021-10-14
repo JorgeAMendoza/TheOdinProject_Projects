@@ -43,7 +43,7 @@ const renderGameSetup = (domTarget, playerData, OpponentData) => {
     yCord,
     direction,
     gamePieceName,
-    remove = false
+    removeClass = false
   ) => {
     if (direction === 'x') {
       for (
@@ -53,8 +53,9 @@ const renderGameSetup = (domTarget, playerData, OpponentData) => {
       ) {
         const writePieceY = i;
         const boardPiece = xCord * 10 + writePieceY;
-        if (remove) boardPieces[boardPiece].classList.remove(gamePieceName);
-        else boardPieces[boardPiece].classList.add(gamePieceName);
+        if (removeClass) {
+          boardPieces[boardPiece].classList.remove(gamePieceName);
+        } else boardPieces[boardPiece].classList.add(gamePieceName);
       }
     } else {
       for (
@@ -64,8 +65,9 @@ const renderGameSetup = (domTarget, playerData, OpponentData) => {
       ) {
         const writePieceX = i;
         const boardPiece = writePieceX * 10 + yCord;
-        if (remove) boardPieces[boardPiece].classList.remove(gamePieceName);
-        else boardPieces[boardPiece].classList.add(gamePieceName);
+        if (removeClass) {
+          boardPieces[boardPiece].classList.remove(gamePieceName);
+        } else boardPieces[boardPiece].classList.add(gamePieceName);
       }
     }
   };
@@ -121,8 +123,69 @@ const renderGameSetup = (domTarget, playerData, OpponentData) => {
     const [xCord, yCord] = e.target.dataset.coordinate
       .split(',')
       .map((cord) => Number(cord));
-    // shipIndex += 1;
-    // shiftArrowIcon(arrowPointer, shipIcons[shipIndex]);
+
+    modifyGamePieces(
+      xCord,
+      yCord,
+      shipDirection,
+      'placement-board__board-piece--grey',
+      true
+    );
+
+    modifyGamePieces(
+      xCord,
+      yCord,
+      shipDirection,
+      'placement-board__board-piece--blue'
+    );
+
+    if (shipDirection === 'x') {
+      for (
+        let i = yCord;
+        i < yCord + shipArray[shipIndex].getLength();
+        i += 1
+      ) {
+        const writePieceY = i;
+        const boardPiece = xCord * 10 + writePieceY;
+        boardPieces[boardPiece].removeEventListener(
+          'mouseenter',
+          mouseEnterPiece
+        );
+        boardPieces[boardPiece].removeEventListener(
+          'mouseleave',
+          mouseLeavePiece
+        );
+        boardPieces[boardPiece].removeEventListener('click', mouseClickPiece);
+      }
+    } else {
+      for (
+        let i = xCord;
+        i < xCord + shipArray[shipIndex].getLength();
+        i += 1
+      ) {
+        const writePieceX = i;
+        const boardPiece = writePieceX * 10 + yCord;
+        boardPieces[boardPiece].removeEventListener(
+          'mouseenter',
+          mouseEnterPiece
+        );
+        boardPieces[boardPiece].removeEventListener(
+          'mouseleave',
+          mouseLeavePiece
+        );
+        boardPieces[boardPiece].removeEventListener('click', mouseClickPiece);
+      }
+    }
+
+    playerInfo.placeShip(shipArray[shipIndex], xCord, yCord, shipDirection);
+
+    if (shipIndex === 4) {
+      console.log('rendering game area');
+      return;
+    }
+
+    shipIndex += 1;
+    shiftArrowIcon(arrowPointer, shipIcons[shipIndex]);
   };
 
   shiftArrowIcon(arrowPointer, shipIcons[0]);
