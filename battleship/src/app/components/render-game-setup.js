@@ -1,7 +1,5 @@
 import writeSetupScreen from './helpers/write-setup-screen';
 import ship from '../game-logic/ship';
-import greyGamePiece from '../../assets/icons/other/grey-game-piece.svg';
-import redGamepiece from '../../assets/icons/other/red-game-piece.svg';
 
 const shiftArrowIcon = (arrow, shipIcon) => {
   const shipPosition = shipIcon.getBoundingClientRect();
@@ -39,151 +37,103 @@ const renderGameSetup = (domTarget, playerData, OpponentData) => {
   ];
   let shipIndex = 0;
 
-  shiftArrowIcon(arrowPointer, shipIcons[0]);
-
-  // Set Event Listeners
-  boardPieces.forEach((piece) =>
-    piece.addEventListener('mouseenter', (e) => {
-      const [xCord, yCord] = e.target.dataset.coordinate
-        .split(',')
-        .map((cord) => Number(cord));
-      if (
-        !playerInfo.canPlace(shipArray[shipIndex], xCord, yCord, shipDirection)
+  // Need function for writing classes onto the board.
+  const modifyGamePieces = (
+    xCord,
+    yCord,
+    direction,
+    gamePieceName,
+    remove = false
+  ) => {
+    if (direction === 'x') {
+      for (
+        let i = yCord;
+        i < yCord + shipArray[shipIndex].getLength();
+        i += 1
       ) {
-        canPlace = false;
-        e.target.classList.add('placement-board__board-piece--red');
-        return;
+        const writePieceY = i;
+        const boardPiece = xCord * 10 + writePieceY;
+        if (remove) boardPieces[boardPiece].classList.remove(gamePieceName);
+        else boardPieces[boardPiece].classList.add(gamePieceName);
       }
-      canPlace = true;
-
-      if (shipDirection === 'x') {
-        for (
-          let i = yCord;
-          i < yCord + shipArray[shipIndex].getLength();
-          i += 1
-        ) {
-          // Get the current Ycord and xcord, in this case i is y.
-          const writePieceY = i;
-          const boardPiece = xCord * 10 + writePieceY;
-          boardPieces[boardPiece].classList.add(
-            'placement-board__board-piece--grey'
-          );
-        }
-      } else {
-        for (
-          let i = xCord;
-          i < xCord + shipArray[shipIndex].getLength();
-          i += 1
-        ) {
-          // Get the current xCord and xcord, in this case i is y.
-          const writePieceX = i;
-          const boardPiece = writePieceX * 10 + yCord;
-          boardPieces[boardPiece].classList.add(
-            'placement-board__board-piece--grey'
-          );
-        }
+    } else {
+      for (
+        let i = xCord;
+        i < xCord + shipArray[shipIndex].getLength();
+        i += 1
+      ) {
+        const writePieceX = i;
+        const boardPiece = writePieceX * 10 + yCord;
+        if (remove) boardPieces[boardPiece].classList.remove(gamePieceName);
+        else boardPieces[boardPiece].classList.add(gamePieceName);
       }
-    })
-  );
+    }
+  };
 
-  boardPieces.forEach((piece) =>
-    piece.addEventListener('mouseleave', (e) => {
-      if (!canPlace) {
-        e.target.classList.remove('placement-board__board-piece--red');
-        return;
-      }
-      const [xCord, yCord] = e.target.dataset.coordinate
-        .split(',')
-        .map((cord) => Number(cord));
-
-      if (shipDirection === 'x') {
-        for (
-          let i = yCord;
-          i < yCord + shipArray[shipIndex].getLength();
-          i += 1
-        ) {
-          // Get the current Ycord and xcord, in this case i is y.
-          const writePieceY = i;
-          const boardPiece = xCord * 10 + writePieceY;
-          boardPieces[boardPiece].classList.remove(
-            'placement-board__board-piece--grey'
-          );
-        }
-      } else {
-        for (
-          let i = xCord;
-          i < xCord + shipArray[shipIndex].getLength();
-          i += 1
-        ) {
-          // Get the current Ycord and xcord, in this case i is y.
-          const writePieceX = i;
-          const boardPiece = writePieceX * 10 + yCord;
-          boardPieces[boardPiece].classList.remove(
-            'placement-board__board-piece--grey'
-          );
-        }
-      }
-    })
-  );
-
-  boardPieces.forEach((piece) =>
-    piece.addEventListener('click', (e) => {
-      if (!canPlace) return;
-      const [xCord, yCord] = e.target.dataset.coordinate
-        .split(',')
-        .map((cord) => Number(cord));
-
-      if (shipDirection === 'x') {
-        for (
-          let i = yCord;
-          i < yCord + shipArray[shipIndex].getLength();
-          i += 1
-        ) {
-          // Get the current Ycord and xcord, in this case i is y.
-          const writePieceY = i;
-          const boardPiece = xCord * 10 + writePieceY;
-          boardPieces[boardPiece].classList.add(
-            'placement-board__board-piece--blue'
-          );
-          playerInfo.placeShip(
-            shipArray[shipIndex],
-            xCord,
-            yCord,
-            shipDirection
-          );
-        }
-      } else {
-        for (
-          let i = xCord;
-          i < xCord + shipArray[shipIndex].getLength();
-          i += 1
-        ) {
-          // Get the current Ycord and xcord, in this case i is y.
-          const writePieceX = i;
-          const boardPiece = writePieceX * 10 + yCord;
-          boardPieces[boardPiece].classList.remove(
-            'placement-board__board-piece--grey'
-          );
-        }
-      }
-
-      // So now we need to write the blue squares onto the spaces.
-      // After we write the blue squares, we remove the mouseenter, mouseleave, and click events.
-      // Use same logic as above.
-
-      // // Then move the arrow to the next ship, and repeat the process until we have exhouasted the ship icon array.
-      // shipIndex += 1;
-      // shiftArrowIcon(arrowPointer, shipIcons[shipIndex]);
-    })
-  );
-
-  changeAxisButton.addEventListener('click', () => {
+  const changeShipDirection = () => {
     if (shipDirection === 'x') {
       shipDirection = 'y';
     } else {
       shipDirection = 'x';
     }
+  };
+
+  const mouseEnterPiece = (e) => {
+    const [xCord, yCord] = e.target.dataset.coordinate
+      .split(',')
+      .map((cord) => Number(cord));
+    if (
+      !playerInfo.canPlace(shipArray[shipIndex], xCord, yCord, shipDirection)
+    ) {
+      canPlace = false;
+      e.target.classList.add('placement-board__board-piece--red');
+      return;
+    }
+    canPlace = true;
+    modifyGamePieces(
+      xCord,
+      yCord,
+      shipDirection,
+      'placement-board__board-piece--grey'
+    );
+  };
+
+  const mouseLeavePiece = (e) => {
+    if (!canPlace) {
+      e.target.classList.remove('placement-board__board-piece--red');
+      return;
+    }
+    const [xCord, yCord] = e.target.dataset.coordinate
+      .split(',')
+      .map((cord) => Number(cord));
+
+    modifyGamePieces(
+      xCord,
+      yCord,
+      shipDirection,
+      'placement-board__board-piece--grey',
+      true
+    );
+  };
+
+  const mouseClickPiece = (e) => {
+    if (!canPlace) return;
+    const [xCord, yCord] = e.target.dataset.coordinate
+      .split(',')
+      .map((cord) => Number(cord));
+    // shipIndex += 1;
+    // shiftArrowIcon(arrowPointer, shipIcons[shipIndex]);
+  };
+
+  shiftArrowIcon(arrowPointer, shipIcons[0]);
+
+  // Set Event Listeners
+  boardPieces.forEach((piece) => {
+    piece.addEventListener('mouseenter', mouseEnterPiece);
+    piece.addEventListener('mouseleave', mouseLeavePiece);
+    piece.addEventListener('click', mouseClickPiece);
   });
+  changeAxisButton.addEventListener('click', changeShipDirection);
 
   arrowPointer.classList.add('place-ships__ship-indicator--show');
   gameContainer.classList.add('container--game-active');
