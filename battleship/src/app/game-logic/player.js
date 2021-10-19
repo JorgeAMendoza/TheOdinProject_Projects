@@ -12,10 +12,13 @@ export default function player(name, board) {
 
   const getPlayerName = () => playerName;
 
+  const getBoard = () => playerBoard.returnBoard();
+
   return {
     placeShip,
     getPlayerName,
     getAttack,
     canPlace,
+    getBoard,
   };
 }
