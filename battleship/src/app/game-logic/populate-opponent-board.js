@@ -1,7 +1,7 @@
 import ship from './ship';
 
 const populateOpponentBoard = (opponentInfo) => {
-  const calledCoordinates = {};
+  const calledCoordinates = [];
   const ships = [
     ship('Carrier', 5),
     ship('Battleship', 4),
@@ -9,26 +9,28 @@ const populateOpponentBoard = (opponentInfo) => {
     ship('Submarine', 3),
     ship('Patrol Boat', 2),
   ];
-  let shipIndex = 0;
 
   const randomBetweenNine = () => Math.floor(Math.random() * 10);
   const randomBetweenTwo = () => Math.floor(Math.random() * 2);
 
-  while (shipIndex < ship.length) {
+  for (let i = 0; i < ships.length; i += 1) {
     const xCord = randomBetweenNine();
     const yCord = randomBetweenNine();
     const shipDirection = randomBetweenTwo() === 0 ? 'x' : 'y';
-    const currentShip = ships[shipIndex];
+    const currentShip = ships[i];
     const currentCord = `${xCord},${yCord}`;
 
-    if (currentCord in calledCoordinates) continue;
-
-    if (opponentInfo.canPlace(currentShip, xCord, yCord, shipDirection)) {
-      opponentInfo.placeShip(currentShip, xCord, yCord, ship);
-      shipIndex += 1;
+    if (calledCoordinates.includes(currentCord)) {
+      i -= 1;
+    } else if (
+      !opponentInfo.canPlace(currentShip, xCord, yCord, shipDirection)
+    ) {
+      calledCoordinates.push(currentCord);
+      i -= 1;
+    } else {
+      opponentInfo.placeShip(currentShip, xCord, yCord, shipDirection);
+      calledCoordinates.push(currentCord);
     }
-
-    calledCoordinates[currentCord] = true;
   }
 };
 

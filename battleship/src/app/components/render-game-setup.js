@@ -181,8 +181,8 @@ const renderGameSetup = (domTarget, playerData) => {
     playerInfo.placeShip(shipArray[shipIndex], xCord, yCord, shipDirection);
 
     if (shipIndex === 4) {
-      console.log('rendering game area');
       populateOpponentBoard(opponentInfo);
+      console.log(opponentInfo.getBoard());
       return;
     }
 
