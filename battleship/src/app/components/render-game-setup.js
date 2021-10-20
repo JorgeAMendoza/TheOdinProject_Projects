@@ -1,6 +1,7 @@
 import writeSetupScreen from './helpers/write-setup-screen';
 import populateOpponentBoard from '../game-logic/populate-opponent-board';
 import ship from '../game-logic/ship';
+import renderGameArea from './render-game-area';
 
 const shiftArrowIcon = (arrow, shipIcon) => {
   const shipPosition = shipIcon.getBoundingClientRect();
@@ -12,7 +13,7 @@ const shiftArrowIcon = (arrow, shipIcon) => {
 
 const renderGameSetup = (domTarget, playerData) => {
   const gameBody = domTarget;
-  const gameContainer = domTarget.querySelector('.container');
+  const gameContainer = gameBody.querySelector('.container');
   writeSetupScreen(gameContainer);
 
   const shipIcons = gameContainer.querySelectorAll('.place-ships__ship-icon');
@@ -182,7 +183,8 @@ const renderGameSetup = (domTarget, playerData) => {
 
     if (shipIndex === 4) {
       populateOpponentBoard(opponentInfo);
-      console.log(opponentInfo.getBoard());
+      gameContainer.classList.add('container--set-content');
+      renderGameArea(gameBody, playerInfo, opponentInfo);
       return;
     }
 
