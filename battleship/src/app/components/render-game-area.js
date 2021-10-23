@@ -14,22 +14,32 @@ const renderGameArea = (domTarget, player, opponent) => {
   const playerData = player;
   const opponentData = opponent;
 
-  const playerGameboard = playerData.getBoard();
-  const opponentGameBoard = opponentData.getBoard();
+  const sendAttack = (e) => {
+    const [xCord, yCord] = e.target.dataset.coordinate
+      .split(',')
+      .map((cord) => +cord);
+    const moveResult = opponentData.getAttack(xCord, yCord);
+    e.target.removeEventListener('click', sendAttack);
 
-  const sendAttack = (xCord, yCord, attackedPlayer) => {
-    const moveResult = attackedPlayer.getAttack(xCord, yCord);
-    console.log(moveResult);
+    switch (moveResult) {
+      case 'hit':
+        e.target.classList.add('placement-board__board-piece--red');
+        break;
+
+      case 'sunk':
+        e.target.classList.add('placement-board__board-piece--red');
+        // grabbing the current player. call the win function/lose function.
+        // if win, then call render function with corrent arguments.
+        break;
+
+      default:
+        e.target.classList.add('placement-board__board-piece--grey');
+        break;
+    }
   };
 
   opponentBoardDOM.forEach((piece) => {
-    const [xCord, yCord] = piece.dataset.coordinate
-      .split(',')
-      .map((cord) => +cord);
-
-    piece.addEventListener('click', () =>
-      sendAttack(xCord, yCord, opponentData)
-    );
+    piece.addEventListener('click', sendAttack);
   });
 
   gameContainer.classList.remove('container--set-content');
