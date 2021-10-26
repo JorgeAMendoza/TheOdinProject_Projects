@@ -17,6 +17,7 @@ const renderGameArea = (domTarget, player, opponent) => {
   let playerTurn = true;
 
   const opponentSendAttack = () => {
+    if (playerTurn) return;
     let xCord = Math.floor(Math.random() * 10);
     let yCord = Math.floor(Math.random() * 10);
 
@@ -34,9 +35,6 @@ const renderGameArea = (domTarget, player, opponent) => {
         playerBoardDOM[playerDOMCord].classList.add(
           'placement-board__board-piece--red'
         );
-        // If its a hit, then then we call the opponent turn again,
-        // in it really should matter, but we'll return instead of break.
-        console.log('Sending another attack');
         opponentSendAttack();
         break;
 
@@ -44,18 +42,22 @@ const renderGameArea = (domTarget, player, opponent) => {
         playerBoardDOM[playerDOMCord].classList.add(
           'placement-board__board-piece--red'
         );
-        // grabbing the current player. call the win function/lose function.
-        // if win, then call render function with corrent arguments.
+        opponentSendAttack();
+        break;
+
+      case 'win':
+        playerBoardDOM[playerDOMCord].classList.add(
+          'placement-board__board-piece--red'
+        );
         break;
 
       default:
+        playerTurn = true;
         playerBoardDOM[playerDOMCord].classList.add(
           'placement-board__board-piece--grey'
         );
         break;
     }
-
-    playerTurn = true;
   };
 
   const playerSendAttack = (e) => {
@@ -68,21 +70,24 @@ const renderGameArea = (domTarget, player, opponent) => {
 
     switch (moveResult) {
       case 'hit':
+        playerTurn = true;
         e.target.classList.add('placement-board__board-piece--red');
         break;
 
       case 'sunk':
+        playerTurn = true;
         e.target.classList.add('placement-board__board-piece--red');
-        // grabbing the current player. call the win function/lose function.
-        // if win, then call render function with corrent arguments.
+        break;
+
+      case 'win':
+        e.target.classList.add('placement-board__board-piece--red');
         break;
 
       default:
         e.target.classList.add('placement-board__board-piece--grey');
+        playerTurn = false;
         break;
     }
-
-    playerTurn = false;
     opponentSendAttack();
   };
 
