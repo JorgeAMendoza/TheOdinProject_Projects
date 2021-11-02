@@ -1,5 +1,4 @@
 import writeBeginScreen from './helpers/write-begin-screen';
-import renderGameSetup from './render-game-setup';
 import player from '../game-logic/player';
 import gameboard from '../game-logic/gameboard';
 
@@ -8,7 +7,7 @@ const initializePlayers = (playerName) => ({
   opponent: player('Opponent', gameboard()),
 });
 
-const renderGameStart = (domTarget) => {
+const renderGameStart = (domTarget, domController) => {
   const gameBody = domTarget;
   writeBeginScreen(gameBody);
 
@@ -33,7 +32,7 @@ const renderGameStart = (domTarget) => {
   });
 
   gameHeader.addEventListener('animationend', () =>
-    renderGameSetup(gameBody, playerData)
+    domController.renderSetup(domController, playerData)
   );
 };
 
