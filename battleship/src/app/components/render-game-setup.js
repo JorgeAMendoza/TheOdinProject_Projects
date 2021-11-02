@@ -11,7 +11,7 @@ const shiftArrowIcon = (arrow, shipIcon) => {
   );
 };
 
-const renderGameSetup = (domTarget, playerData) => {
+const renderGameSetup = (domTarget, playerData, domController) => {
   const gameBody = domTarget;
   const gameContainer = gameBody.querySelector('.container');
   writeSetupScreen(gameContainer);
@@ -184,7 +184,7 @@ const renderGameSetup = (domTarget, playerData) => {
     if (shipIndex === 4) {
       populateOpponentBoard(opponentInfo);
       gameContainer.classList.add('container--set-content');
-      renderGameArea(gameBody, playerInfo, opponentInfo);
+      domController.renderArea(domController, playerInfo, opponentInfo);
       return;
     }
 

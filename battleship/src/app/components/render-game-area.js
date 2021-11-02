@@ -1,7 +1,6 @@
 import writeAreaScreen from './helpers/write-area-screen';
-import renderEndScreen from './render-end-screen';
 
-const renderGameArea = (domTarget, player, opponent) => {
+const renderGameArea = (domTarget, player, opponent, domController) => {
   const gameBody = domTarget;
   const gameContainer = gameBody.querySelector('.container');
   writeAreaScreen(gameContainer);
@@ -50,7 +49,11 @@ const renderGameArea = (domTarget, player, opponent) => {
         playerBoardDOM[playerDOMCord].classList.add(
           'placement-board__board-piece--red'
         );
-        renderEndScreen(gameBody, 'opponent', opponentData.getPlayerName());
+        domController.renderEnd(
+          domController,
+          'opponent',
+          opponentData.getPlayerName()
+        );
         break;
 
       default:
@@ -83,7 +86,11 @@ const renderGameArea = (domTarget, player, opponent) => {
 
       case 'win':
         e.target.classList.add('placement-board__board-piece--red');
-        renderEndScreen(gameBody, 'player', playerData.getPlayerName());
+        domController.renderEnd(
+          domController,
+          'player',
+          playerData.getPlayerName()
+        );
         break;
 
       default:
