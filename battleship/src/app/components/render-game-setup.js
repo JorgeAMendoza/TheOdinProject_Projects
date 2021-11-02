@@ -183,8 +183,10 @@ const renderGameSetup = (domTarget, playerData, domController) => {
 
     if (shipIndex === 4) {
       populateOpponentBoard(opponentInfo);
+      gameContainer.addEventListener('transitionend', () => {
+        domController.renderArea(domController, playerInfo, opponentInfo);
+      });
       gameContainer.classList.add('container--set-content');
-      domController.renderArea(domController, playerInfo, opponentInfo);
       return;
     }
 

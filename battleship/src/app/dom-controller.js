@@ -18,6 +18,7 @@ const domController = () => {
   };
 
   const renderEndOfGame = (controller, player, playerName) => {
+    documentBody.classList.remove('body--game-active');
     renderEndScreen(documentBody, player, playerName, controller);
   };
 
