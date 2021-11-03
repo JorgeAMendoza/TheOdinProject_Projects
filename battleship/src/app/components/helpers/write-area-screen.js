@@ -1,12 +1,12 @@
 import writeBoardPieces from './write-board-pieces';
 
-const writeAreaScreen = (container) => {
+const writeAreaScreen = (container, playerName) => {
   const containerHTML = container;
 
-  containerHTML.innerHTML = `<h2 id="gameMessage" class="game-message header-two">Jorge's Turn</h2>
+  containerHTML.innerHTML = `
   <section class="game-active">
     <div id="playerBoard" class="placement-board">
-      <h3 class="placement-board__text">Jorge's Fleet</h3>
+      <h3 class="placement-board__text">${playerName}'s Fleet</h3>
       <div class="placement-board__board">
         ${writeBoardPieces()}
       </div>

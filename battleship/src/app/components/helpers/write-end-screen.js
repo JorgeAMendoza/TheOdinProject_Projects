@@ -14,7 +14,8 @@ const writeEndScreen = (container, icon, playerName, message) => {
 
         <p class="game-over__link">
           <a
-            href="https://github.com/JorgeAMendoza/frontEndMentor_challenges/tree/main/blogr-landing-page"
+            target="__blank"
+            href="https://github.com/JorgeAMendoza/TheOdinProject_Projects/tree/master/battleship"
             >See Code on GitHub</a
           >
         </p>

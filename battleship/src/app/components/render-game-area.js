@@ -3,7 +3,7 @@ import writeAreaScreen from './helpers/write-area-screen';
 const renderGameArea = (domTarget, player, opponent, domController) => {
   const gameBody = domTarget;
   const gameContainer = gameBody.querySelector('.container');
-  writeAreaScreen(gameContainer);
+  writeAreaScreen(gameContainer, player.getPlayerName());
   const playerBoardDOM = gameBody.querySelectorAll(
     '#playerBoard .placement-board__board-piece'
   );
