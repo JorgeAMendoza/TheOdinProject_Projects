@@ -1,7 +1,6 @@
 import writeSetupScreen from './helpers/write-setup-screen';
 import populateOpponentBoard from '../game-logic/populate-opponent-board';
 import ship from '../game-logic/ship';
-import renderGameArea from './render-game-area';
 
 const shiftArrowIcon = (arrow, shipIcon) => {
   const shipPosition = shipIcon.getBoundingClientRect();
@@ -20,7 +19,6 @@ const renderGameSetup = (domTarget, playerData, domController) => {
   const arrowPointer = gameContainer.querySelector(
     '.place-ships__ship-indicator'
   );
-  const errorText = gameContainer.querySelector('.placement-board__text');
   const changeAxisButton = gameContainer.querySelector('.btn');
   const boardPieces = gameContainer.querySelectorAll(
     '.placement-board__board-piece'
